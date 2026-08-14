@@ -1,0 +1,539 @@
+@use '../0-abstracts/' as *
+
+//PLUGIN
+.visible, .invisible
+    opacity: 0.0
+    transition: opacity 0.5s ease
+
+.visible
+    opacity: 1.0
+
+// OWL_CAROUSEL
+.owl-dots
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-top: 15px
+    @media only screen and (min-width: 468px)
+        margin-top: 20px
+    @media only screen and (min-width: 1200px)
+        margin-top: 40px
+    button
+        will-change: transform
+        border-radius: 50%
+        background: #D9D9D9 !important
+        opacity: 1
+        width: 8px
+        height: 8px
+        transition: all .3s
+        font-size: 0
+        padding: 0
+        border: none
+        outline: none
+        box-shadow: none
+        margin: 0 8px
+        @media only screen and (min-width: 576px)
+            margin: 0 10px
+        @media only screen and (min-width: 992px)
+            margin: 0 12px
+        span
+            display: none
+        &.active
+            opacity: 1
+            background: $basecolor !important
+// OWL_CAROUSEL
+.owl-nav 
+    align-items: center
+    justify-content: center
+    margin-top: 18px
+    margin-bottom: 5px
+    // display: none
+    display: flex
+    @media only screen and ( min-width:768px)
+        margin-top: 0
+        margin-bottom: 0
+    button
+        opacity: 1
+        padding: 0
+        margin: 0
+        font-size: 0
+        transition: all .3s ease
+        display: block
+        outline: none
+        outline-offset: none
+        position: absolute
+        z-index: 2
+        top: 50%
+        width: 35px
+        height: 35px
+        will-change: transform
+        border-radius: 50%
+        @include center
+        @media only screen and ( min-width:992px)
+            width: 40px
+            height: 40px
+        @media only screen and ( min-width:1200px)
+            width: 48px
+            height: 48px
+        &.disabled
+            display: none
+        &:hover
+            box-shadow: none
+        span
+            font-size: 0
+            width: 0
+            height: 0
+            display: none
+            background-size: contain !important
+            background-repeat: no-repeat
+        &.owl-prev
+            left: 0
+            transform: translate(-50%, -50%) scale(-1, -1)
+        &.owl-next
+            right: 0
+            transform: translate(50%, -50%)
+
+// SWIPER_VERTICAL_PAGINATION
+.swiper
+    --swiper-navigation-sides-offset: -15px
+    --swiper-navigation-size: 30px !important
+    --swiper-preloader-color: #003d4a
+    --swiper-theme-color: #cfe0d7
+    @media only screen and (min-width: 992px)
+        --swiper-navigation-size: 35px !important
+        --swiper-navigation-sides-offset: -50px
+    @media only screen and (min-width: 1551px)
+        --swiper-navigation-size: 40px !important
+        --swiper-navigation-sides-offset: -60px
+    .swiper-button-next, .swiper-button-prev
+        width: var(--swiper-navigation-size)
+        border-radius: 50%
+        -webkit-border-radius: 50%
+        background-color: $white
+        &.swiper-button-disabled
+            pointer-events: all
+        img
+            @include imgFit
+    .swiper-pagination-bullets.cHorizontal, .swiper-pagination.cHorizontal
+        width: auto
+        position: absolute
+        z-index: 10
+        right: 50%
+        left: auto
+        top: auto
+        bottom: 15px
+        text-align: center
+        transition: .3s opacity
+        transform: translate3d(50%, 0, 0)
+        display: flex
+        .swiper-pagination-bullet
+            margin: 0 4px
+            border-radius: 50px
+            background: $white
+            opacity: 1
+            transition: all 0.4s
+            &.swiper-pagination-bullet-active
+                background: $basecolor
+
+// LANGUAGE_SELECT2_CUSTOM
+.select2-container--form-select2-lang
+    width: 50px !important
+    display: block
+    &[dir="rtl"],  &[dir="ltr"]
+        .select2-selection--single
+            .select2-selection__rendered
+                padding-left: 0
+                padding-right: 0
+                display: inline-block
+            .flag-icon
+                width: 18px
+                height: auto
+                aspect-ratio: 4/4
+                border-radius: 50%
+                -webkit-border-radius: 50%
+                overflow: hidden
+                display: block
+                @media only screen and (min-width: 992px)
+                    width: 18px
+                @media only screen and (min-width: 1551px)
+                    width: 24px
+            .flag-text
+                display: none
+    %langSelect2Txt
+        font-size: 12px
+        line-height: 1
+        font-weight: 400
+        color: $text
+        @media only screen and (min-width: 992px)
+            font-size: 13px
+        @media only screen and (min-width: 1551px)
+            font-size: 14px
+    .select2-selection--single
+        @extend %langSelect2Txt
+        width: 100%
+        height: auto
+        gap: 6px
+        @include display
+        &[aria-expanded="true"]
+            .select2-selection__arrow
+                transform: rotate(180deg)
+    .select2-selection__arrow
+        width: 18px
+        height: auto
+        aspect-ratio: 4/2
+        background-image: url('data:image/svg+xml,<svg width="12" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.99978 5.33312C4.92301 5.33356 4.84691 5.31884 4.77584 5.28982C4.70477 5.26079 4.64012 5.21801 4.58562 5.16395L1.08562 1.66395C0.975772 1.55411 0.914063 1.40513 0.914062 1.24978C0.914062 1.09444 0.975772 0.94546 1.08562 0.835616C1.19546 0.725772 1.34444 0.664062 1.49978 0.664062C1.65513 0.664062 1.80411 0.725772 1.91395 0.835616L4.99978 3.92728L8.08562 0.841449C8.19721 0.745884 8.34075 0.695947 8.48756 0.701618C8.63438 0.707288 8.77364 0.768149 8.87753 0.872038C8.98142 0.975926 9.04228 1.11519 9.04795 1.262C9.05362 1.40881 9.00368 1.55236 8.90812 1.66395L5.40812 5.16395C5.29946 5.27172 5.15281 5.33247 4.99978 5.33312Z" fill="%23f06499"/></svg>')
+        background-repeat: no-repeat
+        background-size: contain
+        background-position: center
+        display: inline-block
+    .select2-dropdown
+        border-color: $white
+        background-color: $white !important
+        backdrop-filter: blur(40px)
+        max-height: 200px
+        overflow-y: auto
+        scrollbar-width: thin
+        scrollbar-color: $basecolor grey
+    .select2-results__option
+        @extend %langSelect2Txt
+        gap: 2px
+        align-items: center
+        @include display
+        padding: 4px
+        &[aria-selected="true"]
+            background-color: rgba($basecolor, 0.2)
+        &:not([aria-selected="true"]):hover
+            background-color: rgba(170, 170, 170, 0.8)
+        .flag-icon
+            width: 16px
+            height: auto
+            aspect-ratio: 4/4
+            border-radius: 50%
+            -webkit-border-radius: 50%
+            overflow: hidden
+            display: block
+
+// SELECT2
+.select2Wrpr
+    position: relative
+    select
+        opacity: 0
+        position: absolute
+        top: 0
+        left: 0
+        pointer-events: none
+        // display: none
+.select2
+    width: 100% !important
+    .selection
+        min-width: 170px
+        cursor: pointer
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+        position: relative
+        display: flex
+        align-items: center
+        @media only screen and (min-width: 1200px)
+            min-width: 210px
+        @media only screen and (min-width: 1551px)
+            min-width: 270px
+        &::after
+            content: ""
+            background: url(../images/dwn.svg) no-repeat
+            background-size: contain
+            position: absolute
+            right: 15px
+            top: 0
+            bottom: 0
+            margin: auto
+            pointer-events: none
+            transition: all .3s ease
+            width: 8px
+            height: 8px
+            // filter: invert(1) grayscale(1)
+            @media only screen and (min-width: 768px)
+                height: 10px
+                width: 10px
+            @media only screen and (min-width: 1661px)
+                height: 12px
+                width: 12px
+    .select2-selection
+        width: 100% !important
+        border: 1px solid transparent
+        position: relative
+        align-items: center
+        display: flex !important
+        border-radius: 10px
+        border: 1px solid rgba(0, 94, 184, 0.20)
+        background: rgba(0, 135, 194, 0.05)
+        color: #000
+        font-style: normal
+        font-weight: 400
+        text-transform: capitalize
+        line-height: 1.2
+        font-size: 12px
+        height: 40px !important
+        padding: 2px 15px
+        @media only screen and (min-width: 768px)
+            padding: 2px 23px
+        @media only screen and (min-width: 1200px)
+        @media only screen and (min-width: 1441px)
+            height: 55px !important
+        @media only screen and (min-width: 1551px)
+            font-size: 16px
+            height: 60px !important
+        @media only screen and (min-width: 1771px)
+            font-size: 18px
+        textarea
+            width: 100%
+            margin-top: 0
+            margin-bottom: 0
+            display: flex
+            align-content: center
+        .select2-selection__rendered
+            padding-left: 0 !important
+            color: #000
+            font-style: normal
+            font-weight: 400
+            line-height: 1.2
+            text-transform: capitalize
+            font-size: 12px
+            @media only screen and (min-width: 1551px)
+                font-size: 16px
+            @media only screen and (min-width: 1771px)
+                font-size: 18px
+        &.select2-selection--multiple
+            cursor: text
+            box-sizing: border-box
+            user-select: none
+            -webkit-user-select: none
+            overflow-x: auto
+            display: flex
+            padding: 3px 10px
+            @media only screen and (min-width: 992px)
+                padding: 5px 20px
+            textarea
+                height: 100%
+                resize: none
+                overflow: hidden
+                padding: 10px 0
+            .select2-selection__choice
+                border: 1px solid #d3e8e7
+                will-change: transform
+                border-radius: 5px !important
+                background-color: #f7fffe
+                color: #263948
+                box-sizing: border-box
+                display: inline-block
+                margin-left: 5px
+                margin-top: 5px
+                padding: 4px 9px
+                padding-left: 20px
+                position: relative
+                max-width: 100%
+                overflow: hidden
+                text-overflow: ellipsis
+                vertical-align: bottom
+                white-space: nowrap
+                font-size: 12px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                .select2-selection__choice__remove
+                    background-color: transparent
+                    border: none
+                    border-right: 1px solid #d3e8e7
+                    color: #999
+                    cursor: pointer
+                    font-size: 13px
+                    font-weight: bold
+                    padding: 0 4px
+                    position: absolute
+                    left: 0
+                    top: 0
+                    width: 20px
+                    height: 100%
+                .select2-selection__choice__display
+                    padding-left: 5px
+    &.select2-container--open
+        .selection
+            &::after
+                filter: none
+                transform: scale(-1, -1)
+        .select2-selection
+            // background: $basecolor3
+            // color: #fff
+            // .select2-selection__rendered
+            //     color: #fff
+            .select2-selection__arrow
+                &::after
+                    transform: scale(1, -1)
+.select2-container--default
+    .select2-results__option--highlighted
+        &.select2-results__option--selectable
+            background-color: $basecolor2 !important
+.select2-dropdown
+    min-width: 175px
+    border: none !important
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .16)
+    border-radius: 20px !important
+    overflow: hidden
+    background-color: #fff !important
+    .select2-results__options
+        color: #fff
+        font-weight: 400
+        max-height: 240px
+        overflow-y: auto
+
+        font-size: 12px
+        @media only screen and (min-width: 1551px)
+            font-size: 16px
+        @media only screen and (min-width: 1771px)
+            font-size: 18px
+        &::-webkit-scrollbar
+            width: 0 !important
+        &#select2-prop-results
+            .select2-results__option
+                font-family: $fontstack1
+                font-size: 12px !important
+                font-style: normal
+                font-weight: 400
+                line-height: 1.2
+        .select2-results__option
+            color: #000
+            font-style: normal
+            font-weight: 400
+            background-color: transparent
+            line-height: 1.3
+            font-family: $fontstack1
+            text-transform: capitalize
+            margin: 0
+            font-size: 12px
+            padding: 8px 22px !important
+            @media only screen and (min-width: 1200px)
+                padding: 10px 22px !important
+            @media only screen and (min-width: 1441px)
+                padding: 11px 22px !important
+            @media only screen and (min-width: 1551px)
+                font-size: 16px
+            &:not(:last-of-type)
+                border-bottom: solid 1px rgba(#fff, .10 )
+            &:hover
+                background: $basecolor1
+                color: $white
+            &.select2-results__option--highlighted
+                color: $white
+                background: $basecolor1
+            &.select2-results__option--selected
+                background: $basecolor1
+                color: $white
+
+    &.select2-dropdown--below
+        border-top: none
+        border-top-left-radius: 0
+        border-top-right-radius: 0
+    &.select2-dropdown--above
+        border-bottom: none
+        border-bottom-left-radius: 0
+        border-bottom-right-radius: 0
+.select2-container--open
+    .select2-dropdown
+        left: 0
+        margin-top: 2px
+        z-index: 9999
+
+// LANGUAGE SELECT
+.select2-container--langSelect
+    .flag-text
+        margin: 0 4px
+    .flag-icon
+        width: 16px
+        height: 16px
+        border-radius: 50%
+    .selection
+        &::after
+            right: 0
+    .select2-selection
+        font-size: 14px
+        height: auto !important
+        padding: 0
+        border: 0 !important
+        background: none
+        .select2-selection__rendered
+            padding-right: 15px
+    .select2-dropdown
+        z-index: 4
+        box-shadow: 0 4px 10px 0 rgba($black, 0.2)
+        .select2-results__options
+            .select2-results__option
+                padding: 4px
+
+@keyframes toTopFromBottom
+    49%
+        transform: translateY(-100%)
+
+    50%
+        opacity: 0
+        transform: translateY(100%)
+
+    51%
+        opacity: 1
+
+// SELECT2_CUSTOM
+.select2-container--select2-custom
+    display: block
+    &[dir="rtl"],  &[dir="ltr"]
+        .select2-selection--single
+            .select2-selection__rendered
+                font-size: 13px
+                line-height: 1
+                font-weight: 400
+                padding-left: 0
+                padding-right: 0
+                display: inline
+                font-size: 12px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+    .select2-selection--single
+        position: relative
+        z-index: 0
+        justify-content: space-between
+        &[aria-expanded="true"]
+            .select2-selection__arrow
+                transform: rotate(180deg)
+    .select2-selection__arrow
+        b
+            display: none
+        &::after
+            content: ""
+            width: 16px
+            height: 10px
+            background-repeat: no-repeat
+            background-size: contain
+            display: inline-block
+            margin: 2px 0 0 0
+    .select2-dropdown
+        border-color: rgba(170, 170, 170, 0.6)
+        background-color: $white
+        backdrop-filter: blur(40px)
+        max-height: 200px
+        overflow-y: auto
+        scrollbar-width: none
+        scrollbar-color: $basecolor grey
+        &::-webkit-scrollbar
+            width: 0 !important
+    .select2-results__option
+        padding: 4px
+        &[aria-disabled="true"]
+            cursor: no-drop
+            opacity: 0.6
+        // &[aria-selected="true"]
+        //     background-color: $basecolor2
+        //     color: $white
+        // &:not([aria-selected="true"]):hover
+        //     background-color: $basecolor2

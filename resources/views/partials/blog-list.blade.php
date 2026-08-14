@@ -1,0 +1,26 @@
+@forelse ($blogs as $blog)
+    <div class="item">
+        <a href="{{ route('blogArticle' , ['slug' => $blog->slug]) }}" class="blogBx" aria-label="blogs">
+            <div class="imgBx">
+                <img src="{{ $blog->image_value }}" data-src="{{ $blog->image_value }}"
+                    width="430" height="250" loading="lazy" alt="{{ $blog->image_alt_text_value }}">
+            </div>
+            <div class="contentBx">
+                <div class="tile">{{ $blog->title }}</div>
+                <p>{{ $blog->short_content }}</p>
+            </div>
+            <div class="readMore" aria-label="readmore">
+                <span>Read More</span>
+                <div class="icon">
+                    <svg viewBox="0 0 14 9">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0 4.50063C0 4.36802 0.0526784 4.24085 0.146447 4.14708C0.240215 4.05331 0.367392 4.00063 0.5 4.00063H12.293L9.146 0.854632C9.05211 0.760745 8.99937 0.633407 8.99937 0.500632C8.99937 0.367856 9.05211 0.240518 9.146 0.146631C9.23989 0.0527448 9.36722 3.1283e-09 9.5 0C9.63278 -3.1283e-09 9.76011 0.0527449 9.854 0.146631L13.854 4.14663C13.9006 4.19308 13.9375 4.24825 13.9627 4.309C13.9879 4.36974 14.0009 4.43486 14.0009 4.50063C14.0009 4.5664 13.9879 4.63152 13.9627 4.69226C13.9375 4.75301 13.9006 4.80819 13.854 4.85463L9.854 8.85463C9.76011 8.94852 9.63278 9.00126 9.5 9.00126C9.36722 9.00126 9.23989 8.94852 9.146 8.85463C9.05211 8.76074 8.99937 8.63341 8.99937 8.50063C8.99937 8.36786 9.05211 8.24052 9.146 8.14663L12.293 5.00063H0.5C0.367392 5.00063 0.240215 4.94795 0.146447 4.85419C0.0526784 4.76042 0 4.63324 0 4.50063V4.50063Z"
+                            fill="#FF5940" />
+                    </svg>
+                </div>
+            </div>
+        </a>
+    </div>
+@empty
+    <b>No Blog Found</b>
+@endforelse

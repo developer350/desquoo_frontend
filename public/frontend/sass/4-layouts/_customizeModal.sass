@@ -1,0 +1,1169 @@
+@use '../0-abstracts/' as *
+
+// customizeModal
+
+.customizeModal
+    width: 100%
+    // position: relative
+    height: var(--app-height)
+    z-index: 99999
+    overflow: auto
+    @media only screen and (min-width:768px)
+        overflow: hidden
+    .modal-dialog
+        max-width: 100%
+        height: 100%
+        margin: 0px
+        border: 0
+        background: #9EA0A3
+        .modal-content
+            background: #9EA0A3
+            border: 0
+            height: 100%
+            border-radius: 0
+            --wd: 100%
+            @media only screen and (min-width:768px)
+                --wd: 300px
+            @media only screen and (min-width:992px)
+                --wd: 350px
+            @media only screen and (min-width:1200px)
+                --wd: 400px
+            @media only screen and (min-width:1441px)
+                --wd: 430px
+            @media only screen and (min-width:1551px)
+                --wd: 480px
+            // top head
+            .hedflex
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+                align-items: center
+                z-index: 2
+                top: 0
+                left: 0
+                width: 100%
+                background: rgba($black, 0.7)
+                backdrop-filter: blur(32px)
+                padding: 15px 10px
+                @media only screen and (min-width:768px)
+                    padding: 0 30px
+                    position: absolute
+                    height: 60px
+                @media only screen and (min-width:1200px)
+                    padding: 0 45px
+                @media only screen and (min-width:1441px)
+                    height: 70px
+                @media only screen and (min-width:1551px)
+                    padding: 0 50px
+                    height: 80px
+                >*
+                    padding: 5px
+                .leftBx
+                    width: var(--wd)
+                    @media only screen and (max-width:768px)
+                        margin-bottom: 20px
+                    .dflex
+                        display: flex
+                        align-items: center
+                        margin: -10px
+                        @media only screen and (min-width:992px)
+                            width: 100%
+                        @media only screen and (min-width:1441px)
+                            margin: -18px
+                        >*
+                            padding: 6px
+                            @media only screen and (min-width:1200px)
+                                padding: 10px
+                            @media only screen and (min-width:1441px)
+                                padding: 18px
+                            &:has(.questLink)
+                                @media only screen and (max-width:768px)
+                                    margin-left: auto
+
+                        .backBtn
+                            display: flex
+                            background: transparent
+                            padding: 0px
+                            width: 25px
+                            height: 20px
+                            @media only screen and (min-width:992px)
+                                width: 35px
+                                height: 25px
+                            &:hover
+                                svg
+                                    stroke: #FF5940
+                            svg
+                                transition: all 0.5s
+                                stroke: $white
+                                @include imgFit
+                        .logo
+                            width: 100%
+                            display: block
+                            max-width: 90px
+                            @media only screen and (min-width:992px)
+                                max-width: 105px
+                            @media only screen and (min-width:1551px)
+                                max-width: 115px
+                            img
+                                @include imgFit
+                        .questLink
+                            display: block
+                            width: fit-content
+                            width: -moz-fit-content
+                            font-family: $fontstack3
+                            color: #DFDFDF
+                            font-weight: 500
+                            font-size: 13px
+                            transition: all 0.5s
+                            @media only screen and (min-width:1441px)
+                                font-size: 14px
+                            &:hover
+                                color: #FF5940
+
+                .rightBx
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    width: 100%
+                    @media only screen and (min-width:768px)
+                        width: calc(100% - var(--wd))
+                    .item
+                        &:nth-child(1)
+                            @media only screen and (max-width:768px)
+                                width: 100%
+                    .gFlx
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        margin-left: auto
+                        margin: -5px
+                        @media only screen and (min-width:992px)
+                            margin: -10px
+                        @media only screen and (max-width:768px)
+                            display: none
+                        >*
+                            padding: 5px
+                            @media only screen and (min-width:992px)
+                                padding: 10px
+
+                        .txt
+                            color: rgba($white,0.5)
+                            font-weight: 400
+                            font-family: $fontstack1
+                            font-size: 15px
+                            @media only screen and (min-width:1200px)
+                                font-size: 18px
+                            @media only screen and (min-width:1441px)
+                                font-size: 24px
+                        .amt
+                            font-family: $fontstack1
+                            color: $white
+                            font-weight: 400
+                            font-size: 15px
+                            @media only screen and (min-width:1200px)
+                                font-size: 18px
+                            @media only screen and (min-width:1441px)
+                                font-size: 24px
+                    .stepper
+                        display: flex
+                        color: #fff
+                        font-size: 16px
+                        margin: -10px
+                        width: 100%
+                        justify-content: space-between
+                        @media only screen and (min-width:768px)
+                            width: calc(100% - (480px + 230px))
+                        @media only screen and (min-width:1441px)
+                            margin: -22px
+                        >*
+                            padding: 5px
+                            @media only screen and (min-width:992px)
+                                padding: 10px
+                            @media only screen and (min-width:1441px)
+                                padding: 22px
+                        .step
+                            font-weight: 500
+                            color: $white
+                            opacity: .5
+                            white-space: nowrap
+                            transition: all 0.5s
+                            position: relative
+                            pointer-events: none
+                            font-size: 12px
+                            @media only screen and (min-width:992px)
+                                font-size: 13px
+                            @media only screen and (min-width:1200px)
+                                font-size: 14px
+                            @media only screen and (min-width:1441px)
+                                font-size: 16px
+                            span
+                                @media only screen and (max-width:992px)
+                                    display: none
+                            &.active
+                                color: #FF5940
+                                opacity: 1
+                                &::before
+                                    color: #FF5940
+
+                            &.completed
+                                color: $white
+                                &::before
+                                    content: ('✓')
+                            &::before
+                                content: attr(data-step)
+                                display: inline-block
+                                height: 28px
+                                line-height: 28px
+                                border-radius: 50%
+                                color: $white
+                                transition: all 0.5s
+                                width: 15px
+                                @media only screen and (min-width:992px)
+                                    width: 18px
+                            // &:hover
+                            //     color: #FF5940
+                            //     &::before
+                            //         color: #FF5940
+
+            // modal Body
+            .modal-body
+                padding: 0
+                .content
+                    width: 100%
+                    height: 100%
+                    &.hidden
+                        display: none
+
+                .cmnFlx
+                    display: flex
+                    width: 100%
+                    height: 100%
+                    flex-wrap: wrap
+                    @media only screen and (max-width:768px)
+                        flex-direction: column-reverse
+                    // left section
+                    .lftBx
+                        background: $white
+                        padding: 10px 10px 140px
+                        width: 100%
+                        @media only screen and (min-width:768px)
+                            width: var(--wd)
+                            height: 100%
+                            padding: 0 5px
+                        @media only screen and (min-width:1200px)
+                            padding: 0 20px
+                        @media only screen and (min-width:1551px)
+                            padding: 0 30px
+                        .topBx
+                            width: 100%
+                            padding: 25px 0px
+                            @media only screen and (min-width:768px)
+                                height: calc(var(--app-height) - 70px)
+                                padding: 90px 0px 15px
+                            @media only screen and (min-width:1351px)
+                                padding: 100px 0px 30px
+                            @media only screen and (min-width:1441px)
+                                padding: 130px 0px 40px
+                                height: calc(var(--app-height) - 120px)
+                        .cmnBx
+                            width: 100%
+                            height: 100%
+                            overflow: auto
+                            padding: 0 10px
+                            &::-webkit-scrollbar
+                                width: 2px
+
+                        .btmBx
+                            width: 100%
+                            border-top: 1px solid #DFDFDF
+                            display: flex
+                            flex-wrap: wrap
+                            align-items: center
+                            height: 120px
+                            z-index: 999
+                            @media only screen and (min-width:768px)
+                                height: 70px
+                            @media only screen and (min-width:1441px)
+                                height: 120px
+                            @media only screen and (max-width:768px)
+                                position: fixed
+                                bottom: 0
+                                left: 0
+                                background: #ffffff
+                                padding: 15px 10px
+                            >*
+                                padding: 5px
+                            .flxBx
+                                display: flex
+                                align-items: center
+                                justify-content: space-between
+                                width: 100%
+                                @media only screen and (min-width:768px)
+                                    display: none
+                                .txt
+                                    color: rgba($black, 0.5)
+                                    font-size: 14px
+                                .Amt
+                                    font-weight: 500
+                                    color: $black
+                                    font-size: 16px
+
+                            .buttons
+                                display: flex
+                                width: 100%
+                                justify-content: space-between
+                                transition: all 0.5s
+                                height: 55px
+                                @media only screen and (min-width:768px)
+                                    // margin-top: 20px
+                                    // height: 40px
+                                @media only screen and (min-width:1441px)
+                                    height: 50px
+                                @media only screen and (min-width:1551px)
+                                    height: 60px
+                                &:has(.prev)
+                                    .prev
+                                        width: 125px
+                                        &:hover
+                                            color: #FF5940
+
+                                button
+                                    padding: 0px 20px
+                                    border: none
+                                    cursor: pointer
+                                    width: 100%
+                                    height: 100%
+                                    display: flex
+                                    align-items: center
+                                    justify-content: center
+                                    font-family: $fontstack2
+                                    font-weight: 500
+                                    transition: all 0.5s
+                                    font-size: 14px
+                                    border-radius: 16px
+                                    @media only screen and (min-width:1441px)
+                                        font-size: 17px
+                                    @media only screen and (min-width:1551px)
+                                        font-size: 20px
+
+                                    &:hover
+                                        .icon
+                                            transform: translateX(15px)
+                                    .icon
+                                        width: 20px
+                                        height: 20px
+                                        display: flex
+                                        margin: 0 12px
+                                        transition: all 0.5s
+                                        svg
+                                            transition: all 0.5s
+                                            stroke: $white
+                                            @include imgFit
+                                .prev
+                                    padding: 0
+                                    background: transparent
+                                    text-align: center
+                                    color: $black
+                                .next
+                                    background: #FF5940
+                                    color: $white
+                                    &.full
+                                        width: 100%
+
+                        .listBox
+                            height: 100%
+                            // overflow: auto
+                            // padding-right: 10px
+                            // @media only screen and (max-width:768px)
+                            //     max-height: 300px
+                            // &::-webkit-scrollbar
+                            //     width: 2px
+                            .listItem
+                                &:not(:last-of-type)
+                                    margin-bottom: 15px
+                                    @media only screen and (min-width:1441px)
+                                        margin-bottom: 20px
+                                    @media only screen and (min-width:1551px)
+                                        margin-bottom: 25px
+                                .tableBx
+                                    display: flex
+                                    flex-wrap: wrap
+                                    border-radius: 8px
+                                    overflow: hidden
+                                    border: 1px solid #F2F2F2
+                                    width: 100%
+                                    cursor: pointer
+                                    min-height: 90px
+                                    @media only screen and (min-width:1351px)
+                                        min-height: 100px
+                                    @media only screen and (min-width:1441px)
+                                        min-height: 120px
+                                    @media only screen and (min-width:1551px)
+                                        min-height: 130px
+                                    &.active
+                                        @media only screen and (min-width:768px)
+                                            border: 1px solid #CBCDCD
+                                        .leftbx
+                                            .imgBx
+                                                img
+                                                    transform: none
+                                        .rtBx
+                                            @media only screen and (max-width:768px)
+                                                border: 1px solid #FF5940
+                                                border-left: 0
+                                                border-radius: 0 8px 8px 0
+                                            .checkBx
+                                                opacity: 1
+                                                visibility: visible
+                                    .leftbx
+                                        width: 90px
+                                        @media only screen and (min-width:992px)
+                                            width: 120px
+                                        @media only screen and (min-width:1351px)
+                                            width: 130px
+                                        @media only screen and (min-width:1441px)
+                                            width: 140px
+                                        @media only screen and (min-width:1551px)
+                                            width: 150px
+                                        .imgBx
+                                            width: 100%
+                                            height: 100%
+                                            background: #9EA3A2
+                                            display: flex
+                                            align-items: center
+                                            justify-content: center
+                                            transition: all 0.5s
+
+                                            img
+                                                transition: all 0.5s
+                                                object-fit: contain
+                                                transform: scale(1.6) translateX(-25px) translateY(25px)
+                                                max-width: 75px
+                                                @media only screen and (min-width:1441px)
+                                                    max-width: 110px
+
+                                    .rtBx
+                                        position: relative
+                                        padding: 15px
+                                        width: calc(100% - 90px)
+                                        @media only screen and (min-width:992px)
+                                            width: calc(100% - 120px)
+                                        @media only screen and (min-width:1351px)
+                                            width: calc(100% - 130px)
+                                        @media only screen and (min-width:1441px)
+                                            width: calc(100% - 140px)
+                                        @media only screen and (min-width:1551px)
+                                            width: calc(100% - 150px)
+                                            padding: 25px
+                                        .txt
+                                            color: #000000
+                                            font-weight: 400
+                                            margin-bottom: 5px
+                                            --lines: 2
+                                            @include clamp()
+                                            font-size: 13px
+                                            @media only screen and (min-width:1351px)
+                                                font-size: 15px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 19px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 22px
+
+                                        .price
+                                            color: #000000
+                                            font-size: 11px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 13px
+                                        .varient
+                                            color: $black
+                                            margin-bottom: 5px
+                                            --lines: 1
+                                            @include clamp()
+                                            font-size: 11px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 13px
+
+                                        .checkBx
+                                            border-radius: 50%
+                                            position: absolute
+                                            bottom: 15px
+                                            right: 15px
+                                            opacity: 0
+                                            visibility: hidden
+                                            width: 22px
+                                            height: 22px
+                                            transition: all 0.5s
+                                            @media only screen and (min-width:1441px)
+                                                width: 25px
+                                                height: 25px
+                                            svg
+                                                @include imgFit
+                        .title
+                            color: $black
+                            font-weight: 400
+                            margin-top: 20px
+                            margin-bottom: 20px
+                            text-transform: capitalize
+                            font-size: 14px
+                            @media only screen and (min-width:768px)
+                                font-size: 16px
+                            @media only screen and (min-width:1441px)
+                                font-size: 18px
+                            @media only screen and (min-width:1441px)
+                                font-size: 20px
+                        .tableList
+                            width: 100%
+                            display: flex
+                            flex-wrap: wrap
+
+                            // max-height: 350px
+                            // overflow: auto
+                            // padding-right: 10px
+                            // &::-webkit-scrollbar
+                            //     width: 2px
+                            >*
+                                width: calc(100% / 3)
+                                @media only screen and (min-width:420px)
+                                    width: calc(100% / 4)
+                                @media only screen and (min-width:768px)
+                                    width: 100%
+                            &:not(:last-of-type)
+                                margin-bottom: 10px
+                                @media only screen and (min-width:768px)
+                                    margin-bottom: 40px
+                            &:has(.FrameBx)
+                                max-height: 215px
+                            .itemList
+                                &:not(:last-of-type)
+                                    margin-bottom: 20px
+                                .tableTopBx, .FrameBx
+                                    display: flex
+                                    flex-wrap: wrap
+                                    justify-content: space-between
+                                    align-items: center
+                                    border-radius: 8px
+                                    overflow: hidden
+                                    width: 100%
+                                    cursor: pointer
+                                    @media only screen and (min-width:768px)
+                                        border: 1px solid #F2F2F2
+                                        padding: 20px
+                                    @media only screen and (min-width:1771px)
+                                        padding: 25px 30px
+                                    &:hover
+                                        @media only screen and (min-width:768px)
+                                            border: 1px solid #CBCDCD
+                                    &.active
+                                        @media only screen and (min-width:768px)
+                                            border: 1px solid #CBCDCD
+                                        .tileWrp
+                                            .icon
+                                                border: 2px solid #FF5940
+                                                @media only screen and (min-width:768px)
+                                                    border: 0
+                                                .colorBx, img
+                                                    @media only screen and (min-width:768px)
+                                                        display: none
+
+                                                .checkBx
+                                                    @media only screen and (min-width:768px)
+                                                        opacity: 1
+                                                        visibility: visible
+                                                        display: block
+
+                                            .txt
+                                                padding: 0 5px
+                                    .tileWrp
+                                        display: flex
+                                        flex-wrap: wrap
+                                        align-items: center
+                                        @media only screen and (max-width:768px)
+                                            width: 100%
+                                            justify-content: center
+                                            text-align: center
+
+                                        .icon
+                                            border: 1px solid #DFDFDF
+                                            overflow: hidden
+                                            transition: all 0.5s
+                                            @include center
+                                            width: 30px
+                                            height: 30px
+                                            border-radius: 8px
+                                            @media only screen and (min-width:768px)
+                                                border-radius: 50%
+                                            @media only screen and (min-width:1771px)
+                                                width: 40px
+                                                height: 40px
+                                            img
+                                                transition: all 0.5s
+                                                @include imgFit
+                                            .colorBx
+                                                width: 100%
+                                                height: 100%
+                                                color: #fff
+                                                display: flex
+                                                align-items: center
+                                                justify-content: center
+                                            .checkBx
+                                                width: 22px
+                                                height: 22px
+                                                border-radius: 50%
+                                                opacity: 0
+                                                visibility: hidden
+                                                display: none
+                                                transition: all 0.5s
+                                                @media only screen and (min-width:1441px)
+                                                    width: 25px
+                                                    height: 25px
+                                                svg
+                                                    @include imgFit
+
+                                        .txt
+                                            padding: 0 10px
+                                            color: #1E1E1E
+                                            font-weight: 500
+                                            font-size: 14px
+                                            white-space: nowrap
+                                            @media only screen and (min-width:992px)
+                                                font-weight: 400
+                                                font-size: 16px
+                                            @media only screen and (min-width:1200px)
+                                                font-size: 18px
+                                            @media only screen and (min-width:1351px)
+                                                font-size: 20px
+                                            @media only screen and (min-width:1771px)
+                                                font-size: 24px
+                                            @media only screen and (max-width:768px)
+                                                width: 100%
+                                                margin-top: 10px
+
+                                    .price
+                                        color: #9C9C9C
+                                        font-size: 14px
+                                        font-weight: 400
+                                        @media only screen and (min-width:992px)
+                                            font-size: 16px
+                                        @media only screen and (min-width:1200px)
+                                            font-size: 18px
+                                        @media only screen and (min-width:1351px)
+                                            font-size: 20px
+                                        @media only screen and (min-width:1771px)
+                                            font-size: 24px
+                                        @media only screen and (max-width:768px)
+                                            width: 100%
+                                            text-align: center
+                                            margin-top: 8px
+
+                        .addonList
+                            width: 100%
+                            display: flex
+                            flex-wrap: wrap
+                            >*
+                                width: 100%
+                            .item
+                                &:not(:last-of-type)
+                                    margin-bottom: 20px
+                                .addonBox
+                                    display: flex
+                                    flex-wrap: wrap
+                                    align-items: center
+                                    border-radius: 8px
+                                    overflow: hidden
+                                    width: 100%
+                                    border: 1px solid #F2F2F2
+                                    padding: 12px 15px
+                                    margin-bottom: 15px
+                                    @media only screen and (min-width:1200px)
+                                        border-radius: 16px
+                                    @media only screen and (min-width:1551px)
+                                        padding: 20px
+                                    @media only screen and (min-width:1771px)
+                                        padding: 25px 30px
+
+                                    &.active
+                                        @media only screen and (min-width:768px)
+                                            border: 1px solid #202020
+                                        .cmBtn
+                                            &:not(:last-of-type)
+                                                margin-right: 25px
+                                            &.addBtn
+                                                pointer-events: none
+                                            &.remove
+                                                display: block !important
+                                            span
+                                                &.added
+                                                    display: block !important
+
+                                                &.price
+                                                    display: none !important
+                                    .ltbx
+                                        width: 80px
+                                        @media only screen and (min-width:992px)
+                                            width: 110px
+                                        @media only screen and (min-width:1200px)
+                                            width: 130px
+                                        @media only screen and (min-width:1551px)
+                                            width: 140px
+                                        .imgbx
+                                            width: 100%
+                                            img
+                                                object-fit: contain
+                                                @include imgFit
+
+                                    .rtBx
+                                        padding-left: 15px
+                                        width: calc(100% - 80px)
+                                        @media only screen and (min-width:992px)
+                                            width: calc(100% - 110px)
+                                        @media only screen and (min-width:1200px)
+                                            width: calc(100% - 130px)
+                                        @media only screen and (min-width:1551px)
+                                            padding-left: 25px
+                                            width: calc(100% - 140px)
+                                        @media only screen and (max-width:768px)
+                                            display: flex
+                                            align-items: center
+                                            justify-content: space-between
+
+                                        .tile
+                                            font-weight: 500
+                                            color: $black
+                                            margin-bottom: 5px
+                                            font-size: 14px
+                                            @media only screen and (min-width:992px)
+                                                font-size: 16px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 18px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 20px
+                                        .subT, .amt
+                                            color: #8E9194
+                                            font-family: $fontstack2
+                                            margin-bottom: 10px
+                                            font-size: 10px
+                                            @media only screen and (min-width:992px)
+                                                font-size: 12px
+                                                margin-bottom: 20px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 14px
+                                                margin-bottom: 25px
+                                            @media only screen and (min-width:1551px)
+                                                margin-bottom: 34px
+                                                font-size: 16px
+                                        .amt
+                                            color: #FF5940
+                                            @media only screen and (min-width:768px)
+                                                display: none
+                                        .mobFlx
+                                            @media only screen and (min-width:768px)
+                                                display: none
+                                            &.active
+                                                .addBtn
+                                                    display: none !important
+                                                .removeBtn
+                                                    display: block !important
+
+                                        .mobAddBtn
+                                            width: 20px
+                                            height: 20px
+                                            border-radius: 50%
+                                            background: #FF5940
+                                            @include center
+                                            &.removeBtn
+                                                display: none
+                                            .icon
+                                                @include center
+                                            svg
+                                                max-width: 8px
+                                            span
+                                                color: #8E9194
+                                                display: none
+                                                &:hover
+                                                    color: $black
+                                            &.active
+                                                width: fit-content
+                                                border-radius: 0
+                                                background: transparent
+                                                .icon
+                                                    display: none
+                                                span
+                                                    display: block
+                                        .flx
+                                            display: flex
+                                            align-items: center
+                                            @media only screen and (max-width:768px)
+                                                display: none
+                                            // &:has(.active)
+                                            //     .cmBtn
+                                            //         &:not(:last-of-type)
+                                            //             margin-right: 25px
+                                            //         &.remove
+                                            //             display: block
+                                            //         span
+                                            //             &.added
+                                            //                 display: block
+                                            //             &.price
+                                            //                 display: none
+                                            .cmBtn
+                                                display: block
+                                                width: fit-content
+                                                color: #FF5940
+                                                background: transparent
+                                                font-weight: 500
+                                                transition: all 0.5s
+                                                font-size: 11px
+                                                @media only screen and (min-width:992px)
+                                                    font-size: 13px
+                                                @media only screen and (min-width:1441px)
+                                                    font-size: 14px
+                                                @media only screen and (min-width:1551px)
+                                                    font-size: 16px
+
+                                                span
+                                                    &.added
+                                                        display: none
+                                                &:hover
+                                                    color: $black
+                                                &.remove
+                                                    color: #8E9194
+                                                    display: none
+                                                    &:hover
+                                                        color: $black
+                    //  right section
+                    .rtBxfx
+                        position: relative
+                        width: 100%
+                        // overflow: hidden
+                        height: 400px
+                        @media only screen and (min-width:768px)
+                            width: calc(100% - var(--wd))
+                            height: var(--app-height)
+                        .contentBx
+                            width: 100%
+                            padding: 25px 25px
+                            height: 100%
+                            @media only screen and (min-width:768px)
+                                padding: 115px 35px 65px
+                                overflow: auto
+                            @media only screen and (min-width:1351px)
+                                padding: 125px 35px 65px
+                            &:has(.addonSlider)
+                                display: flex
+                                flex-direction: column
+                                justify-content: space-between
+                            //     min-height: 550px
+                            // // @media only screen and (min-width:1200px)
+                            // //     min-height: 580px
+                            // // @media only screen and (min-width:1351px)
+                            // //     min-height: 650px
+                            // // @media only screen and (min-width:1441px)
+                            // //     padding: 115px 50px
+                            // //     min-height: 700px
+                            // // @media only screen and (min-width:1551px)
+                            // //     min-height: 750px
+                            // // @media only screen and (min-width:1771px)
+                            // //     min-height: 800px
+                            &::-webkit-scrollbar
+                                width: 2px
+                            .mainTxt
+                                color: #F6F6F6
+                                font-weight: 500
+                                margin-bottom: 15px
+                                font-size: 14px
+                                @media only screen and (min-width:768px)
+                                    font-size: 18px
+                                @media only screen and (min-width:1351px)
+                                    font-size: 20px
+                                @media only screen and (min-width:1441px)
+                                    font-size: 24px
+                            .title
+                                color: $white
+                                font-size: 20px
+                                @media only screen and (min-width:768px)
+                                    font-size: 23px
+                                @media only screen and (min-width:1351px)
+                                    font-size: 25px
+                                @media only screen and (min-width:1441px)
+                                    font-size: 30px
+                                @media only screen and (min-width:1551px)
+                                    font-size: 32px
+                                &.mob
+                                    @media only screen and (max-width:768px)
+                                        display: none
+                            // step 1
+
+                            .desk-area
+                                position: relative
+                                flex: 1
+                                display: flex
+                                align-items: center
+                                justify-content: center
+                                min-height: 100%
+                                margin: auto
+                                max-width: 95%
+                                left: -15px
+                                @media only screen and (min-width:768px)
+                                    max-width: 90%
+                                    left: 0
+                                    margin-top: 35px
+                                .desk-holder
+                                    position: relative
+                                    width: min(830px, 100%)
+                                    @media only screen and (min-width:768px)
+                                        width: min(830px, 95%)
+                                    .tableSec
+                                        position: relative
+                                        width: 100%
+                                        #deskImg
+                                            position: absolute
+                                            left: 0
+                                            bottom: 8px
+                                            right: 0
+                                            margin: auto
+                                            height: auto
+                                            transition: width 0.35s ease
+
+                                        .ruler
+                                            position: absolute
+                                            left: 0
+                                            right: 0
+                                            margin: auto
+                                            top: -20px
+                                            height: 1px
+                                            opacity: 0.9
+                                            background: $white
+                                            max-width: 100%
+                                            @media only screen and (min-width:768px)
+                                                max-width: 90%
+                                            &::before
+                                                left: -2px
+                                            &:after
+                                                right: -2px
+                                            &:after, &::before
+                                                content: ""
+                                                position: absolute
+                                                width: 2px
+                                                background: #e5e7eb
+                                                top: -5px
+                                                height: 10px
+                                                @media only screen and (min-width:1200px)
+                                                    height: 20px
+                                                    top: -10px
+                                    .ruler-label
+                                        position: absolute
+                                        left: 50%
+                                        top: -28px
+                                        transform: translateX(-50%)
+                                        color: #fff
+                                        font-weight: 400
+                                        font-size: 10px
+                                        @media only screen and (min-width:1200px)
+                                            font-size: 13px
+                                        @media only screen and (min-width:1351px)
+                                            font-size: 16px
+
+                                    .depth-line
+                                        border-top: 1px solid #fff
+                                        position: absolute
+                                        transform: rotate(30deg)
+                                        width: 25px
+                                        right: -60px
+                                        top: 6px
+                                        @media only screen and (min-width:1200px)
+                                            right: -66px
+                                            top: 15px
+                                            width: 50px
+                                        &::before
+                                            left: -1px
+                                        &:after
+                                            right: -1px
+                                        &:after, &::before
+                                            content: ""
+                                            position: absolute
+                                            width: 2px
+                                            background: #e5e7eb
+                                            transform: rotate(-30deg)
+                                            height: 10px
+                                            top: -5px
+                                            @media only screen and (min-width:1200px)
+                                                top: -10px
+                                                height: 20px
+
+                                    #dLabel
+                                        color: #fff
+                                        position: absolute
+                                        right: -90px
+                                        top: -10px
+                                        font-size: 10px
+                                        @media only screen and (min-width:1200px)
+                                            right: -90px
+                                            top: -10px
+                                            font-size: 13px
+                                        @media only screen and (min-width:1351px)
+                                            font-size: 16px
+
+                            // step 2
+
+                            .franeBox
+                                position: absolute
+                                bottom: 0
+                                left: 0
+                                right: 0
+                                margin: auto
+                                max-width: 85%
+                                max-height: calc(100% - 150px)
+                                @media only screen and (min-width:478px)
+                                    max-width: 50%
+                                @media only screen and (min-width:768px)
+                                    max-width: 60%
+                                    max-height: calc(100% - 250px)
+                                .Tframe
+                                    width: 100%
+                                    height: 100%
+                                    img
+                                        transition: all 0.5s
+                                        @include imgFit
+
+                                .topBxo
+                                    position: absolute
+                                    left: 0
+                                    top: 0
+                                    width: 100%
+                                    max-height: 265px
+                                    @media only screen and (min-width:1351px)
+                                        max-height: 285px
+                                    @media only screen and (min-width:1441px)
+                                        max-height: 330px
+                                    @media only screen and (min-width:1661px)
+                                        max-height: 420px
+
+                                    img
+                                        transition: all 0.5s
+                                        border-radius: 10px
+                                        @media only screen and (min-width:1441px)
+                                            border-radius: 25px
+
+                            // step 3
+
+                            .tablewrapBox
+                                width: 100%
+                                max-width: 650px
+                                margin: auto
+                                position: relative
+                                .tableStand
+                                    width: 100%
+                                    height: 100%
+
+                                    img
+                                        transition: all 0.5s
+                                        @include imgFit
+
+                            .addonSlider
+                                overflow: hidden
+                                margin-top: 10px
+                                @media only screen and (max-width:768px)
+                                    position: absolute
+                                    width: 95%
+                                    bottom: 30px
+                                    left: 0
+                                    right: 0
+                                    margin: auto
+
+                                .addonWrap
+                                    display: flex
+                                    flex-wrap: wrap
+                                    overflow: hidden
+                                    width: 100%
+                                    height: 100%
+                                    background: $white
+                                    border-radius: 8px
+                                    @media only screen and (min-width:768px)
+                                        border-radius: 12px
+                                    @media only screen and (min-width:1200px)
+                                        border-radius: 16px
+                                    .lftBix
+                                        width: 100px
+                                        @media only screen and (min-width:348px)
+                                            width: 130px
+                                        @media only screen and (min-width:768px)
+                                            width: 110px
+                                        @media only screen and (min-width:1200px)
+                                            width: 130px
+                                        @media only screen and (min-width:1441px)
+                                            width: 160px
+                                        .imgBx
+                                            width: 100%
+                                            height: 100%
+                                            aspect-ratio: 130 / 90
+                                            @media only screen and (min-width:768px)
+                                                aspect-ratio: 160 / 150
+                                            img
+                                                transition: all 0.5s
+                                                @include imgFit
+
+                                    .rtbx
+                                        padding: 10px 20px
+                                        display: flex
+                                        justify-content: space-between
+                                        align-items: center
+                                        width: calc(100% - 100px)
+                                        @media only screen and (min-width:348px)
+                                            width: calc(100% - 130px)
+                                        @media only screen and (min-width:768px)
+                                            align-items: flex-start
+                                            flex-direction: column
+                                            width: calc(100% - 110px)
+                                        @media only screen and (min-width:1200px)
+                                            width: calc(100% - 130px)
+                                            padding: 15px 25px
+                                        @media only screen and (min-width:1441px)
+                                            width: calc(100% - 160px)
+                                            padding: 25px
+                                        .contents
+                                            margin-bottom: 10px
+                                        .titles
+                                            font-weight: 500
+                                            color: $black
+                                            margin-bottom: 4px
+                                            font-size: 16px
+                                            @media only screen and (min-width:768px)
+                                                font-size: 18px
+                                            @media only screen and (min-width:992px)
+                                                font-size: 20px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 22px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 28px
+
+                                        .catGr
+                                            color: #8E9194
+                                            font-size: 12px
+                                            @media only screen and (min-width:992px)
+                                                font-size: 14px
+                                            @media only screen and (min-width:1441px)
+                                                font-size: 16px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 18px
+
+                                        .removeButtn
+                                            display: flex
+                                            align-items: center
+                                            background: transparent
+                                            color: #8E9194
+                                            font-size: 14px
+                                            @media only screen and (min-width:1551px)
+                                                font-size: 16px
+                                            .icon
+                                                display: flex
+                                                width: 20px
+                                                height: 20px
+                                                @media only screen and (min-width:1551px)
+                                                    width: 22px
+                                                    height: 22px
+                                                svg
+                                                    @include imgFit
+                                            span
+                                                padding: 0 10px
+                                                @media only screen and (max-width:768px)
+                                                    display: none

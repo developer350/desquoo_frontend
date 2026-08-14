@@ -1,0 +1,159 @@
+@use '../0-abstracts/' as *
+
+// MAINSLIDER
+/************** ******* **************/
+/************* MAINSLIDER *************/
+/************** ******* **************/
+#MainBanner
+    // width: 100%
+    // height: auto
+    // overflow: hidden
+    // position: fixed
+    // background-attachment: fixed
+    // top: 0
+    // left: 0
+    // z-index: 0
+
+    .carousel-inner
+        display: flex
+        align-items: flex-end
+    .carousel-item
+        position: relative
+        z-index: 0
+        height: calc( var(--app-height) - 150px )
+        @media only screen and ( min-width: 576px )
+            height: var(--app-height)
+        &:not(.active)
+            .cntWrap
+                &>*
+                    transform: translateY(100%)
+                    opacity: 0
+        &.active
+            .cntWrap
+                &>*
+                    opacity: 1
+                    transform: none
+                    transition: transform 0.4s ease
+
+    .bgImgWrap
+        width: 100%
+        height: 100%
+        position: absolute
+        z-index: -1
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        img, picture, video
+            @include imgFit
+            display: block
+        video
+            &.dsk
+                @media only screen and ( max-width: 768px )
+                    display: none
+            &.mob
+                @media only screen and ( min-width: 768px )
+                    display: none
+    .container
+        height: 100%
+    .dFlx
+        height: 100%
+        position: relative
+        z-index: 10
+        flex-direction: column
+        @include display
+        flex-direction: row
+        align-items: center
+        justify-content: center
+        text-align: center
+        &>.fullSd
+            width: 100%
+        .cntWrap
+            width: 100%
+            height: auto
+            position: relative
+            z-index: 10
+            max-width: 657px
+            @media only screen and (max-width: 576px)
+                margin-bottom: 70px
+            @media only screen and (min-width: 768px)
+                margin-bottom: 80px
+            @media only screen and (min-width: 992px)
+                margin-bottom: 102px
+            @media only screen and (min-width: 1771px)
+                margin-bottom: 205px
+                max-width: 876px
+            .mHead
+                color: #8E9194
+                font-family: $fontstack2
+                font-style: normal
+                font-weight: 200
+                line-height: 1
+                letter-spacing: -1.328px
+                font-size: 32px
+                margin-bottom: 32px
+                @media only screen and ( min-width: 768px )
+                    font-size: 45px
+                @media only screen and ( min-width: 992px )
+                    font-size: 55px
+                @media only screen and ( min-width: 1200px )
+                    font-size: 55px
+                    margin-bottom: 30px
+                @media only screen and ( min-width: 1441px )
+                    font-size: 66px
+                    margin-bottom: 40px
+                @media only screen and ( min-width: 1771px )
+                    margin-bottom: 50px
+                    font-size: 88px
+            .explore
+                color: #fff
+                leading-trim: both
+                text-edge: cap
+                font-family: $fontstack1
+                font-style: normal
+                font-weight: 500
+                line-height: 1
+                display: flex
+                align-items: center
+                justify-content: center
+                transition: .4s all
+                font-size: 24px
+                @media only screen and ( min-width: 1200px )
+                    font-size: 26px
+                @media only screen and ( min-width: 1441px )
+                    font-size: 32px
+                @media only screen and ( min-width: 1771px )
+                    font-size: 42px
+                .ico
+                    width: 0
+                    margin-left: 10px
+                    transition: .4s all
+                    opacity: 0
+                    visibility: hidden
+                    img
+                        width: 100%
+                        object-fit: contain
+                &:hover
+                    color: $basecolor1
+                    .ico
+                        width: 24px
+                        opacity: 1
+                        visibility: visible
+        .scroll
+            position: absolute
+            bottom: 10%
+            left: 0
+            right: 0
+            margin: auto
+            color: #8E9194
+            font-family: $fontstack2
+            font-style: normal
+            font-weight: 400
+            line-height: 1.1
+            font-size: 14px
+            @media only screen and ( max-width: 992px )
+                display: none
+            @media only screen and ( min-width: 1441px )
+                font-size: 16px
+            @media only screen and ( min-width: 1771px )
+                font-size: 21px

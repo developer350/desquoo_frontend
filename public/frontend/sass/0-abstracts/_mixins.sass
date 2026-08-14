@@ -1,0 +1,45 @@
+//MIXINS
+
+@mixin defaultValue
+    cursor: pointer
+    border: none
+    border-radius: 0
+    outline: none
+    text-decoration: none
+    text-align: unset
+    list-style-type: none
+    background: none
+    box-shadow: none
+    padding: 0
+    margin: 0
+
+@mixin display
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-wrap: wrap
+    flex-wrap: wrap
+
+@mixin center
+    display: -ms-flexbox
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin imgFit
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+@mixin userselect
+    -webkit-user-select: none !important
+    -moz-user-select: none !important
+    -ms-user-select: none !important
+    user-select: none !important
+
+@mixin clamp
+    display: -webkit-box
+    -webkit-line-clamp: var(--lines)
+    line-clamp: var(--lines)
+    -webkit-box-orient: vertical
+    -moz-box-orient: vertical
+    overflow: hidden

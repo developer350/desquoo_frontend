@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /desqoo-admin-portal/
+Disallow: /cgi-bin/
+Sitemap: https://desqoo.com/sitemap.xml
+

@@ -1,0 +1,101 @@
+@use '../0-abstracts/' as *
+
+.refundPage
+    background: $white
+    padding-top: 100px
+    @media only screen and (min-width:992px)
+        padding-top: 140px
+    @media only screen and (min-width:1441px)
+        padding-top: 200px
+
+    #refund
+        position: relative
+        padding: 0 0 40px
+        @media only screen and (min-width:1200px)
+            padding: 0 0 80px
+        @media only screen and (min-width:1351px)
+            padding: 0 0 100px
+        @media only screen and (min-width:1441px)
+            padding: 0 0 140px
+
+    .mainTile
+        font-weight: 500
+        color: $black
+        margin-bottom: 20px
+        font-size: 25px
+        @media only screen and (min-width:992px)
+            font-size: 30px
+        @media only screen and (min-width:1200px)
+            margin-bottom: 30px
+            font-size: 35px
+        @media only screen and (min-width:1351px)
+            font-size: 40px
+            margin-bottom: 40px
+        @media only screen and (min-width:1441px)
+            font-size: 48px
+        &.center
+            text-align: center
+
+    .contenBx
+        margin: auto
+        max-width: 90%
+        @media only screen and (min-width:678px)
+            max-width: 80%
+        @media only screen and (min-width:1200px)
+            max-width: 50%
+        .maniTxt, h1, h2, h3, h4, h5, h6
+            font-weight: 500
+            color: $black
+            margin-bottom: 10px
+            font-size: 14px
+            @media only screen and (min-width:1200px)
+                font-size: 16px
+        p
+            font-family: $fontstack2
+            color: #8E9194
+            font-size: 12px
+            @media only screen and (min-width:1200px)
+                font-size: 14px
+
+        ul
+            margin: 15px 0
+            padding: 0 10px
+            li
+                font-family: $fontstack2
+                color: #8E9194
+                position: relative
+                display: flex
+                align-items: flex-start
+                font-size: 12px
+                @media only screen and (min-width:1200px)
+                    font-size: 14px
+                &:not(:last-of-type)
+                    margin-bottom: 10px
+                &::before
+                    position: relative
+                    display: block
+                    content: ''
+                    left: 0
+                    top: 5px
+                    width: 5px
+                    height: 5px
+                    border-radius: 50%
+                    background: #8e9194
+                    margin: 0 8px
+        ol
+            margin: 15px 0
+            padding: 0 35px
+
+            li
+                font-family: $fontstack2
+                color: #8E9194
+                position: relative
+                list-style: decimal
+                font-size: 12px
+                @media only screen and (min-width:1200px)
+                    font-size: 14px
+                &:not(:last-of-type)
+                    margin-bottom: 10px
+
+        .itemBx
+            margin-bottom: 10px

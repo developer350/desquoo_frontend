@@ -1,0 +1,356 @@
+@use '../0-abstracts/' as *
+
+#Footer
+    width: 100%
+    height: auto
+    overflow: hidden
+    border-top: solid 1px #8E9194
+    .ftTle
+        color: #8E9194
+        font-style: normal
+        font-weight: 500
+        line-height: 1
+        margin-bottom: 20px
+        font-size: 16px
+        @media only screen and (min-width: 992px)
+            font-size: 14px
+        @media only screen and (min-width: 1441px)
+            font-size: 16px
+            margin-bottom: 24px
+        @media only screen and (min-width: 1771px)
+            margin-bottom: 32px
+            font-size: 21px
+    ul
+        li
+            margin-bottom: 12px
+            @media only screen and (min-width: 768px)
+                margin-bottom: 15px
+            @media only screen and (min-width: 992px)
+                margin-bottom: 20px
+            @media only screen and (min-width: 1441px)
+                margin-bottom: 25px
+            @media only screen and (min-width: 1771px)
+                margin-bottom: 30px
+            a
+                color: #FFF
+                font-family: $fontstack2
+                font-style: normal
+                font-weight: 400
+                line-height: 1.1
+                font-size: 14px
+                @media only screen and (min-width: 1441px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 21px
+                &:hover, &.active
+                    color: $basecolor1
+
+    a:hover
+        color: $basecolor2
+
+    .action-alert
+        color: $white
+
+    .logoWrap
+        width: 100%
+        max-width: 145px
+        height: auto
+        display: block
+        margin-bottom: 30px
+        @media only screen and (min-width: 870px)
+            margin-bottom: 0
+            max-width: 170px
+        @media only screen and (min-width: 1200px)
+            max-width: 320px
+        @media only screen and (min-width: 1551px)
+            max-width: 341px
+        @media only screen and (min-width: 1771px)
+            max-width: 426px
+        img, svg
+            display: block
+            @include imgFit
+            object-fit: contain
+    .socialUl
+        display: flex
+        align-items: center
+        margin-bottom: 15px
+        li
+            margin-bottom: 0
+            &:not(:last-of-type)
+                margin-right: 15px
+            a
+                display: flex
+                align-items: center
+                justify-content: center
+                border: solid 1px #8e9194
+                padding: 5px
+                transition: .4s all
+                border-radius: 5px
+                width: 25px
+                height: 25px
+                @media only screen and (min-width: 1200px)
+                    width: 30px
+                    height: 30px
+                img
+                    filter: grayscale(1) invert(5) brightness(5)
+                &:hover
+                    background: $basecolor1
+
+    .ftAccordion
+        padding: 0
+        margin: 0 -8px
+        position: relative
+        z-index: 1
+        @include display
+        @media only screen and (min-width: 768px)
+            margin: 0 -10px
+            flex-direction: row
+        @media only screen and (min-width: 992px)
+            margin: 0 -55px
+        @media only screen and (min-width: 1441px)
+            margin: 0 -65px
+        @media only screen and (min-width: 1771px)
+            margin: 0 -90px
+        .accordion-button
+            @include defaultValue
+            align-items: flex-start
+            pointer-events: none
+            &:focus
+                box-shadow: none
+            &::after
+                display: none
+        .accordion-item
+            background-color: transparent
+            border: 0
+            .accordion-header
+                .accordion-button
+                    pointer-events: none
+                    margin: 0
+                    &:focus
+                        box-shadow: none
+                    &::after
+                        display: none
+            .accordion-collapse
+                .accordion-body
+                    padding: 0
+        .ftCol
+            width: 100%
+            padding: 0 8px
+            margin: 13px 0 0
+            @media only screen and (min-width: 576px)
+                margin: 13px 0
+            @media only screen and (min-width: 768px)
+                padding: 0 10px
+                width: calc( 100% / 3 )
+            @media only screen and (min-width: 870px)
+                margin: 0
+                width: calc( 100% / 4 )
+            @media only screen and (min-width: 992px)
+                padding: 0 55px
+            @media only screen and (min-width: 1441px)
+                padding: 0 65px
+            @media only screen and (min-width: 1771px)
+                padding: 0 90px
+            .fitBx
+                @media only screen and (min-width: 870px)
+            &:nth-child(1)
+                @media only screen and (max-width: 870px)
+                    width: 100%
+                    order: 0
+            &:nth-child(2)
+                @media only screen and (max-width: 768px)
+                    order: 2
+                    width: calc( 100% / 2 )
+            &:nth-child(3)
+                @media only screen and (max-width: 768px)
+                    order: 3
+                    width: calc( 100% / 2 )
+            &:nth-child(4)
+                @media only screen and (max-width: 870px)
+                    order: 1
+
+    .ftTop
+        border-bottom: solid 1px rgba(#fff, .1)
+        padding: 40px 0 20px
+        @media only screen and (min-width: 992px)
+            padding: 65px 0 35px
+        @media only screen and (min-width: 1441px)
+            padding: 80px 0 44px
+        @media only screen and (min-width: 1771px)
+            padding: 106px 0 62px
+
+    .ftMid
+        width: 100%
+        height: auto
+        border-bottom: solid 1px rgba(#fff, .1)
+        display: flex
+        flex-wrap: wrap
+        padding: 16px 0
+        @media only screen and (min-width: 768px)
+            padding: 25px 0
+        @media only screen and (min-width: 992px)
+            padding: 40px 0
+        @media only screen and (min-width: 1441px)
+            padding: 48px 0
+        @media only screen and (min-width: 1771px)
+            padding: 64px 0
+        &>*
+            width: 100%
+            @media only screen and (min-width: 768px)
+                width: calc( 100% / 2 )
+        .lftB
+            @media only screen and (max-width: 768px)
+                order: 1
+            .flWp
+                display: flex
+                flex-wrap: wrap
+                .lt
+                    width: 100%
+                    margin-bottom: 16px
+                    @media only screen and (min-width: 768px)
+                        margin-bottom: 0
+                        width: 35%
+                a, .txt
+                    color: #FFF
+                    font-family: $fontstack2
+                    font-style: normal
+                    font-weight: 400
+                    line-height: 1.5
+                    display: block
+                    font-size: 13px
+                    @media only screen and (min-width: 1441px)
+                        font-size: 16px
+                    @media only screen and (min-width: 1771px)
+                        font-size: 21px
+                .rt
+                    width: 100%
+                    @media only screen and (min-width: 768px)
+                        padding-left: 26px
+                        width: calc( 100% - 35% )
+        .ritB
+            @media only screen and (max-width: 768px)
+                order: 0
+                margin-bottom: 16px
+            .newsLtr
+                width: 100%
+                @media only screen and (min-width: 768px)
+                    margin: 0 0 0 auto
+                    max-width: 364px
+                @media only screen and (min-width: 1200px)
+                    max-width: 437px
+                @media only screen and (min-width: 1771px)
+                    max-width: 582px
+            .label
+                color: rgba(239, 238, 233, 0.60)
+                font-style: normal
+                font-weight: 500
+                line-height: 1.1
+                font-size: 16px
+                margin-bottom: 13px
+                @media only screen and (min-width: 1441px)
+                    margin-bottom: 16px
+                    font-size: 20px
+                @media only screen and (min-width: 1771px)
+                    margin-bottom: 20px
+                    font-size: 26px
+            .form-group
+                position: relative
+                .form-control
+                    border-radius: 0
+                    background: transparent
+                    border: none
+                    border-bottom: solid 1.3px #E5E4DD
+                    outline: none
+                    box-shadow: none
+                    color: #fff
+                    font-style: normal
+                    font-weight: 400
+                    line-height: normal
+                    font-size: 12px
+                    padding: 8px 0
+                    height: 60px
+                    @media only screen and ( min-width: 768px )
+                        height: 35px
+                    @media only screen and ( min-width: 1200px )
+                        height: 44px
+                    @media only screen and ( min-width: 1441px )
+                        font-size: 16px
+                        padding: 10px 0
+                        height: 53px
+                    @media only screen and ( min-width: 1771px )
+                        height: 78px
+                        font-size: 21px
+                    &::placeholder
+                        color: #fff
+                        font-style: normal
+                        font-weight: 400
+                        line-height: normal
+                        font-size: 12px
+                        @media only screen and ( min-width: 1441px )
+                            font-size: 16px
+                        @media only screen and ( min-width: 1771px )
+                            font-size: 21px
+                    &:focus
+                        color: $white
+                    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
+                        -webkit-text-fill-color: $white
+                        color: #fff
+                button
+                    border-radius: 5px
+                    background: trabsparent
+                    margin: 0 0 0 auto
+                    font-size: 10px
+                    background: transparent
+                    box-shadow: none
+                    border: none
+                    position: absolute
+                    right: 0
+                    top: 50%
+                    transform: translate(0, -50%)
+                    height: 14px
+                    width: 12px
+                    @media only screen and ( min-width: 1441px )
+                        height: 17px
+                        width: 15px
+                    @media only screen and ( min-width: 1771px )
+                        height: 20px
+                        width: 22px
+                    img
+                        width: auto
+                        height: 100%
+                        object-fit: contain
+
+    .ftBtm
+        padding: 15px 0
+        @media only screen and (min-width: 576px)
+            display: flex
+            align-items: center
+            justify-content: space-between
+        @media only screen and (min-width: 992px)
+            padding: 30px 0
+        @media only screen and (min-width: 1441px)
+            padding: 45px 0
+        .txt
+            color: rgba(239, 238, 233, 0.30)
+            font-family: $fontstack2
+            font-size: 14px
+            font-style: normal
+            font-weight: 400
+            line-height: 1
+            letter-spacing: -0.12px
+    .lftSd
+        margin-bottom: 16px
+        @media only screen and (min-width: 576px)
+            margin-bottom: 0
+    .rgtSd
+        text-align: center
+        .txt
+            display: flex
+            align-items: center
+            a
+                display: block
+                img
+                    width: 95px
+                    margin-left: 6px
+                    @media only screen and (min-width: 1551px)
+                        width: 130px

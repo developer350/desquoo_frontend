@@ -1,0 +1,399 @@
+@use '../0-abstracts/' as *
+
+.bulkorderPage
+    background: #F6F6F6
+    &>*
+        order: unset !important
+    #InnerHero
+        .mainTleWrap
+            .mTle
+                @media only screen and (max-width:576px)
+                    font-size: 48px
+
+    #products
+        position: relative
+        background: #F6F6F6
+        padding: 40px 0 40px
+        @media only screen and (min-width:1441px)
+            padding: 40px 0 30px
+        @media only screen and (min-width:1771px)
+            padding: 80px 0 60px
+        .tleWrap
+            .mTle
+                color: $black
+
+        .proBx
+            .imgBx
+                transition: all 0.5s
+                &:hover
+                    background: #EBEBEB
+            .txtBx
+                .lftB
+                    .title
+                        color: $black
+                        font-size: 16px
+                        @media only screen and ( min-width: 1441px )
+                            font-size: 20px
+                    .price
+                        color: $black
+                        font-size: 14px
+                    .info
+                        @media only screen and ( min-width: 1441px )
+                            font-size: 14px
+                .ritB
+                    .colrFlx
+                        .itm
+                            width: 24px
+                            height: 24px
+                            @media only screen and ( min-width: 768px )
+                                width: 28px
+                                height: 28px
+                            @media only screen and ( min-width: 1200px )
+                                width: 33px
+                                height: 33px
+                            @media only screen and ( min-width: 1441px )
+                                width: 40px
+                                height: 40px
+
+    #bulkBuy
+        position: relative
+        background: #F6F6F6
+        padding: 40px 0 40px
+        @media only screen and (min-width:1441px)
+            padding: 40px 0 50px
+        @media only screen and (min-width:1771px)
+            padding: 60px 0 80px
+        .tleWrap
+            margin-bottom: 35px
+            @media only screen and (min-width:1441px)
+                margin-bottom: 50px
+            @media only screen and (min-width:1771px)
+                margin-bottom: 80px
+            .mTle
+                color: $black
+        .bulkSlider
+            .swiper-slide
+                height: auto !important
+
+        .bulkBox
+            display: block
+            width: 100%
+            height: 100%
+            background: $white
+            border-radius: 14px
+            will-change: transform
+            overflow: hidden
+            transition: .4s all
+            text-align: center
+            padding: 30px 25px
+            @media only screen and (min-width:1441px)
+                border-radius: 16px
+                padding: 40px 30px
+            @media only screen and (min-width:1771px)
+                padding: 60px 40px
+            .imgBx
+                margin: auto
+                width: 25px
+                height: 25px
+                @include center
+                margin-bottom: 15px
+                @media only screen and (min-width:1441px)
+                    width: 40px
+                    height: 40px
+                @media only screen and (min-width:1771px)
+                    width: 55px
+                    height: 55px
+                img, svg
+                    max-width: 55px
+                    object-fit: contain
+
+            .title
+                font-weight: 400
+                color: $black
+                margin-bottom: 10px
+                transition: .4s all
+                font-size: 16px
+                @media only screen and (min-width:1441px)
+                    font-size: 20px
+                    margin-bottom: 15px
+                @media only screen and (min-width:1771px)
+                    font-size: 26px
+
+            p
+                color: #8E9194
+                font-size: 12px
+                transition: .4s all
+                @media only screen and (min-width:1441px)
+                    font-size: 14px
+                @media only screen and (min-width:1771px)
+                    font-size: 18px
+            &:hover
+                @media only screen and (min-width:992px)
+                    background: #202020
+                    .title
+                        color: #fff
+                    p
+                        color: #8E9194
+
+    #PartnerSection
+        background: #F6F6F6
+        .tleWrap
+            max-width: 100%
+            .mTle
+                color: $black
+
+    #EnquirySection
+        background: #F6F6F6
+        .tleWrap
+            .mTle
+                color: $black
+
+        .baseBtn_1
+            border: none
+
+    #workSpace
+        position: relative
+        background: #F6F6F6
+        padding: 40px 0
+        @media only screen and (min-width:1551px)
+            padding: 80px 0
+        .WorkspaceBx
+            width: 100%
+            height: 100%
+            border-radius: 12px
+            will-change: transform
+            overflow: hidden
+            min-height: 560px
+            position: relative
+            display: flex
+            align-items: flex-end
+            padding: 40px 15px
+            min-height: 320px
+            @media only screen and (min-width:578px)
+                padding: 40px 25px
+            @media only screen and (min-width:1200px)
+                padding: 30px
+            @media only screen and (min-width:1441px)
+                padding: 40px
+                min-height: 380px
+            @media only screen and (min-width:1551px)
+                padding: 45px
+                min-height: 460px
+            @media only screen and (min-width:1771px)
+                min-height: 560px
+                padding: 65px
+            &::before
+                position: absolute
+                content: ''
+                left: 0
+                width: 100%
+                height: 100%
+                top: 0
+                background: linear-gradient(84.42deg, rgba(0, 0, 0, 0.5) 28.37%, rgba(0, 0, 0, 0) 100%)
+            .contentBx
+                position: relative
+                .sTle
+                    font-weight: 400
+                    color: $white
+                    p
+                        color: $white
+                .createBt
+                    background: $white
+                    color: $basecolor1
+                    font-weight: 500
+                    will-change: transform
+                    border-radius: 10px
+                    will-change: transform
+                    width: fit-content
+                    text-transform: capitalize
+                    @include center
+                    min-width: 200px
+                    font-size: 14px
+                    height: 40px
+                    @media only screen and (min-width:1200px)
+                        border-radius: 15px
+                        font-size: 16px
+                        min-width: 220px
+                    @media only screen and (min-width:1551px)
+                        min-width: 240px
+                        font-size: 18px
+                        height: 45px
+                    @media only screen and (min-width:1771px)
+                        font-size: 21px
+                        border-radius: 20px
+                        min-width: 256px
+                        height: 60px
+
+    #stories
+        position: relative
+        background: #F6F6F6
+        padding: 40px 0
+        @media only screen and (min-width:1771px)
+            padding: 60px 0
+        @media only screen and (max-width:578px)
+            padding: 0 15px
+        .tleWrap
+            max-width: 100%
+            margin-bottom: 60px
+            @media only screen and (min-width:1200px)
+                margin-bottom: 90px
+            .mTle
+                color: $black
+        .storySlider
+            margin-top: 30px
+            .owl-stage-outer
+                overflow: visible
+            .owl-item
+                .storiesBx
+                    @media only screen and (min-width:578px)
+                        transform: scale(1.1)
+                &:not(.center)
+                    .storiesBx
+                        @media only screen and (min-width:578px)
+                            transform: scale(0.9)
+
+        .storiesBx
+            display: block
+            width: 100%
+            height: 100%
+            overflow: hidden
+            position: relative
+            border-radius: 15px
+            will-change: transform
+            @media only screen and (min-width:1771px)
+                border-radius: 20px
+            &:hover
+                .contentBx
+                    @media only screen and (min-width:768px)
+                        transform: translateY(-30px)
+                .imgBx
+                    img
+                        transform: scale(1.1)
+            &::before
+                position: absolute
+                content: ''
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                z-index: 1
+                background: linear-gradient(180deg, rgba(253, 253, 253, 0) 0%, rgba(0, 0, 0, 0.66) 83%)
+            .imgBx
+                width: 100%
+                height: 100%
+                aspect-ratio: 1440 / 590
+                position: relative
+                img
+                    transition: all 0.5s
+                    @include imgFit
+            .contentBx
+                position: absolute
+                bottom: 0
+                left: 0
+                width: 100%
+                text-align: center
+                padding: 15px
+                z-index: 2
+                transition: all 0.5s
+                @media only screen and (min-width:768px)
+                    padding: 30px
+                @media only screen and (min-width:1771px)
+                    padding: 40px
+                .name
+                    color: $white
+                    font-weight: 500
+                    margin-bottom: 10px
+                    font-size: 20px
+                    @media only screen and (min-width:768px)
+                        font-size: 25px
+                    @media only screen and (min-width:1200px)
+                        font-size: 30px
+                    @media only screen and (min-width:1441px)
+                        font-size: 35px
+                    @media only screen and (min-width:1771px)
+                        font-size: 42px
+                .place
+                    font-weight: 400
+                    color: $white
+                    font-size: 12px
+                    @media only screen and (min-width:1200px)
+                        font-size: 14px
+                    @media only screen and (min-width:1441px)
+                        font-size: 18px
+                    @media only screen and (min-width:1771px)
+                        font-size: 20px
+
+    #testimonial
+        position: relative
+        padding: 30px 0
+        @media only screen and (min-width:1351px)
+            padding: 40px 0
+        @media only screen and (min-width:1441px)
+            padding: 60px 0
+        .testSlider
+            .testBox
+                display: block
+                width: 100%
+                height: 100%
+                .imgBx
+                    width: 95px
+                    height: 95px
+                    border-radius: 50%
+                    will-change: transform
+                    background: $white
+                    padding: 5px
+                    margin: auto
+                    margin-bottom: 30px
+                    img
+                        transition: all 0.5s
+                        border-radius: 50%
+                        @include imgFit
+                .contentBx
+                    width: 100%
+                    text-align: center
+                    max-width: 530px
+                    margin: auto
+                    .name
+                        color: #202020
+                        font-weight: 500
+                        margin-bottom: 8px
+                        font-size: 14px
+                        @media only screen and (min-width:1200px)
+                            font-size: 16px
+                        @media only screen and (min-width:1441px)
+                            font-size: 18px
+                        @media only screen and (min-width:1771px)
+                            font-size: 22px
+                    .place
+                        font-weight: 400
+                        color: #202020
+                        font-size: 12px
+                        margin-bottom: 8px
+                        @media only screen and (min-width:1200px)
+                            font-size: 14px
+                        @media only screen and (min-width:1441px)
+                            font-size: 16px
+
+                    p
+                        color: #202020
+                        font-size: 12px
+                        @media only screen and (min-width:1441px)
+                            font-size: 14px
+                        @media only screen and (min-width:1771px)
+                            font-size: 18px
+                    .starBx
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        span
+                            font-weight: 500
+                            color: $black
+                            font-size: 16px
+                            display: block
+                            padding: 0 5px
+                        .icon
+                            width: 20px
+                            height: 20px
+                            display: flex
+                            svg
+                                @include imgFit

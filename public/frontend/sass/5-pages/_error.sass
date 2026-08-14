@@ -1,0 +1,119 @@
+@use '../0-abstracts/' as *  
+.errorPage
+    background-color: #F6F6F6
+    padding-top: var(--header-y)
+    .errorStatusBx
+        text-align: center
+        width: 100%
+        height: auto
+        padding: 10px
+        display: block
+        @media only screen and (min-width: 576px)
+            padding: 20px
+        @media only screen and (min-width: 992px)
+            padding: 25px
+        @media only screen and (min-width: 1551px)
+            padding: 30px
+        .tle
+            font-size: 20px
+            line-height: 1.2
+            font-weight: 400
+            font-family: $fontstack1
+            color: $black
+            @media only screen and (min-width: 576px)
+                font-size: 24px
+            @media only screen and (min-width: 992px)
+                font-size: 28px
+            @media only screen and (min-width: 1551px)
+                font-size: 32px
+            @media only screen and (min-width: 1771px)
+                font-size: 36px
+        .txt
+            font-size: 12px
+            line-height: 1.2
+            font-weight: 400
+            font-family: $fontstack2
+            color: $black
+            @media only screen and (min-width: 576px)
+                font-size: 16px
+            @media only screen and (min-width: 992px)
+                font-size: 18px
+            @media only screen and (min-width: 1551px)
+                font-size: 20px
+            @media only screen and (min-width: 1771px)
+                font-size: 22px
+        .txt>b
+            font-weight: 500
+        .txt>span
+            color: #8e9194
+        .imgWrap
+            width: 220px
+            height: auto
+            display: block
+            margin-inline: auto
+            @media only screen and (min-width: 576px)
+                width: 268px
+            @media only screen and (min-width: 992px)
+                width: 376px
+            @media only screen and (min-width: 1551px)
+                width: 420px
+            img
+                display: block
+                @include imgFit
+        .cntWrap
+            width: 100%
+            max-width: 320px
+            margin-inline: auto
+            @media only screen and (min-width: 576px)
+                max-width: 576px
+            @media only screen and (min-width: 992px)
+                max-width: 640px
+            @media only screen and (min-width: 1771px)
+                max-width: 768px
+            &>*
+                margin-block: 15px
+                @media only screen and (min-width: 576px)
+                    margin-block: 20px
+                @media only screen and (min-width: 992px)
+                    margin-block: 30px
+                @media only screen and (min-width: 1551px)
+                    margin-block: 40px
+        .btnWrap
+            margin-inline: -2px
+            margin-top: 15px
+            justify-content: center
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: -4px
+            @media only screen and (min-width: 992px)
+                margin-top: 0
+                margin-inline: -6px
+            @media only screen and (min-width: 1551px)
+                margin-inline: -8px
+            &>*
+                padding: 2px
+                @media only screen and (min-width: 576px)
+                    padding: 4px
+                @media only screen and (min-width: 992px)
+                    padding: 6px
+                @media only screen and (min-width: 1551px)
+                    padding: 8px
+            .baseBtn_1, .baseBtn_2
+                min-width: 100px
+                @media only screen and (min-width: 576px)
+                    min-width: 120px
+                @media only screen and (min-width: 992px)
+                    min-width: 140px
+                @media only screen and (min-width: 1551px)
+                    min-width: 168px
+                    
+    #ErrorSection
+        width: 100%
+        height: auto
+        min-height: calc(100vh - var(--header-y))
+        display: flex
+        flex-direction: column
+        justify-content: center
+        padding-block: 20px
+        @media only screen and (min-width: 992px)
+            padding-block: 40px

@@ -1,0 +1,2326 @@
+@use '../0-abstracts/' as *  
+
+.proDtail
+    padding-top: var(--header-y)
+.productPage
+    background-color: #f6f6f6
+    overflow: visible !important
+    #ProductHero
+        height: 220px
+        min-height: unset
+    .placeOrderWrap
+        width: 100%
+        @media only screen and (max-width: 576px)
+            position: sticky
+            z-index: 2
+            bottom: 0
+            left: 0
+            right: 0
+        &.mobile
+            box-shadow: 10px 0 10px 0 rgba($black, 0.1)
+            background-color: $white
+            padding: 15px 15px
+            @media only screen and (min-width: 576px)
+                display: none
+        .orderBtnFlx
+            margin-inline: -10px
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: -4px
+            @media only screen and (min-width: 992px)
+                margin-inline: -6px
+            @media only screen and (min-width: 1551px)
+                margin-inline: -10px
+            &>*
+                padding: 4px 10px
+                @media only screen and (min-width: 576px)
+                    padding: 4px 2px
+                @media only screen and (min-width: 992px)
+                    padding: 6px 4px
+                @media only screen and (min-width: 1551px)
+                    padding: 10px 6px
+            &>.item
+                width: 100%
+                &.qtyBtnWrap
+                    width: 120px
+                    @media only screen and (min-width: 576px)
+                        width: 140px
+                    @media only screen and (min-width: 992px)
+                        width: 160px
+                &.orderBtnWrap
+                    width: calc(100% - 120px)
+                    @media only screen and (min-width: 576px)
+                        width: calc(100% - 140px)
+                    @media only screen and (min-width: 992px)
+                        width: calc(100% - 160px)
+                &.notifyWrap, &.outStockWrap
+                    width: 100%
+                    @media only screen and (min-width: 576px)
+                        width: calc(100% / 2)
+                &.priceWrap
+                    border-bottom: 1px solid #f6f6f6
+                    padding-bottom: 10px
+                    margin-bottom: 10px
+                    justify-content: space-between
+                    @include display
+            .tle
+                font-size: 16px
+                line-height: 1
+                font-weight: 500
+                font-family: $fontstack1
+                color: $black
+            .qtyBtn
+                width: 100%
+                height: 40px
+                border-radius: 8px
+                -webkit-border-radius: 8px
+                background-color: $white
+                border: 1px solid #e0e0e0
+                margin: 0
+                overflow: hidden
+                @include display
+                @media only screen and (min-width: 576px)
+                    border-radius: 50px
+                    -webkit-border-radius: 50px
+                @media only screen and (min-width: 992px)
+                    height: 48px
+                @media only screen and (min-width: 1551px)
+                    height: 50px
+                %qtyBtnTxt
+                    font-size: 16px
+                    line-height: 1
+                    font-weight: 500
+                    font-family: $fontstack2
+                    color: $black
+                    @media only screen and (min-width: 992px)
+                        font-size: 20px
+                    @media only screen and (min-width: 1551px)
+                        font-size: 24px
+                &>input
+                    @include defaultValue
+                    @extend %qtyBtnTxt
+                    font-weight: 500
+                    width: calc(100% - 60px)
+                    height: 100%
+                    border: 0
+                    transition: all 0.4s ease
+                    text-align: center
+                    @include center
+                    @media only screen and (min-width: 992px)
+                        width: calc(100% - 80px)
+                    &:hover
+                        border-color: rgba($basecolor, 0.1)
+                .minus, .plus
+                    @extend %qtyBtnTxt
+                    font-weight: 400
+                    width: 30px
+                    border-color: $white
+                    @media only screen and (min-width: 992px)
+                        width: 40px
+                    &:hover
+                        background: rgba($basecolor, 0.1)
+        .outStockBtn
+            background-color: #8e9194
+            border-color: #8e9194
+        .baseBtn_1
+            .icon
+                width: 10px
+                @media only screen and (min-width: 576px)
+                    width: 14px
+                @media only screen and (min-width: 992px)
+                    width: 16px
+
+    .filterWrap
+        width: 100%
+        overflow: hidden
+        touch-action: none
+        user-select: none
+        margin-bottom: 15px
+        @media only screen and (min-width: 576px)
+            position: absolute
+            z-index: 1
+            top: -100px
+            left: 0
+            right: 0
+            top: -60px
+            margin-bottom: 0
+        @media only screen and (min-width: 1200px)
+            top: -80px
+        @media only screen and (min-width: 1551px)
+            top: -100px
+        &#FilterWrap
+            &:not(.sticky)
+                .filterWrapBx
+                    &>.bgImg, &>img
+                        display: none
+            &.sticky
+                position: fixed
+                z-index: 10
+                top: 0
+                animation-name: fadeInDown
+                animation-duration: .8s
+                animation-fill-mode: both
+                box-shadow: 0 5px 10px rgba($black,.15)
+                height: auto
+                min-height: auto
+                .filterWrapBx
+                    background: rgba(#000, .3 )
+                    padding-block: var(--header-y) 5px
+                    @media only screen and (min-width: 992px)
+                        padding-block: var(--header-y) 5px
+                    @media only screen and (min-width: 1551px)
+                        padding-block: calc(var(--header-y) - 40px) 10px
+        .filterWrapBx
+            width: 100%
+            height: auto
+            position: relative
+            z-index: 0
+            &>.bgImg
+                width: 100%
+                height: 100%
+                background-color: rgba($black, 0.1)
+                backdrop-filter: blur(10px)
+                -webkit-backdrop-filter: blur(10px)
+                position: absolute
+                z-index: -1
+                inset: 0
+            &>img
+                position: absolute
+                z-index: -2
+                inset: 0
+                object-position: top
+                @include imgFit
+            &>.container
+                @media only screen and (max-width: 576px)
+                    padding-right: 0
+        .filterFlx
+            width: 100%
+            overflow: hidden
+            white-space: nowrap
+            font-size: 0
+            position: relative
+            mask-image: linear-gradient(to right, black 0%, black 5%, black 95%, transparent 100%)
+            flex-direction: row
+            justify-content: start
+            @include display
+            flex-wrap: nowrap
+            @media only screen and (min-width: 576px)
+                justify-content: center
+                mask-image: none
+            &.active
+                cursor: grab
+            &>*
+                padding: 4px
+                @media only screen and (min-width: 992px)
+                    padding: 6px
+                @media only screen and (min-width: 1551px)
+                    padding: 8px
+            &>li
+                display: block
+        .filterBxWrap
+            position: relative
+            z-index: 0
+            &>input
+                position: absolute
+                inset: 0
+                opacity: 0
+                &:checked + .filterBx:not(.reset)
+                    color: $white
+                    background-color: rgba($black, 1)
+                    @media only screen and (min-width: 992px)
+                        background-color: rgba($black, 0.6)
+                &:checked + .filterBx .close
+                    display: inline-block
+        .filterBx
+            font-size: 14px
+            line-height: 1.2
+            font-weight: 400
+            font-family: $fontstack2
+            white-space: nowrap
+            color: $black
+            width: 100%
+            height: auto
+            display: block
+            background: $white
+            border-radius: 2px
+            -webkit-border-radius: 2px
+            padding: 6px 10px
+            overflow: hidden
+            position: relative
+            z-index: 0
+            @media only screen and (min-width: 576px)
+                font-size: 12px
+                color: $white
+                background: rgba($white, 0)
+                backdrop-filter: blur(16px)
+                -webkit-backdrop-filter: blur(16px)
+                padding: 8px 10px
+                border-radius: 8px
+                -webkit-border-radius: 8px
+            @media only screen and (min-width: 992px)
+                padding: 10px 15px
+            @media only screen and (min-width: 1200px)
+                padding: 12px 20px
+            @media only screen and (min-width: 1551px)
+                padding: 15px 25px
+            &::before
+                content: ''
+                position: absolute
+                inset: 0
+                padding: 1px
+                pointer-events: none
+                border-radius: inherit
+                background: $black
+                mask: linear-gradient(#0c0c0c 0 0) content-box, linear-gradient(#0c0c0c 0 0)
+                -webkit-mask: linear-gradient(#0c0c0c 0 0) content-box, linear-gradient(#0c0c0c 0 0)
+                mask-composite: xor
+                -webkit-mask-composite: xor
+                @media only screen and (min-width: 576px)
+                    background: radial-gradient( circle at top right, #FF1212 0%, #FFFFFF99 30%, #99999933 100%)
+                    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+                    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+                    mask-composite: xor
+                    -webkit-mask-composite: xor
+            &.reset:hover
+                cursor: pointer
+                background-color: rgba($basecolor1, 0.2)
+            .cntWrap
+                gap: 6px
+                align-items: center
+                @include display
+                flex-wrap: nowrap
+                @media only screen and (min-width: 576px)
+                    gap: 8px
+                @media only screen and (min-width: 992px)
+                    gap: 10px
+            .close
+                width: 8px
+                aspect-ratio: 1
+                display: none
+                @media only screen and (min-width: 576px)
+                    width: 6px
+                @media only screen and (min-width: 992px)
+                    width: 8px
+                @media only screen and (min-width: 1551px)
+                    width: 9px
+                img
+                    @include imgFit
+
+    #ProductHero
+        width: 100%
+        height: 576px
+        display: block
+        position: relative
+        z-index: 0
+        padding-top: var(--header-y)
+        display: flex
+        align-items: flex-end
+        @media only screen and (min-width: 576px)
+            height: var(--app-height)
+            min-height: 468px
+        @media only screen and (min-width: 992px)
+            min-height: 576px
+        &>img
+            display: block
+            position: absolute
+            z-index: -2
+            inset: 0
+            @include imgFit
+
+    #ProductListSection
+        width: 100%
+        height: auto
+        display: block
+        position: relative
+        z-index: 0
+        padding-block: 30px
+        @media only screen and (min-width: 576px)
+            padding-block: 40px
+        @media only screen and (min-width: 992px)
+            padding-block: 50px
+        @media only screen and (min-width: 1551px)
+            padding-block: 60px
+        .dFlx
+            margin-inline: -8px
+            justify-content: center
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: -5px
+            @media only screen and (min-width: 1200px)
+                margin-inline: -10px
+            @media only screen and (min-width: 1771px)
+                margin-inline: -15px
+            &>*
+                padding: 8px
+                @media only screen and (min-width: 576px)
+                    padding: 5px
+                @media only screen and (min-width: 1200px)
+                    padding: 10px
+                @media only screen and (min-width: 1771px)
+                    padding: 15px
+            &>.item
+                width: 100%
+                @media only screen and (min-width: 576px)
+                    width: calc(100% / 2)
+                @media only screen and (min-width: 768px)
+                    width: calc(100% / 3)
+        .proBx
+            .title, .price
+                color: $black
+            .txtBx .ritB .colrFlx .itm
+                outline: 2px solid #dfdfdf
+
+    #ProductDetailSection
+        width: 100%
+        height: auto
+        display: block
+        position: relative
+        z-index: 1
+        padding: 30px 0 0
+        @media only screen and (min-width: 768px)
+            padding: 40px 0
+        @media only screen and (min-width: 1551px)
+            padding: 48px 0 50px
+        .starRating
+            svg
+                display: block
+        .mFlx
+            margin-inline: -8px
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: -5px
+            @media only screen and (min-width: 1200px)
+                margin-inline: -10px
+            @media only screen and (min-width: 1771px)
+                margin-inline: -15px
+            &>*
+                padding: 8px
+                @media only screen and (min-width: 576px)
+                    padding: 5px
+                @media only screen and (min-width: 1200px)
+                    padding: 10px
+                @media only screen and (min-width: 1771px)
+                    padding: 15px
+            &>.lftSd
+                width: 100%
+                @media only screen and (min-width: 576px)
+                    width: 240px
+                @media only screen and (min-width: 768px)
+                    width: 400px
+                @media only screen and (min-width: 992px)
+                    width: 468px
+                @media only screen and (min-width: 1200px)
+                    width: 600px
+                @media only screen and (min-width: 1551px)
+                    width: 700px
+                @media only screen and (min-width: 1771px)
+                    width: 992px
+            &>.rgtSd
+                width: 100%
+                @media only screen and (min-width: 576px)
+                    width: calc(100% - 240px)
+                @media only screen and (min-width: 768px)
+                    width: calc(100% - 400px)
+                @media only screen and (min-width: 992px)
+                    width: calc(100% - 468px)
+                @media only screen and (min-width: 1200px)
+                    width: calc(100% - 600px)
+                @media only screen and (min-width: 1551px)
+                    width: calc(100% - 700px)
+                @media only screen and (min-width: 1771px)
+                    width: calc(100% - 992px)
+        .proMainBx
+            width: 100%
+            height: auto
+            display: block
+            aspect-ratio: 4/3
+            border-radius: 16px
+            -webkit-border-radius: 16px
+            border: 1px solid #f6f6f6
+            overflow: hidden
+            transition: all 0.4s
+            &:hover
+                border-color: rgba($basecolor1, 0.5)
+                box-shadow: 0 0 10px rgba($basecolor1, 0.2)
+                img
+                    transform: scale(1.1)
+            img
+                transition: all 0.4s ease
+                @include imgFit
+        .MagicZoom
+            width: 100%
+            height: 100%
+            display: block
+            border-color: #f7f7f7
+            &>*
+                @include imgFit
+        .proThumbBx
+            width: 100%
+            height: auto
+            display: block
+            aspect-ratio: 14/12
+            border-radius: 10px
+            -webkit-border-radius: 10px
+            overflow: hidden
+            transition: outline 0.4s ease
+            &:hover
+                img
+                    transform: scale(1.1)
+            img
+                transition: all 0.4s ease
+                @include imgFit
+        .proMainSlide
+            margin-bottom: 15px
+            @media only screen and (min-width: 576px)
+                display: none
+            @media only screen and (min-width: 1551px)
+                margin-bottom: 20px
+            &>.swiper-wrapper>.swiper-slide-zoomed
+                .swiper-zoom-container
+                    cursor: move
+            .swiper-zoom-container
+                cursor: zoom-in
+            .swiper-slide
+                height: auto
+            a
+                width: 100%
+                height: 100%
+                display: block
+                img, video
+                    @include imgFit
+            .swiper-button-next, .swiper-button-prev
+                width: var(--swiper-navigation-size)
+                border-radius: 50%
+                -webkit-border-radius: 50%
+                background-color: transparent
+                &.swiper-button-disabled
+                    pointer-events: all
+            .swiper-button-next
+                right: 0
+            .swiper-button-prev
+                left: 0
+        .proThumpSlide
+            --swiper-navigation-size: 25px !important
+            --swiper-navigation-sides-offset: 5px
+            @media only screen and (min-width: 1551px)
+                --swiper-navigation-sides-offset: 10px
+                --swiper-navigation-size: 30px !important
+            .swiper-slide-thumb-active>.proThumbBx
+                border: 3px solid rgba($basecolor, 0.2)
+        .mCntWrap
+            @media only screen and (min-width: 576px)
+                position: sticky
+                z-index: 10
+                top: calc(var(--header-y) + 10px)
+        .mCntWrap>*
+            margin-bottom: 15px
+            @media only screen and (min-width: 992px)
+                margin-bottom: 20px
+            @media only screen and (min-width: 1551px)
+                margin-bottom: 30px
+            @media only screen and (min-width: 1771px)
+                margin-bottom: 40px
+        .bulkOrderBtnWrap
+            background: $white
+            margin-inline: -15px
+            justify-content: flex-end
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: 0
+                background: none
+            .bulkOrderBtn
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                width: 100%
+                max-width: 160px
+                height: auto
+                background-color: $white
+                border-radius: 4px
+                -webkit-border-radius: 4px
+                padding: 10px 10px
+                gap: 4px
+                @include display
+                @media only screen and (min-width: 576px)
+                    padding: 4px 10px
+                @media only screen and (min-width: 992px)
+                    gap: 6px
+                    max-width: 180px
+                    padding: 6px 14px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                    max-width: 190px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                    max-width: 210px
+                    gap: 10px
+                    padding: 8px 16px
+        .proMainWrap
+            width: 100%
+            // @media only screen and (min-width: 576px)
+            //     position: sticky
+            //     top: calc(var(--header-y) + 10px)
+            .tagWrap
+                @media only screen and (min-width: 576px)
+                    position: sticky
+                    top: 60px
+                @media only screen and (min-width: 1200px)
+                    top: 85px
+                @media only screen and (min-width: 1551px)
+                    top: 100px
+                @media only screen and (min-width: 1771px)
+                    top: 110px
+            .imgBWrp
+                @media only screen and (max-width: 576px)
+                    display: none
+                .item
+                    margin-bottom: 15px
+                    @media only screen and (min-width: 1200px)
+                        margin-bottom: 25px
+                    @media only screen and (min-width: 1551px)
+                        margin-bottom: 35px
+                    @media only screen and (min-width: 1771px)
+                        margin-bottom: 48px
+                    a
+                        width: 100%
+                        height: 100%
+                        display: block
+                        img, video
+                            @include imgFit
+        .tagWrap
+            gap: 10px
+            width: 100%
+            position: absolute
+            z-index: 1
+            bottom: 0
+            right: 0
+            justify-content: flex-end
+            @include display
+            @media only screen and (min-width: 376px)
+                gap: 15px
+            @media only screen and (min-width: 576px)
+                position: unset
+                gap: 6px
+            @media only screen and (min-width: 992px)
+                gap: 8px
+                margin-bottom: 5px
+            @media only screen and (min-width: 1551px)
+                gap: 12px
+                margin-bottom: 10px
+            .tagBx
+                font-size: 14px
+                line-height: 1
+                font-weight: 400
+                font-family: $fontstack2
+                color: $basecolor1
+                width: 100%
+                height: auto
+                background-color: rgba($white, 0.9)
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                padding: 10px 10px
+                margin-left: auto
+                gap: 10px
+                align-items: center
+                @include display
+                @media only screen and (min-width: 376px)
+                    padding: 12px 20px
+                @media only screen and (min-width: 576px)
+                    font-size: 12px
+                    background-color: $white
+                    border-radius: 4px
+                    -webkit-border-radius: 4px
+                    gap: 4px
+                    padding: 4px 8px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                    gap: 6px
+                    padding: 6px 10px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                    gap: 10px
+                    padding: 8px 12px
+                .icon
+                    width: 15px
+                    img
+                        display: block
+                        @include imgFit
+        .tagWrap.desktop
+            display: none
+            @media only screen and (min-width: 576px)
+                display: flex
+        .tagWrap.mobile
+            display: flex
+            @media only screen and (min-width: 576px)
+                display: none
+        .placeOrderWrap
+            #MinimumOrderWrap, .qtyBtnWrap, .orderBtnWrap
+                display: none !important
+                @media only screen and (min-width: 576px)
+                    display: block !important
+        .bulkOrderTable
+            width: 100%
+            height: auto
+            border-collapse: separate
+            border-spacing: 0
+            border: 1px solid #8e9194
+            border-radius: 16px
+            overflow: hidden
+            %bulkOrderTableTxt
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            th
+                font-weight: 500
+            th, td
+                @extend %bulkOrderTableTxt
+                text-align: center
+                padding: 5px
+                border-right: 1px solid #8e9194
+                border-bottom: 1px solid #8e9194
+                @media only screen and (min-width: 992px)
+                    padding: 10px
+                @media only screen and (min-width: 1551px)
+                    padding: 15px
+
+            // optional: remove borders on edges for cleaner corners
+            tr:first-child th:first-child
+                border-top-left-radius: 16px
+            tr:first-child th:last-child
+                border-top-right-radius: 16px
+            tr:last-child td:first-child
+                border-bottom-left-radius: 16px
+            tr:last-child td:last-child
+                border-bottom-right-radius: 16px
+        .discWrap
+            width: 100%
+            display: block
+            &>*
+                margin-block: 8px
+                @media only screen and (min-width: 992px)
+                    margin-block: 10px
+                @media only screen and (min-width: 1551px)
+                    margin-block: 15px
+            .tle
+                font-size: 20px
+                line-height: 1.2
+                font-weight: 500
+                font-family: $fontstack1
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 24px
+                @media only screen and (min-width: 992px)
+                    font-size: 38px
+                @media only screen and (min-width: 1200px)
+                    font-size: 40px
+                @media only screen and (min-width: 1551px)
+                    font-size: 48px
+                @media only screen and (min-width: 1771px)
+                    font-size: 64px
+                span
+                    color: $basecolor
+            .txt1
+                font-size: 16px
+                line-height: 1.2
+                font-weight: 500
+                font-family: $fontstack1
+                color: #19191c
+                @media only screen and (min-width: 576px)
+                    font-size: 16px
+                @media only screen and (min-width: 992px)
+                    font-size: 18px
+                @media only screen and (min-width: 1200px)
+                    font-size: 24px
+                @media only screen and (min-width: 1551px)
+                    font-size: 28px
+                @media only screen and (min-width: 1771px)
+                    font-size: 32px
+            .txt
+                font-size: 14px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 12px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                &>span
+                    color: #8e9194
+                .primary
+                    color: $basecolor1
+                b
+                    font-weight: 500
+            .infotip
+                width: 14px
+                display: inline-block
+                @media only screen and (min-width: 992px)
+                    width: 12px
+                @media only screen and (min-width: 1551px)
+                    width: 16px
+                img, svg
+                    display: block
+                    @include imgFit
+            .tleFlx
+                margin-bottom: 4px
+                align-items: center
+                justify-content: space-between
+                @include display
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 10px
+
+            .priceDsk
+                @media only screen and (max-width: 576px)
+                    display: none
+            .priceMob
+                margin-bottom: 8px
+                @media only screen and (min-width: 576px)
+                    display: none
+                .flxWrp
+                    display: flex
+                    align-items: center
+                    margin-bottom: 8px
+                    .txt
+                        color: #8E9194
+                        margin-left: 22px
+                .txt3
+                    color: #8E9194
+                    font-family: $fontstack2
+                    font-size: 12px
+                    font-style: normal
+                    font-weight: 400
+                    line-height: normal
+                    letter-spacing: -0.12px
+
+        .rewiewCountBx
+            font-size: 12px
+            line-height: 1.2
+            font-weight: 400
+            font-family: $fontstack2
+            color: $black
+            align-items: center
+            @include display
+            @media only screen and (min-width: 1200px)
+                font-size: 14px
+            @media only screen and (min-width: 1551px)
+                font-size: 16px
+            @media only screen and (min-width: 1771px)
+                font-size: 18px
+            span
+                color: #8e9194
+            .icon
+                width: 12px
+                height: auto
+                display: inline-block
+                margin-inline: 4px
+                @media only screen and (min-width: 576px)
+                    margin-inline: 2px
+                @media only screen and (min-width: 992px)
+                    width: 14px
+                    margin-inline: 3px
+                @media only screen and (min-width: 1551px)
+                    width: 16px
+                svg
+                    display: block
+                    @include imgFit
+        .selectInputBx
+            %selectInputBxTxt
+                font-size: 14px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 12px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .tle
+                @extend %selectInputBxTxt
+                font-weight: 500
+                margin-bottom: 4px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 10px
+                &span
+                    color: #8e9194
+                .primary
+                    color: $basecolor1
+                b
+                    font-weight: 500
+            .modalFlx
+                margin-inline: -6px
+                flex-direction: column
+                @include display
+                @media only screen and (min-width: 576px)
+                    margin-inline: -2px
+                @media only screen and (min-width: 992px)
+                    margin-inline: -4px
+                @media only screen and (min-width: 1551px)
+                    margin-inline: -6px
+                &>*
+                    padding: 6px
+                    @media only screen and (min-width: 576px)
+                        padding: 2px
+                    @media only screen and (min-width: 992px)
+                        padding: 4px
+                    @media only screen and (min-width: 1551px)
+                        padding: 6px
+                &>.item
+                    @media only screen and (max-width: 576px)
+                        width: 100%
+                        max-width: 248px
+                .modalBx
+                    @extend %selectInputBxTxt
+                    font-family: $fontstack2
+                    display: inline-block
+                    position: relative
+                    z-index: 0
+                    @media only screen and (max-width: 576px)
+                        width: 100%
+                    &>input
+                        position: absolute
+                        inset: 0
+                        opacity: 0
+                        &:checked + .cntWrap
+                            border-color: $basecolor1
+                        &:disabled + .cntWrap
+                            opacity: 40%
+                            cursor: not-allowed
+                            border-color: black
+                    &>.cntWrap
+                        width: 100%
+                        min-width: 200px
+                        padding: 10px 15px
+                        background-color: $white
+                        border-radius: 16px
+                        -webkit-border-radius: 16px
+                        border: 1px solid $white
+                        @media only screen and (min-width: 1200px)
+                            min-width: 248px
+                            padding: 10px 20px
+                        @media only screen and (min-width: 1551px)
+                            padding: 12px 25px
+                    .primary
+                        color: $basecolor1
+            &.colorStripWrap
+                .tle
+                    @media only screen and (max-width: 576px)
+                        font-size: 12px
+                .colorStripFlx
+                    margin-inline: -20px
+                    @include display
+                    &>*
+                        padding: 5px 20px
+                    &>.item
+                        width: calc(100% / 2)
+                        @media only screen and (min-width: 576px)
+                            width: 100%
+                        @media only screen and (max-width: 576px)
+                            position: relative
+                            z-index: 0
+                            &::after
+                                content: ''
+                                width: 1px
+                                height: calc(100% - 25px)
+                                background-color: #8e9194
+                                position: absolute
+                                z-index: 1
+                                right: 0
+                                top: 5px
+                                bottom: 0
+                            &:last-of-type
+                                &::after
+                                    display: none
+
+            .colorStrip
+                align-items: center
+                @include display
+                &>.lftSd
+                    width: 100%
+                    @media only screen and (min-width: 576px)
+                        width: 22%
+                &>.rgtSd
+                    width: 100%
+                    @media only screen and (min-width: 576px)
+                        width: 78%
+                .txt
+                    @extend %selectInputBxTxt
+                    font-weight: 400
+                    font-family: $fontstack2
+                    @media only screen and (max-width: 576px)
+                        font-size: 10px
+                        margin-bottom: 10px
+                    @media only screen and (max-width: 376px)
+                        font-size: 8px
+                .clrFlx
+                    margin-inline: -2px
+                    @include display
+                    @media only screen and (min-width: 992px)
+                        margin-inline: -4px
+                    @media only screen and (min-width: 1551px)
+                        margin-inline: -6px
+                    &>*
+                        padding: 2px
+                        @media only screen and (min-width: 992px)
+                            padding: 4px
+                        @media only screen and (min-width: 1551px)
+                            padding: 6px
+                    &>.item
+                        @media only screen and (max-width: 576px)
+                            width: calc(100% / 3)
+                .colorBx
+                    width: 100%
+                    display: block
+                    position: relative
+                    z-index: 0
+                    &>input
+                        position: absolute
+                        inset: 0
+                        opacity: 0
+                        &:checked + .cntWrap
+                            @media only screen and (min-width: 576px)
+                                background-color: $white
+                            .icon
+                                border-color: $basecolor1
+                                @media only screen and (min-width: 576px)
+                                    border-color: #dfdfdf
+                                .rounded-circle
+                                    display: flex
+                                    align-items: center
+                                    justify-content: center
+                                    height: 100% !important
+                                    width: 100% !important
+                            .txt
+                                visibility: visible
+                                @media only screen and (min-width: 576px)
+                                    width: auto
+                                    padding-inline: 4px 15px
+                                @media only screen and (min-width: 992px)
+                                    padding-inline: 6px 20px
+                                @media only screen and (min-width: 1551px)
+                                    padding-inline: 8px 25px
+                        &:disabled + .cntWrap
+                            opacity: 40%
+                            cursor: not-allowed
+                            border-color: black
+                    &>.cntWrap
+                        width: 100%
+                        padding: 2px
+                        background-color: transparent
+                        border-radius: 16px
+                        -webkit-border-radius: 16px
+                        flex-direction: column
+                        justify-content: center
+                        align-items: center
+                        @include display
+                        @media only screen and (min-width: 576px)
+                            justify-content: start
+                            flex-wrap: nowrap
+                            flex-direction: row
+                        @media only screen and (min-width: 992px)
+                            padding: 4px
+                    .icon
+                        width: 30px
+                        aspect-ratio: 1
+                        border-radius: 8px
+                        -webkit-border-radius: 8px
+                        border: 1px solid #dfe0de
+                        overflow: hidden
+                        margin-bottom: 8px
+                        @media only screen and (min-width: 576px)
+                            width: 30px
+                            border-radius: 14px
+                            -webkit-border-radius: 14px
+                            margin-bottom: 0
+                        @media only screen and (min-width: 992px)
+                            width: 40px
+                        &:hover
+                            border-color: $basecolor1
+                        img
+                            @include imgFit
+                        .rounded-circle
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            height: 100% !important
+                            width: 100% !important
+                    .txt
+                        text-align: center
+                        @media only screen and (min-width: 576px)
+                            text-align: start
+                            width: 0
+                            visibility: hidden
+                            flex-grow: 1
+        .deliveryInputBx
+            %deliveryInputBx
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .tle
+                @extend %deliveryInputBx
+                font-weight: 500
+                margin-bottom: 6px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 10px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 15px
+                &span
+                    color: #8e9194
+                .primary
+                    color: $basecolor1
+                b
+                    font-weight: 500
+            .deliveryInput
+                font-family: $fontstack2
+                width: 100%
+                gap: 10px
+                @include display
+                margin-bottom: 4px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 10px
+                .form-control
+                    width: 100%
+                    max-width: 160px
+                    background-color: $white
+                    padding: 10px 15px
+                    @media only screen and (min-width: 376px)
+                        max-width: 200px
+                    @media only screen and (min-width: 576px)
+                        max-width: 180px
+                    @media only screen and (min-width: 1200px)
+                        max-width: 240px
+                        padding: 10px 20px
+                    @media only screen and (min-width: 1551px)
+                        max-width: 280px
+                        padding: 12px 25px
+                .btn
+                    @extend %deliveryInputBx
+                    color: $basecolor1
+                    width: 100%
+                    max-width: 100px
+                    padding: 10px 15px
+                    background-color: $white
+                    border-radius: 16px
+                    -webkit-border-radius: 16px
+                    border: 1px solid $white
+                    @media only screen and (min-width: 1200px)
+                        padding: 10px 20px
+                    @media only screen and (min-width: 1551px)
+                        padding: 12px 25px
+            .deliveryTxt
+                @extend %deliveryInputBx
+                color: #8e9194
+                span
+                    color: #47ab75
+                &.error
+                    color: #c32f19
+        .addOnWrapBx
+            width: 100%
+            @media only screen and (min-width: 576px)
+                padding-inline: 15px
+            @media only screen and (min-width: 992px)
+                padding-inline: 20px
+            @media only screen and (min-width: 1551px)
+                padding-inline: 30px
+            %addOnWrapBxTxt
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .tle
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 500
+                font-family: $fontstack1
+                color: #19191c
+                margin-bottom: 4px
+                @media only screen and (min-width: 576px)
+                    font-size: 16px
+                @media only screen and (min-width: 992px)
+                    font-size: 18px
+                @media only screen and (min-width: 1200px)
+                    font-size: 24px
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    font-size: 28px
+                    margin-bottom: 10px
+                @media only screen and (min-width: 1771px)
+                    font-size: 32px
+            .txt
+                @extend %addOnWrapBxTxt
+                &>span
+                    color: #8e9194
+                .primary
+                    color: $basecolor1
+                b
+                    font-weight: 500
+            .tleFlx
+                margin-bottom: 6px
+                align-items: center
+                justify-content: space-between
+                @include display
+                @media only screen and (min-width: 576px)
+                    margin-bottom: 4px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 10px
+            .slideNavBtn
+                gap: 4px
+                @include display
+                @media only screen and (max-width: 576px)
+                    display: none
+                .navBtn
+                    width: 30px
+                    aspect-ratio: 1/1
+                    display: block
+                    @media only screen and (min-width: 992px)
+                        width: 40px
+                    &.prev
+                        transform: rotate(180deg)
+                    &.swiper-button-disabled
+                        opacity: 0.5
+                    img
+                        display: block
+                        @include imgFit
+            .addOnSlide
+                height: 220px
+                @media only screen and (min-width: 376px)
+                    height: 240px
+                @media only screen and (min-width: 576px)
+                    height: auto
+            .addOnBx
+                width: 100%
+                padding: 10px 15px
+                background-color: $white
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                border: 1px solid $white
+                position: relative
+                z-index: 0
+                align-items: center
+                @include display
+                @media only screen and (min-width: 576px)
+                    padding: 10px 15px
+                @media only screen and (min-width: 1200px)
+                    padding: 10px 20px
+                @media only screen and (min-width: 1551px)
+                    padding: 12px 25px
+                &:hover
+                    .addCartBtn
+                        color: $basecolor1
+                        transform: rotate(180deg)
+                    &>.imgWrap>img
+                        transform: scale(1.05)
+                &>.imgWrap
+                    width: 100px
+                    aspect-ratio: 20/15
+                    border-radius: 16px
+                    -webkit-border-radius: 16px
+                    overflow: hidden
+                    @media only screen and (min-width: 376px)
+                        width: 120px
+                    @media only screen and (min-width: 576px)
+                        width: 100px
+                    @media only screen and (min-width: 992px)
+                        width: 200px
+                    img
+                        transition: transform 0.4s ease
+                        @include imgFit
+                &>.cntWrap
+                    width: calc(100% - 100px)
+                    padding-left: 10px
+                    @media only screen and (min-width: 376px)
+                        width: calc(100% - 120px)
+                        padding-left: 15px
+                    @media only screen and (min-width: 576px)
+                        width: calc(100% - 100px)
+                        padding-left: 15px
+                    @media only screen and (min-width: 992px)
+                        width: calc(100% - 200px)
+                        padding-left: 30px
+                    &>br
+                        @media only screen and (max-width: 576px)
+                            display: none
+                .addCartBtn
+                    font-size: 34px
+                    line-height: 1
+                    font-weight: 300
+                    color: $black
+                    position: absolute
+                    z-index: 1
+                    right: 14px
+                    bottom: 0
+                    transition: transform 0.4s ease
+                    @media only screen and (min-width: 576px)
+                        display: none
+                .tle
+                    font-size: 14px
+                    @media only screen and (min-width: 576px)
+                        font-size: 99%
+                .primary
+                    color: $basecolor1
+                    @media only screen and (max-width: 576px)
+                        display: none
+                    a
+                        color: $basecolor1
+                .price
+                    display: block
+                    margin-top: 5px
+                    @media only screen and (min-width: 576px)
+                        display: none
+        .specWrapBx
+            width: 100%
+            margin-bottom: 20px
+            @media only screen and (min-width: 576px)
+                padding-inline: 15px
+            @media only screen and (min-width: 992px)
+                padding-inline: 20px
+                margin-bottom: 30px
+            @media only screen and (min-width: 1551px)
+                padding-inline: 30px
+                margin-bottom: 40px
+            .dFlx
+                margin-inline: -4px
+                @include display
+                @media only screen and (min-width: 1200px)
+                    margin-inline: -8px
+                @media only screen and (min-width: 1551px)
+                    margin-inline: -15px
+                &>*
+                    padding: 4px
+                    @media only screen and (min-width: 1200px)
+                        padding: 5px 8px
+                    @media only screen and (min-width: 1551px)
+                        padding: 10px 15px
+                &>.item
+                    width: calc(100% / 4)
+                    @media only screen and (min-width: 576px)
+                        width: calc(100% / 2)
+                    @media only screen and (min-width: 768px)
+                        width: calc(100% / 4)
+            .specBx
+                width: 100%
+                height: 100%
+                padding: 10px
+                background-color: #f6f6f6
+                border-radius: 8px
+                -webkit-border-radius: 8px
+                border: 1px solid #f6f6f6
+                display: block
+                @media only screen and (min-width: 576px)
+                    padding: 15px 10px
+                    background-color: #eaeaea
+                    border: 1px solid #eaeaea
+                @media only screen and (min-width: 1200px)
+                    padding: 20px 25px
+                @media only screen and (min-width: 1551px)
+                    padding: 25px 30px
+                &:hover
+                    &>.imgWrap>img
+                        transform: scale(1.05)
+                &>.imgWrap
+                    width: 20px
+                    aspect-ratio: 1/1
+                    margin-inline: auto
+                    margin-bottom: 4px
+                    @media only screen and (min-width: 576px)
+                        width: 20px
+                        margin-bottom: 6px
+                    @media only screen and (min-width: 992px)
+                        width: 24px
+                        margin-bottom: 10px
+                    img
+                        transition: transform 0.4s ease
+                        @include imgFit
+                .tle
+                    font-size: 10px
+                    line-height: 1.2
+                    font-weight: 400
+                    font-family: $fontstack2
+                    text-align: center
+                    color: #8e9194
+                    @media only screen and (min-width: 1200px)
+                        font-size: 12px
+                    @media only screen and (min-width: 1551px)
+                        font-size: 14px
+        .reviewWrap
+            width: 100%
+            @media only screen and (min-width: 576px)
+                padding-inline: 15px
+            @media only screen and (min-width: 992px)
+                padding-inline: 20px
+            @media only screen and (min-width: 1551px)
+                padding-inline: 30px
+            %reviewWrapTxt
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .tle
+                font-size: 20px
+                line-height: 1.2
+                font-weight: 500
+                font-family: $fontstack1
+                color: #19191c
+                margin-bottom: 4px
+                @media only screen and (min-width: 576px)
+                    font-size: 16px
+                @media only screen and (min-width: 992px)
+                    font-size: 18px
+                @media only screen and (min-width: 1200px)
+                    font-size: 24px
+                    margin-bottom: 6px
+                @media only screen and (min-width: 1551px)
+                    font-size: 28px
+                    margin-bottom: 10px
+                @media only screen and (min-width: 1771px)
+                    font-size: 32px
+            .tleFlx
+                margin-bottom: 5px
+                align-items: center
+                justify-content: space-between
+                @include display
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 10px
+                @media only screen and (min-width: 1551px)
+                    margin-bottom: 15px
+                &>.btnWrap
+                    display: none
+                    @media only screen and (min-width: 576px)
+                        display: block
+            .btnWrap.mobile
+                display: block
+                margin-top: 10px
+                @media only screen and (min-width: 576px)
+                    display: none
+            .reviewInfoBx
+                width: 100%
+                padding: 16px 20px
+                background-color: $white
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                border: 1px solid $white
+                align-items: center
+                @include display
+                @media only screen and (min-width: 576px)
+                    padding: 8px 10px
+                @media only screen and (min-width: 1200px)
+                    padding: 8px 20px
+                @media only screen and (min-width: 1551px)
+                    padding: 10px 25px
+                &:hover
+                    &>.imgWrap>img
+                        transform: scale(1.05)
+                &>.lftSd
+                    width: 100%
+                    margin-bottom: 20px
+                    justify-content: center
+                    flex-direction: column
+                    @include display
+                    @media only screen and (min-width: 576px)
+                        width: 140px
+                        margin-bottom: 0
+                    @media only screen and (min-width: 992px)
+                        width: 176px
+                &>.rgtSd
+                    width: 100%
+                    @media only screen and (min-width: 576px)
+                        width: calc(100% - 140px)
+                    @media only screen and (min-width: 992px)
+                        width: calc(100% - 176px)
+                    &>.item
+                        width: 100%
+                        margin-block: 10px
+                        align-items: center
+                        justify-content: space-between
+                        @include display
+                        @media only screen and (min-width: 576px)
+                            margin-block: 4px
+                        @media only screen and (min-width: 992px)
+                            margin-block: 10px
+                        .txt
+                            width: 40px
+                            color: #202020
+                            @media only screen and (min-width: 992px)
+                                width: 50px
+                        .progress
+                            --bs-progress-bar-bg: #8e9194
+                            width: calc(100% - 80px)
+                            @media only screen and (min-width: 992px)
+                                width: calc(100% - 100px)
+                            &:hover
+                                --bs-progress-bar-bg: #ff5940
+                .rwTle
+                    font-size: 26px
+                    line-height: 1
+                    font-weight: 600
+                    font-family: $fontstack2
+                    text-align: center
+                    color: $black
+                    @media only screen and (min-width: 576px)
+                        font-size: 24px
+                    @media only screen and (min-width: 992px)
+                        font-size: 38px
+                    @media only screen and (min-width: 1200px)
+                        font-size: 40px
+                    @media only screen and (min-width: 1551px)
+                        font-size: 48px
+                .rwTxt
+                    @extend %reviewWrapTxt
+                    text-align: center
+                    color: #8e9194
+                .starRating
+                    margin: 4px auto
+                    @media only screen and (min-width: 576px)
+                        margin: 6px auto
+                    @media only screen and (min-width: 992px)
+                        margin: 10px auto
+            .reviewBxWrap
+                &>.item
+                    width: 100%
+                    margin-block: 30px
+                    @media only screen and (min-width: 576px)
+                        margin-block: 20px
+                    @media only screen and (min-width: 992px)
+                        margin-block: 30px
+                    @media only screen and (min-width: 1551px)
+                        margin-block: 40px
+            .reviewBx
+                width: 100%
+                .rwTleFlx
+                    width: 100%
+                    margin-bottom: 10px
+                    align-items: center
+                    @include display
+                    @media only screen and (min-width: 576px)
+                        margin-bottom: 4px
+                    @media only screen and (min-width: 992px)
+                        margin-bottom: 6px
+                    &>.rwImg
+                        width: 50px
+                        aspect-ratio: 1/1
+                        overflow: hidden
+                        border-radius: 50%
+                        -webkit-border-radius: 50%
+                        @media only screen and (min-width: 576px)
+                            width: 45px
+                        @media only screen and (min-width: 992px)
+                            width: 50px
+                        &:hover
+                            &>img
+                                transform: scale(1.1)
+                        img
+                            transition: transform 0.4s ease
+                            @include imgFit
+                        .rounded-circle
+                            width: 100%
+                            height: 100%
+                            font-size: 16px
+                            font-weight: 400
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                    &>.rwCnt
+                        width: calc(100% - 50px)
+                        padding-left: 8px
+                        @media only screen and (min-width: 576px)
+                            width: calc(100% - 45px)
+                            padding-left: 6px
+                        @media only screen and (min-width: 992px)
+                            width: calc(100% - 50px)
+                            padding-left: 8px
+                        &>*
+                            margin-block: 2px
+                    .rwTle
+                        @extend %reviewWrapTxt
+                        font-weight: 500
+                        color: $black
+                    .rwTxt
+                        @extend %reviewWrapTxt
+                        color: #8e9194
+                .rwCntWrap
+                    width: 100%
+                    p, .txt, .add-read-more
+                        @extend %reviewWrapTxt
+                        color: $black
+                .add-read-more
+                    .toggle-read
+                        font-weight: 600
+                        text-decoration: underline
+                        color: $black
+                        margin-left: 2px
+                        cursor: pointer
+            .seeAllReviewBtn
+                font-size: 12px
+                line-height: 1
+                font-weight: 500
+                font-family: $fontstack1
+                color: $black
+                gap: 5px
+                align-items: center
+                @include display
+                @media only screen and (min-width: 1200px)
+                    font-size: 16px
+                    gap: 10px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                    gap: 15px
+                &:hover
+                    color: $basecolor1
+                    .icon
+                        transform: translateX(4px)
+                .icon
+                    width: 14px
+                    transition: transform 0.4s ease
+                    @media only screen and (min-width: 576px)
+                        width: 10px
+                    @media only screen and (min-width: 1200px)
+                        width: 14px
+                    img
+                        display: block
+                        @include imgFit
+            .rateProBtn
+                font-size: 12px
+                line-height: 1
+                font-weight: 500
+                font-family: $fontstack2
+                color: $basecolor1
+                width: 100%
+                min-width: 140px
+                max-width: 190px
+                height: 45px
+                background-color: $white
+                border: 1px solid $white
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                align-items: center
+                @include display
+                @media only screen and (min-width: 576px)
+                    font-size: 12px
+                    color: $black
+                    max-width: 100%
+                    height: 35px
+                @media only screen and (min-width: 1200px)
+                    font-size: 16px
+                    min-width: 160px
+                    height: 40px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                    min-width: 200px
+                    height: 45px
+                &::before
+                    background-color: $basecolor1
+        .expertBx
+            width: 100%
+            align-items: center
+            @include display
+            &:hover
+                &>.bxImg>img
+                    transform: scale(1.1)
+                &>.bxCnt>.bxTxt
+                    text-decoration: underline
+            &>.bxImg
+                width: 25px
+                aspect-ratio: 1/1
+                overflow: hidden
+                border-radius: 50%
+                -webkit-border-radius: 50%
+                @media only screen and (min-width: 576px)
+                    width: 35px
+                @media only screen and (min-width: 992px)
+                    width: 40px
+                img
+                    transition: transform 0.4s ease
+                    @include imgFit
+            &>.bxCnt
+                width: calc(100% - 25px)
+                padding-left: 15px
+                @media only screen and (min-width: 576px)
+                    width: calc(100% - 35px)
+                    padding-left: 10px
+                @media only screen and (min-width: 992px)
+                    width: calc(100% - 40px)
+                    padding-left: 15px
+                @media only screen and (min-width: 1551px)
+                    padding-left: 20px
+                &>*
+                    margin-block: 2px
+                    @media only screen and (min-width: 992px)
+                        margin-block: 4px
+            %expertBxTxt
+                font-size: 14px
+                line-height: 1
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 12px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .bxTle
+                @extend %expertBxTxt
+            .bxTxt
+                @extend %expertBxTxt
+                font-weight: 500
+                color: $basecolor1
+        .dropdown-menu
+            margin-top: 18px !important
+            width: 210px
+            padding: 15px
+            @media only screen and (min-width: 576px)
+                padding: 24px
+                width: 258px
+            .chat
+                width: 100%
+                border-radius: 16px
+                background: #FF5940
+                display: flex
+                align-items: center
+                justify-content: center
+                font-weight: 500
+                color: #fff
+                transition: .4s all
+                font-size: 12px
+                height: 35px
+                margin-bottom: 12px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 16px
+                    font-size: 14px
+                    height: 40px
+                @media only screen and (min-width: 1771px)
+                    font-size: 16px
+                    height: 44px
+                &:hover
+                    background: $basecolor
+            .txt
+                color: #8E9194
+                font-weight: 400
+                display: block
+                width: 100%
+                text-align: center
+                transition: .4s all
+                font-size: 12px
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                &:hover
+                    color: $basecolor1
+    #ProductFaqSection
+        width: 100%
+        height: auto
+        display: block
+        position: relative
+        z-index: 0
+        padding-block: 20px
+        @media only screen and (min-width: 576px)
+            padding-block: 40px
+        @media only screen and (min-width: 992px)
+            padding-block: 60px
+        @media only screen and (min-width: 1551px)
+            padding-block: 80px
+        .mFlx
+            margin-inline: -8px
+            @include display
+            @media only screen and (min-width: 576px)
+                margin-inline: -6px
+            @media only screen and (min-width: 1200px)
+                margin-inline: -8px
+            @media only screen and (min-width: 1771px)
+                margin-inline: -12px
+            &>*
+                padding: 8px
+                @media only screen and (min-width: 576px)
+                    padding: 6px
+                @media only screen and (min-width: 1200px)
+                    padding: 8px
+                @media only screen and (min-width: 1771px)
+                    padding: 12px
+            &>.lftSd
+                width: 100%
+                display: none
+                @media only screen and (min-width: 576px)
+                    width: 320px
+                    display: block
+                @media only screen and (min-width: 768px)
+                    width: 376px
+                @media only screen and (min-width: 992px)
+                    width: 468px
+                @media only screen and (min-width: 1200px)
+                    width: 550px
+                @media only screen and (min-width: 1551px)
+                    width: 668px
+                @media only screen and (min-width: 1771px)
+                    width: 768px
+            &>.rgtSd
+                width: 100%
+                @media only screen and (min-width: 576px)
+                    width: calc(100% - 320px)
+                @media only screen and (min-width: 768px)
+                    width: calc(100% - 376px)
+                @media only screen and (min-width: 992px)
+                    width: calc(100% - 468px)
+                @media only screen and (min-width: 1200px)
+                    width: calc(100% - 550px)
+                @media only screen and (min-width: 1551px)
+                    width: calc(100% - 668px)
+                @media only screen and (min-width: 1771px)
+                    width: calc(100% - 768px)
+            .imgWrap
+                width: 100%
+                height: auto
+                aspect-ratio: 650/996
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                overflow: hidden
+                transition: transform 0.4s
+                &:hover
+                    img
+                        transform: scale(1.05)
+                img
+                    @include imgFit
+        .specFaqAcco
+            --bs-accordion-btn-icon-width: 20px
+            --bs-accordion-btn-icon-transform: scaleY(-1)
+            width: 100%
+            @media only screen and (min-width: 576px)
+                --bs-accordion-btn-icon-width: 26px
+            @media only screen and (min-width: 1200px)
+                --bs-accordion-btn-icon-width: 32px
+            .accordion-item
+                width: 100%
+                border-radius: 0
+                border: none
+                border-bottom: 1px solid #8e9194
+                background: none
+                &:first-of-type
+                    border-top: 1px solid #8e9194
+            .accordion-body
+                padding: 5px 10px 10px 10px
+                @media only screen and (min-width: 576px)
+                    padding: 5px 10px 20px 10px
+                @media only screen and (min-width: 1200px)
+                    padding: 10px 15px 20px 15px
+                @media only screen and (min-width: 1551px)
+                    padding: 10px 15px 30px 15px
+            .accordion-button
+                background: none
+                border: none
+                box-shadow: none
+            .accordion-button
+                font-size: 18px
+                line-height: 1
+                font-weight: 400
+                font-family: $fontstack1
+                color: $black
+                width: 100%
+                height: auto
+                padding: 20px 10px
+                @media only screen and (min-width: 576px)
+                    font-size: 22px
+                    padding: 25px 10px
+                @media only screen and (min-width: 992px)
+                    font-size: 28px
+                    padding: 30px 15px
+                @media only screen and (min-width: 1200px)
+                    font-size: 38px
+                    padding: 35px 15px
+                @media only screen and (min-width: 1551px)
+                    font-size: 42px
+                    padding: 40px 15px
+                @media only screen and (min-width: 1771px)
+                    font-size: 46px
+                &[aria-expanded="true"]
+                    color: $black
+            .ckCntWrap
+                p, li, td
+                    color: #8e9194
+
+    #ProductExpertSection
+        width: 100%
+        height: auto
+        display: block
+        position: relative
+        z-index: 0
+        padding-block: 30px
+        @media only screen and (min-width: 576px)
+            padding-block: 40px
+        @media only screen and (min-width: 992px)
+            padding-block: 60px
+        @media only screen and (min-width: 1551px)
+            padding-block: 80px
+        .proExpertBx
+            width: 100%
+            background-color: #e5d8c2
+            border-radius: 16px
+            -webkit-border-radius: 16px
+            border: 1px solid #e5d8c2
+            padding-inline: 20px
+            overflow: hidden
+            @include display
+            @media only screen and (min-width: 576px)
+                padding-inline: 60px
+            @media only screen and (min-width: 1200px)
+                padding-inline: 80px
+            @media only screen and (min-width: 1551px)
+                padding-inline: 100px
+            &>.lftSd
+                width: 100%
+                align-items: center
+                @include display
+                @media only screen and (min-width: 576px)
+                    width: calc(100% - 376px)
+                @media only screen and (min-width: 992px)
+                    width: calc(100% - 420px)
+                @media only screen and (min-width: 1200px)
+                    width: calc(100% - 468px)
+                @media only screen and (min-width: 1551px)
+                    width: calc(100% - 576px)
+                @media only screen and (min-width: 1771px)
+                    width: calc(100% - 668px)
+            &>.rgtSd
+                width: 100%
+                @media only screen and (min-width: 576px)
+                    width: 376px
+                @media only screen and (min-width: 992px)
+                    width: 420px
+                @media only screen and (min-width: 1200px)
+                    width: 468px
+                @media only screen and (min-width: 1551px)
+                    width: 576px
+                @media only screen and (min-width: 1771px)
+                    width: 668px
+            .tle
+                font-size: 20px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack1
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 24px
+                @media only screen and (min-width: 992px)
+                    font-size: 38px
+                @media only screen and (min-width: 1200px)
+                    font-size: 40px
+                @media only screen and (min-width: 1551px)
+                    font-size: 48px
+                @media only screen and (min-width: 1771px)
+                    font-size: 64px
+            .txt
+                font-size: 12px
+                line-height: 1.4
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .imgWrap
+                width: 100%
+                height: auto
+                display: block
+                &:hover
+                    img
+                        transform: scale(1.1)
+                img
+                    display: block
+                    object-position: bottom
+                    transition: transform 0.4s
+                    @include imgFit
+            .cntWrap
+                width: 100%
+                padding-block: 20px
+                @media only screen and (min-width: 576px)
+                    padding-block: 30px
+                @media only screen and (min-width: 1200px)
+                    padding-block: 40px
+                @media only screen and (min-width: 1551px)
+                    padding-block: 50px
+                &>*
+                    margin-block: 5px
+                    @media only screen and (min-width: 576px)
+                        margin-block: 10px
+                    @media only screen and (min-width: 992px)
+                        margin-block: 15px
+                    @media only screen and (min-width: 1551px)
+                        margin-block: 20px
+                    @media only screen and (min-width: 1771px)
+                        margin-block: 30px
+            .btnWrap
+                margin-inline: -2px
+                margin-top: 15px
+                @include display
+                @media only screen and (min-width: 576px)
+                    margin-inline: -4px
+                @media only screen and (min-width: 992px)
+                    margin-inline: -6px
+                    margin-top: 20px
+                @media only screen and (min-width: 1551px)
+                    margin-inline: -8px
+                    margin-top: 30px
+                &>*
+                    padding: 2px
+                    @media only screen and (min-width: 576px)
+                        padding: 4px
+                    @media only screen and (min-width: 992px)
+                        padding: 6px
+                    @media only screen and (min-width: 1551px)
+                        padding: 8px
+                .baseBtn_2
+                    height: 35px
+                    min-width: 120px
+                    border-color: $white
+                    @media only screen and (min-width: 576px)
+                        min-width: 168px
+                    @media only screen and (min-width: 992px)
+                        height: 40px
+                        min-width: 170px
+                    @media only screen and (min-width: 1551px)
+                        height: 45px
+                        min-width: 200px
+
+    #OtherProductSection
+        width: 100%
+        height: auto
+        display: block
+        padding-block: 30px
+        @media only screen and (min-width: 576px)
+            padding-block: 40px
+        @media only screen and (min-width: 992px)
+            padding-block: 60px
+        @media only screen and (min-width: 1551px)
+            padding-block: 100px
+        .sp-container
+            padding-right: 0
+            mask-image: linear-gradient(270deg, transparent 0%, $black 10%)
+        .tleWrap
+            max-width: 320px
+            margin-inline: auto
+            @media only screen and (min-width: 576px)
+                max-width: 576px
+            @media only screen and (min-width: 992px)
+                max-width: 668px
+            @media only screen and (min-width: 1551px)
+                max-width: 720px
+            .mTle
+                color: $black
+        .proBx
+            .title, .price
+                color: $black
+            .txtBx .ritB .colrFlx .itm
+                outline: 2px solid #dfdfdf
+
+    #ExperienceSection
+        width: 100%
+        height: auto
+        display: block
+        padding-block: 20px
+        @media only screen and (min-width: 576px)
+            padding-block: 30px
+        @media only screen and (min-width: 992px)
+            padding-block: 50px
+        @media only screen and (min-width: 1551px)
+            padding-block: 70px
+        .tleFlx
+            margin-bottom: 20px
+            align-items: center
+            justify-content: space-between
+            @include display
+            @media only screen and (min-width: 1200px)
+                margin-bottom: 30px
+            @media only screen and (min-width: 1551px)
+                margin-bottom: 40px
+            .tle
+                font-size: 20px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack1
+                color: $black
+                @media only screen and (min-width: 576px)
+                    font-size: 22px
+                @media only screen and (min-width: 992px)
+                    font-size: 30px
+                @media only screen and (min-width: 1200px)
+                    font-size: 38px
+                @media only screen and (min-width: 1551px)
+                    font-size: 40px
+                @media only screen and (min-width: 1771px)
+                    font-size: 48px
+            .rewiewCountBx
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $black
+                align-items: center
+                @include display
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                span
+                    color: #8e9194
+                .icon
+                    width: 12px
+                    height: auto
+                    display: inline-block
+                    margin-inline: 2px
+                    @media only screen and (min-width: 992px)
+                        width: 14px
+                        margin-inline: 3px
+                    @media only screen and (min-width: 1551px)
+                        width: 16px
+                    svg
+                        @include imgFit
+        .experienceBx
+            width: 100%
+            height: auto
+            aspect-ratio: 440/476
+            display: block
+            overflow: hidden
+            position: relative
+            z-index: 0
+            background: $black
+            border-radius: 16px
+            -webkit-border-radius: 16px
+            &:hover
+                &>img
+                    transform: scale(1.1)
+                    -webkit-transform: scale(1.1)
+                    -moz-transform: scale(1.1)
+                    -ms-transform: scale(1.1)
+                    -o-transform: scale(1.1)
+            &>img
+                transition: all 0.3s ease-in-out
+                @include imgFit
+            // &::after
+            //     content: ''
+            //     width: 100%
+            //     height: 100%
+            //     background-color: rgba($black, 0.5)
+            //     position: absolute
+            //     z-index: 1
+            //     inset: 0
+            %experienceBxTxt
+                font-size: 14px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: $white
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+            .cntOuter
+                width: calc(100% - 40px)
+                position: absolute
+                z-index: 2
+                inset: 20px
+                top: auto
+            .cntOuterWrap
+                width: 100%
+                height: auto
+                text-align: center
+                padding: 10px
+                backdrop-filter: blur(16px)
+                border-radius: 16px
+                -webkit-border-radius: 16px
+                // background-color: rgba(#1d1b20, 0.7)
+                // backdrop-filter: blur(30px)
+                // border-radius: 16px
+                position: relative
+                z-index: 0
+                @media only screen and (min-width: 992px)
+                    padding: 20px
+                @media only screen and (min-width: 1551px)
+                    padding: 30px
+                &>*
+                    margin-block: 10px
+                    @media only screen and (min-width: 576px)
+                        margin-block: 5px
+                    @media only screen and (min-width: 992px)
+                        margin-block: 10px
+                    @media only screen and (min-width: 1551px)
+                        margin-block: 15px
+                &>img, &>svg
+                    position: absolute
+                    z-index: -1
+                    inset: 0
+                    transition: all 0.3s ease-in-out
+                    @include imgFit
+            .cntWrap
+                p, .txt
+                    font-size: 12px
+                    line-height: 1.2
+                    font-weight: 300
+                    font-family: $fontstack2
+                    color: $white
+                    margin: 0
+                    @media only screen and (min-width: 1200px)
+                        font-size: 12px
+                    @media only screen and (min-width: 1551px)
+                        font-size: 14px
+                    @media only screen and (min-width: 1771px)
+                        font-size: 16px
+            .authorInfo
+                width: 100%
+                height: auto
+                position: relative
+                z-index: 0
+                margin-top: -60px
+                &>*
+                    margin-block: 4px
+                    @media only screen and (min-width: 576px)
+                        margin-block: 2px
+                    @media only screen and (min-width: 1200px)
+                        margin-block: 4px
+                    @media only screen and (min-width: 1551px)
+                        margin-block: 6px
+                .imgB
+                    padding: 10px
+                    backdrop-filter: blur(16px)
+                    border-radius: 50%
+                    overflow: hidden
+                    width: fit-content
+                    width: -moz-fit-content
+                    margin: auto
+                &>img
+                    width: 40px
+                    height: auto
+                    aspect-ratio: 1/1
+                    border-radius: 50%
+                    -webkit-border-radius: 50%
+                    overflow: hidden
+                    background-color: rgba(#1d1b20, 0.7)
+                    @media only screen and (min-width: 576px)
+                        width: 50px
+                    @media only screen and (min-width: 992px)
+                        width: 60px
+                .tle
+                    @extend %experienceBxTxt
+                    font-weight: 500
+                .dTxt
+                    font-size: 10px
+                    line-height: 1.2
+                    font-weight: 400
+                    font-family: $fontstack2
+                    color: $white
+                    @media only screen and (min-width: 1551px)
+                        font-size: 12px
+                    @media only screen and (min-width: 1771px)
+                        font-size: 14px
+            .rewiewCountBx
+                font-size: 10px
+                line-height: 1
+                font-weight: 400
+                font-family: $fontstack2
+                color: $white
+                justify-content: center
+                align-items: center
+                @include display
+                @media only screen and (min-width: 1200px)
+                    font-size: 12px
+                @media only screen and (min-width: 1551px)
+                    font-size: 14px
+                span
+                    color: #8e9194
+                .icon
+                    width: 10px
+                    height: auto
+                    display: inline-block
+                    margin-inline: 2px
+                    @media only screen and (min-width: 992px)
+                        width: 12px
+                        margin-inline: 3px
+                    @media only screen and (min-width: 1551px)
+                        width: 14px
+                    svg
+                        display: block
+                        @include imgFit
+        .experienceSlideWrap
+            width: 100%
+            position: relative
+            z-index: 0
+            .slideNavBtn
+                .navBtn
+                    width: 25px
+                    aspect-ratio: 1/1
+                    display: block
+                    border-radius: 50%
+                    -webkit-border-radius: 50%
+                    box-shadow: 0 8px 20px 0 rgba($black, 0.1)
+                    position: absolute
+                    z-index: 2
+                    top: 50%
+                    @media only screen and (min-width: 576px)
+                        width: 40px
+                    @media only screen and (min-width: 1200px)
+                        width: 50px
+                    @media only screen and (min-width: 1551x)
+                        width: 60px
+                    &.prev
+                        left: 0
+                        transform: rotate(180deg)translate(50%, 50%)
+                    &.next
+                        right: 0
+                        transform: translate(50%, -50%)
+                    &.swiper-button-disabled
+                        opacity: 0.5
+                    img
+                        display: block
+                        @include imgFit

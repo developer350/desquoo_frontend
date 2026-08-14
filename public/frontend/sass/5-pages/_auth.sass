@@ -1,0 +1,182 @@
+@use '../0-abstracts/' as *  
+
+.authPage
+    #LoginSection
+        width: 100%
+        min-height: var(--app-height)
+        display: flex
+        flex-direction: column
+        justify-content: center
+        position: relative
+        z-index: 0
+        padding-block: 40px
+        @media only screen and (min-width: 576px)
+            padding-block: 80px
+        @media only screen and (min-width: 992px)
+            padding-block: 100px
+        @media only screen and (min-width: 1551px)
+            padding-block: 120px
+        &::after
+            content: "" 
+            width: 100%
+            height: 100%
+            background: $black
+            background: linear-gradient(215deg, rgba($black, 0) 0%, rgba($black, 0.4) 100%)
+            position: absolute
+            z-index: -1
+            inset: 0
+        &>img
+            width: 100%
+            height: 100%
+            display: block
+            transition: all 0.3s ease-in-out
+            position: absolute
+            z-index: -2
+            inset: 0
+            @include imgFit
+        .authBox
+            width: 100%
+            max-width: 320px
+            height: auto
+            display: block
+            background: $white
+            border-radius: 24px
+            will-change: transform
+            -webkit-border-radius: 24px
+            padding: 40px 20px 40px
+            overflow: hidden
+            position: relative
+            z-index: 0
+            margin: auto
+            @media only screen and (min-width: 576px)
+                max-width: 420px
+                padding: 40px 30px 60px
+            @media only screen and (min-width: 992px)
+                max-width: 468px
+                border-radius: 40px
+                -webkit-border-radius: 40px
+                padding: 45px 40px 100px
+                margin: 0
+            @media only screen and (min-width: 1200px)
+                max-width: 520px
+                padding: 55px 55px 162px
+            @media only screen and (min-width: 1551px)
+                max-width: 576px
+                padding: 60px 60px 220px
+            .logoWrap
+                width: 80px
+                height: auto
+                display: block
+                margin-bottom: 40px
+                @media only screen and (min-width: 576px)
+                    width: 100px
+                    margin-bottom: 60px
+                @media only screen and (min-width: 1200px)
+                    width: 120px
+                    margin-bottom: 100px
+                @media only screen and (min-width: 1551px)
+                    width: 140px
+                    margin-bottom: 120px
+                &>img
+                    width: 100%
+                    height: auto
+                    display: block
+            .mTleWrap
+                margin-bottom: 15px
+                @media only screen and (min-width: 576px)
+                    margin-bottom: 40px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 60px
+                .tle
+                    font-size: 18px
+                    line-height: 1.2
+                    font-weight: 300
+                    font-family: $fontstack1
+                    color: #202020
+                    margin-bottom: 5px
+                    @media only screen and (min-width: 576px)
+                        font-size: 24px
+                    @media only screen and (min-width: 992px)
+                        font-size: 38px
+                    @media only screen and (min-width: 1200px)
+                        font-size: 56px
+                    @media only screen and (min-width: 1551px)
+                        font-size: 60px
+                        margin-bottom: 10px
+                    @media only screen and (min-width: 1771px)
+                        font-size: 64px
+                        margin-bottom: 15px
+            .txt
+                font-size: 12px
+                line-height: 1.2
+                font-weight: 400
+                font-family: $fontstack2
+                color: #8E9194
+                @media only screen and (min-width: 1200px)
+                    font-size: 14px
+                @media only screen and (min-width: 1551px)
+                    font-size: 16px
+                @media only screen and (min-width: 1771px)
+                    font-size: 18px
+                &>a
+                    font-weight: 600
+                    color: $basecolor1
+                    margin-left: 12px
+                    &:hover
+                        text-decoration: underline
+            .form-group
+                margin-bottom: 15px
+                @media only screen and (min-width: 576px)
+                    margin-bottom: 40px
+                @media only screen and (min-width: 1200px)
+                    margin-bottom: 60px
+                &.sgnup
+                    .inputWrap
+                        &:nth-child(1)
+                            .form-control
+                                border-bottom-left-radius: 0
+                                border-bottom-right-radius: 0
+                                border-bottom: none
+                        &:nth-child(2)
+                            .form-control
+                                border-top-left-radius: 0
+                                border-top-right-radius: 0
+                            
+
+                .inputWrap
+                    position: relative
+                    z-index: 0
+                    &.hasIcon
+                        .form-control
+                            border-color: #CCCECF
+                            background-color: $white
+                            padding-right: 0
+                            padding-left: 30px
+                            @media only screen and (min-width: 576px)
+                                padding-left: 35px
+                            @media only screen and (min-width: 992px)
+                                padding-left: 40px
+                        .icon
+                            right: auto
+                            left: 10px
+                            @media only screen and (min-width: 992px)
+                                right: auto
+                                left: 15px
+            .form-control
+                height: 40px
+                @media only screen and (min-width: 992px)
+                    height: 55px
+                @media only screen and (min-width: 1551px)
+                    height: 64px
+            .div
+                position: relative
+            .btnWrap
+                margin-bottom: 25px
+            .baseBtn_1
+                .icon
+                    width: 12px
+                    margin-left: 10px
+                    @media only screen and (min-width: 992px)
+                        width: 14px
+                    @media only screen and (min-width: 1551px)
+                        width: 16px

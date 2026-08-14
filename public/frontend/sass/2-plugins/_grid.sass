@@ -1,0 +1,31 @@
+
+.container
+    width: 100%
+    max-width: var(--container-x)
+    margin-right: auto
+    margin-left: auto
+    padding-right: 20px
+    padding-left: 20px
+    @media only screen and (min-width: 992px)
+        padding-right: 15px
+        padding-left: 15px
+
+.sp-container
+    width: 100%
+    margin-right: auto
+    margin-left: auto
+    max-width: 100%
+    padding-right: 20px
+    padding-left: 20px
+    @media only screen and (min-width: 992px)
+        padding-right: 15px
+        padding-left: 15px
+        max-width: calc(100% - ((100% - var(--container-x)) / 2))
+    &.rgt
+        margin-left: auto
+        margin-right: unset
+        padding-right: 0
+    &.lft
+        margin-right: auto
+        margin-left: unset
+        padding-left: 0

@@ -1,0 +1,385 @@
+@use '../0-abstracts/' as *
+
+*
+    margin: 0
+    padding: 0
+    border: none
+    outline: none
+    list-style: none
+    box-sizing: border-box
+    border-collapse: inherit
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    -webkit-tap-highlight-color: transparent
+    -webkit-text-rendering: optimizeSpeed
+    text-rendering: optimizeSpeed
+    user-select: none
+    // scrollbar-width: thin
+    // scrollbar-color: $basecolor2 rgb(0, 0, 0)
+
+html
+    font-size: 14px
+    @media only screen and (min-width: 576px)
+        font-size: 16px
+    @media only screen and (min-width: 992px)
+        font-size: 18px
+    @media only screen and (min-width: 1551px)
+        font-size: 20px
+
+body
+    font-size: 1em
+    line-height: normal
+    font-weight: 400
+    font-family: $fontstack1
+    color: $text
+    background-color: $basecolor
+
+p
+    @extend %pTxt
+    margin-bottom: 10px
+    @media only screen and ( min-width: 1200px )
+        margin-bottom: 20px
+    @media only screen and ( min-width: 1551px )
+        margin-bottom: 25px
+    strong
+        font-weight: 700
+
+button, input, optgroup, select, textarea
+    font-family: $fontstack1
+
+@-moz-document url-prefix()
+    html
+        scrollbar-width: thin
+        scrollbar-color: $basecolor grey
+
+@media(prefers-reduced-motion:no-preference)
+    :root
+        scroll-behavior: smooth
+
+.cPop-open
+    overflow: hidden
+
+::selection
+    color: $white
+    background: $basecolor
+::-moz-selection
+    color: $white
+    background: $basecolor
+::-webkit-scrollbar
+    width: 5px
+    height: 4px
+    border-radius: 30px !important
+::-webkit-scrollbar-thumb
+    background: $basecolor
+    will-change: transform
+    border-radius: 30px
+::-webkit-scrollbar-track
+    box-shadow: inset 0 0 0 grey
+    border-radius: 30px
+    background: rgb(168, 180, 198)
+
+a
+    color: $text
+    text-decoration: none
+    transition: all .3s
+    &:hover
+        color: inherit
+
+a:not([href]):not([class]),a:not([href]):not([class]):hover
+    color: inherit
+    text-decoration: none
+
+ul
+    margin-bottom: 0
+    padding-left: 0
+
+img
+    max-width: 100%
+    height: auto
+    vertical-align: middle
+    -ms-interpolation-mode: bicubic
+    border: 0
+
+iframe
+    width: 100%
+    height: 100%
+
+textarea.form-control
+    min-height: 80px
+    padding-top: 10px
+    @media only screen and ( min-width: 576px )
+        padding-top: 15px
+    @media only screen and ( min-width: 992px )
+        min-height: 85px
+        padding-top: 20px
+    @media only screen and ( min-width: 1551px )
+        min-height: 145px
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+input[type=number]
+    -moz-appearance: textfield
+input[type="date"].form-control,
+input[type="datetime-local"].form-control,
+input[type="month"].form-control,
+input[type="time"].form-control
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+input[type="date"]
+    position: relative
+[list]:not([type=date]):not([type=datetime-local]):not([type=month]):not([type=week]):not([type=time])::-webkit-calendar-picker-indicator
+    display: none!important
+[type=button],[type=reset],[type=submit],button
+    -webkit-appearance: button
+[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled)
+    cursor: pointer
+::-moz-focus-inner
+    padding: 0
+    border-style: none
+::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field
+    padding: 0
+::-webkit-inner-spin-button
+    height: auto
+[type=search]
+    -webkit-appearance: textfield
+    outline-offset: -2px
+::-webkit-search-decoration
+    -webkit-appearance: none
+::-webkit-color-swatch-wrapper
+    padding: 0
+::-webkit-file-upload-button
+    font: inherit
+    -webkit-appearance: button
+::file-selector-button
+    font: inherit
+    -webkit-appearance: button
+[hidden]
+    display: none!important
+textarea
+    resize: vertical
+
+svg
+    display: inline-block
+    position: relative
+    width: 100%
+    vertical-align: middle
+    overflow: hidden
+
+.error-block
+    color: red
+
+.btn-check:focus+.btn, .btn:focus
+    outline: 0
+    box-shadow: none
+
+.row
+    margin-left: -10px
+    margin-right: -10px
+    @include display
+    @media only screen and (min-width: 1350px)
+        margin-left: -20px
+        margin-right: -20px
+    &>*
+        padding-left: 10px
+        padding-right: 10px
+        @media only screen and (min-width: 1350px)
+            padding-left: 20px
+            padding-right: 20px
+
+.help-block, .error-block
+    font-size: 12px
+    line-height: 1
+    font-weight: 400
+    letter-spacing: -0.14px
+    color: $black
+    margin: 2px 0
+    font-family: $fontstack2
+    transition: all 0.3s
+    display: block
+    margin: 8px 0
+    @media only screen and (min-width: 992px)
+        font-size: 14px
+    &.success
+        color: green
+    &.danger
+        color: #DA2105
+
+.action-alert
+    font-size: 12px
+    color: $black
+    line-height: 1.2
+    padding: 9px 10px
+    width: fit-content
+    transition: all 0.3s
+    width: 100%
+    will-change: transform
+    border-radius: 5px
+    border-width: 1px
+    border-style: solid
+    margin: 10px 0
+    @media only screen and ( min-width: 576px )
+        font-size: 12px
+    &.success
+        color: $black
+        background: #c6ffc6
+        border-color: rgba(green, 0.5 )
+    &.danger
+        color: $black
+        background: #ffc6c6
+        border-color: rgba(red, 0.5 )
+
+.iti
+    @extend %form-control-txt
+    width: 100%
+    height: auto
+    border-radius: 15px
+    -webkit-border-radius: 15px
+    &.iti--allow-dropdown
+        .iti__flag-container:hover
+            .iti__selected-flag
+                background: none
+                color: $basecolor
+    &.iti--separate-dial-code
+        .iti__selected-flag
+            background: none
+            padding: 0 5px 0 5px
+            @media only screen and (min-width: 992px)
+                padding: 0 10px 0 20px
+            .iti__flag
+                border-radius: 4px
+                -webkit-border-radius: 4px
+            .iti__selected-dial-code
+                margin-left: 10px
+        .iti__selected-dial-code
+            &::after
+                content: ")"
+            &::before
+                content: "("
+    .iti__arrow
+        width: 1px
+        height: 15px
+        border: 0
+        background: none
+        margin-left: 0
+    .iti__country
+        font-size: 0.75rem
+
+.form-group
+    margin-bottom: 10px
+    @media only screen and (min-width: 576px)
+        margin-bottom: 15px
+    @media only screen and (min-width: 992px)
+        margin-bottom: 20px
+    @media only screen and (min-width: 1551px)
+        margin-bottom: 25px
+    &>label, .label
+        @extend %labelTxt
+        margin-bottom: 4px
+        @media only screen and (min-width: 992px)
+            margin-bottom: 6px
+    .inputWrap
+        position: relative
+        z-index: 0
+        &.hasIcon
+            .form-control
+                padding-right: 20px
+                @media only screen and (min-width: 576px)
+                    padding-right: 25px
+                @media only screen and (min-width: 992px)
+                    padding-right: 30px
+            .icon
+                width: 12px
+                height: auto
+                aspect-ratio: 4/4
+                position: absolute
+                top: 0
+                right: 10px
+                left: auto
+                bottom: 0
+                margin: auto
+                display: flex
+                pointer-events: none
+                @media only screen and (min-width: 992px)
+                    width: 15px
+                    right: 15px
+                @media only screen and (min-width: 1551px)
+                    width: 16px
+                    right: 15px
+                svg, img
+                    width: 100%
+                    height: auto
+                    margin: auto
+                    display: block
+                    fill: $black
+            .toggle-password
+                opacity: 0
+        .form-control:focus~.toggle-password, .form-control:not(:placeholder-shown)~.toggle-password
+            opacity: 1
+        .toggle-password
+            cursor: pointer
+
+.form-control
+    @extend %form-control-txt
+    @extend %form-control
+
+.c-checkbox
+    --checkbox-xy: 14px
+    position: relative
+    z-index: 0
+    align-items: center
+    @include display
+    @media only screen and (min-width: 576px)
+        --checkbox-xy: 16px
+    @media only screen and (min-width: 992px)
+        --checkbox-xy: 16px
+    @media only screen and (min-width: 1551px)
+        --checkbox-xy: 20px
+    input[type="checkbox"]
+        opacity: 0
+        position: absolute
+        z-index: 1
+        inset: 0
+        cursor: pointer
+    label.label
+        @extend %form-control-txt
+        position: relative
+        z-index: 0
+        cursor: pointer
+        margin: 0
+        padding-left: calc(var(--checkbox-xy) + 10px)
+        // &:after, &:before
+        // &:after
+        &:before
+            content: ''
+            width: var(--checkbox-xy)
+            height: var(--checkbox-xy)
+            position: absolute
+            top: 0
+            left: 0
+            box-shadow: none
+            display: block
+            -webkit-appearance: none
+            cursor: pointer
+            background-color: $white
+            background-image: none
+            background-repeat: no-repeat
+            background-position: center
+            background-size: 70%
+            border: 1px solid $basecolor
+            will-change: transform
+            border-radius: 3px
+            -webkit-border-radius: 3px
+            vertical-align: middle
+    input[type="checkbox"]:checked + label:before
+        background-color: $white
+        border-color: $basecolor
+        background-image: url('data:image/svg+xml,<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L6.5 10.5L11 6L15.5 1.5" stroke="black" stroke-width="2"/></svg>')
+    // input[type="checkbox"]:checked + label:after
+    //     opacity: 1
+
+.tooltip-inner
+    font-size: 10px
+    @media only screen and (min-width: 992px)
+        font-size: 12px
