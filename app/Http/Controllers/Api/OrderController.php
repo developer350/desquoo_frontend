@@ -13,7 +13,7 @@ class OrderController extends Controller
         $page = $request->query('page', 1);
         $perPage = $request->query('per_page', 10);
 
-        $orders = Order::with('orderItems.productVariant:id,sku', 'orderItems.productVariant.attributeValues.attribute:id,name', 'user','billingAddress', 'shippingAddress')->paginate($perPage, ['*'], 'page', $page);
+        $orders = Order::with('orderItems.productVariant:id,sku', 'orderItems.productVariant.attributeValues.attribute:id,name', 'user', 'billingAddress', 'shippingAddress')->paginate($perPage, ['*'], 'page', $page);
 
         // Logic to retrieve and return orders
         return response()->json([
@@ -69,6 +69,7 @@ class OrderController extends Controller
                     'country' => 'India',
                     'email' => $order->billingAddress->email ?? '',
                     'phone' => $order->billingAddress->phone_number ?? '',
+                    'gstnumber' => $order->billingAddress->gst_number ?? '',
                 ],
                 'shipping' => [
                     'first_name' => $order->shippingAddress->name ?? '',
@@ -80,8 +81,9 @@ class OrderController extends Controller
                     'state' => $order->shippingAddress->state ?? '',
                     'postcode' => $order->shippingAddress->postal_code ?? '',
                     'country' => 'India',
-                    'email'=> $order->shippingAddress->email ?? '',
-                    'phone'=> $order->shippingAddress->phone_number ?? '',
+                    'email' => $order->shippingAddress->email ?? '',
+                    'phone' => $order->shippingAddress->phone_number ?? '',
+                    'gstnumber' => $order->billingAddress->gst_number ?? '',
                 ],
                 'payment_method' => $order->payment_method,
                 'payment_method_title' => $order->payment_method_title,
@@ -96,8 +98,8 @@ class OrderController extends Controller
 
                     return [
                         'id' => $item->id,
-                        'name' => $item->name. ' '. $item->productVariant->attributeValues->map(function ($attributeValue) {
-                            return $attributeValue->attribute->name . ': ' . $attributeValue->value;
+                        'name' => $item->name.' '.$item->productVariant->attributeValues->map(function ($attributeValue) {
+                            return $attributeValue->attribute->name.': '.$attributeValue->value;
                         })->implode(', '),
                         'product_id' => $item->product_id,
                         'variation_id' => $item->product_variant_id,
