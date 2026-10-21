@@ -73,7 +73,9 @@ class BannerAndMetaTagSeeder extends Seeder
             [
                 'page' => 'bulk-order',
                 'has_banner' => false,
-                'meta_title' => 'Bulk Order',
+                'meta_title' => 'Bulk Office Furniture Orders in India – Desqoo',
+                'meta_description' => 'Looking for bulk office furniture orders in India? Desqoo offers office furniture solutions for corporate offices, IT companies, startups, coworking spaces, and commercial projects.',
+                'meta_keywords' => ['bulk office furniture orders India', 'office furniture manufacturer India', 'ergonomic office chairs', 'office desks', 'height-adjustable desks', 'workstations'],
             ],
         ];
 
@@ -84,6 +86,8 @@ class BannerAndMetaTagSeeder extends Seeder
                 'banner_title' => $data['banner_title'] ?? null,
                 'banner_alt_text' => $data['banner_alt_text'] ?? null,
                 'meta_title' => $data['meta_title'],
+                'meta_description' => $data['meta_description'] ?? null,
+                'meta_keywords' => $data['meta_keywords'] ?? null,
             ]);
 
             if ($data['has_banner']) {

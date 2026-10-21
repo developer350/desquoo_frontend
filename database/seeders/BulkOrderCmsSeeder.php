@@ -29,8 +29,8 @@ class BulkOrderCmsSeeder extends Seeder
             'section_five_description' => '<p>Check out what we can do to improve your spatial design</p>',
             'section_five_button_title' => 'Create Your Space',
             'section_five_image_alt_text' => 'Need help designing your workspace?',
-            'section_six_title' => 'Need more information',
-            'section_six_description' => '<p>Tell us what you need and we\'ll get back to you within 24 hours.</p>',
+            'section_six_title' => 'Upgrade Your Workspace with Desqoo',
+            'section_six_description' => '<p>Whether you need office desks, ergonomic chairs, height-adjustable desks, or furniture for a bulk order, Desqoo can help you identify options that suit your project requirements. Contact Desqoo today for bulk office furniture enquiries and create a modern, comfortable, and productive workplace.</p>',
         ]);
 
         // $this->copyMediaToModel($bulkOrderCms, 'backend/images/home-about.webp', 'section_five_image');

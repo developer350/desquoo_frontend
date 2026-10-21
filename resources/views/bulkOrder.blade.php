@@ -8,6 +8,145 @@
 
     {{-- SWIPER --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <style>
+        #indiaBulkOrderInfo {
+            position: relative;
+            background: #F6F6F6;
+            padding: 50px 0 20px;
+        }
+        @media only screen and (min-width: 992px) {
+            #indiaBulkOrderInfo {
+                padding: 70px 0 30px;
+            }
+        }
+        @media only screen and (min-width: 1551px) {
+            #indiaBulkOrderInfo {
+                padding: 90px 0 40px;
+            }
+        }
+        #indiaBulkOrderInfo .tleWrap {
+            max-width: 1040px;
+            margin: 0 auto 35px;
+        }
+        @media only screen and (min-width: 1200px) {
+            #indiaBulkOrderInfo .tleWrap {
+                margin-bottom: 50px;
+            }
+        }
+        #indiaBulkOrderInfo .tleWrap .mTle {
+            color: #010100;
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        @media only screen and (min-width: 768px) {
+            #indiaBulkOrderInfo .tleWrap .mTle {
+                font-size: 32px;
+            }
+        }
+        @media only screen and (min-width: 1200px) {
+            #indiaBulkOrderInfo .tleWrap .mTle {
+                font-size: 38px;
+            }
+        }
+        @media only screen and (min-width: 1551px) {
+            #indiaBulkOrderInfo .tleWrap .mTle {
+                font-size: 44px;
+            }
+        }
+        #indiaBulkOrderInfo .seoLead {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #6C7074;
+            margin: 0 auto;
+            max-width: 920px;
+        }
+        @media only screen and (min-width: 992px) {
+            #indiaBulkOrderInfo .seoLead {
+                font-size: 15px;
+            }
+        }
+        @media only screen and (min-width: 1441px) {
+            #indiaBulkOrderInfo .seoLead {
+                font-size: 16px;
+            }
+        }
+        .seoContentCard {
+            background: #FFFFFF;
+            border-radius: 14px;
+            padding: 28px 22px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        @media only screen and (min-width: 992px) {
+            .seoContentCard {
+                border-radius: 16px;
+                padding: 36px 30px;
+            }
+        }
+        @media only screen and (min-width: 1551px) {
+            .seoContentCard {
+                padding: 44px 38px;
+            }
+        }
+        .seoContentCard:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+        }
+        .seoCardIcon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #F6F6F6;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #151516;
+            margin-bottom: 20px;
+        }
+        .seoCardTitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: #010100;
+            margin-top: 0;
+            margin-bottom: 16px;
+            line-height: 1.35;
+        }
+        @media only screen and (min-width: 992px) {
+            .seoCardTitle {
+                font-size: 20px;
+            }
+        }
+        @media only screen and (min-width: 1441px) {
+            .seoCardTitle {
+                font-size: 24px;
+            }
+        }
+        .seoCardBody p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #6C7074;
+            margin-bottom: 14px;
+        }
+        @media only screen and (min-width: 992px) {
+            .seoCardBody p {
+                font-size: 14px;
+            }
+        }
+        @media only screen and (min-width: 1441px) {
+            .seoCardBody p {
+                font-size: 15px;
+            }
+        }
+        .seoCardBody p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
 @endpush
 @section('content')
     <main id="pageWrapper" class="officePage bulkorderPage">
@@ -18,7 +157,7 @@
             <div class="container">
                 <div class="mainTleWrap">
                     <div class="sTle">{{ $cms->banner_super_title }}</div>
-                    <h1 class="mTle">{{ $cms->banner_title }}</h1>
+                    <h2 class="mTle">{{ $cms->banner_title }}</h2>
                 </div>
                 <ul class="dFlx">
                     @if ($cms->show_want_to_chat)
@@ -121,7 +260,7 @@
                 <div class="owl-carousel storySlider">
                     @foreach ($successStoryCategories as $successStoryCategory)
                         <div class="item">
-                            <a href="javascipt:void(0)" class="storiesBx" araia-label="strory">
+                            <a href="javascript:void(0)" class="storiesBx" aria-label="story">
                                 <div class="imgBx">
                                     <img src="{{ $successStoryCategory->image_value }}" class="lazy" width="1350"
                                         height="850" loading="lazy"
@@ -129,8 +268,8 @@
                                 </div>
                                 <div class="contentBx">
                                     <div class="name">{{ $successStoryCategory->title }}</div>
-                                    <div class="place">{{ $successStoryCategory->city->name }} ,
-                                        {{ $successStoryCategory->state->name }} </div>
+                                    <div class="place">{{ $successStoryCategory->city?->name }} ,
+                                        {{ $successStoryCategory->state?->name }} </div>
                                 </div>
                             </a>
                         </div>
@@ -145,7 +284,7 @@
                     <div class="owl-carousel testSlider">
                         @foreach ($googleReviews as $googleReview)
                             <div class="item">
-                                <a href="javascipt:void(0)" class="testBox" araia-label="testBox">
+                                <a href="javascript:void(0)" class="testBox" aria-label="testBox">
                                     <div class="imgBx">
                                         <img src="{{ $googleReview->avatar_value }}" class="lazy" width="1350"
                                             height="850" loading="lazy" alt="{{ $googleReview->avatar_alt_text }}">
@@ -212,6 +351,52 @@
                         <a href="#EnquirySection" class="createBt hoveranim">
                             <span>{{ $cms->section_five_button_title }}</span>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="indiaBulkOrderInfo">
+            <div class="container">
+                <div class="tleWrap center">
+                    <h2 class="mTle">Bulk Office Furniture Orders – Desqoo</h2>
+                    <div class="seoLead">
+                        <p>Looking for bulk office furniture orders in India? Desqoo offers office furniture solutions for corporate offices, IT companies, startups, coworking spaces, educational institutions, and commercial projects. From ergonomic office chairs and office desks to height-adjustable desks and workstations, we help businesses create comfortable and productive workplaces. Contact Desqoo for bulk order enquiries, customized workspace solutions, and professional assistance in selecting office furniture that suits your business requirements and budget.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="seoContentCard">
+                            <div class="seoCardIcon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                            <h1 class="seoCardTitle">India’s Largest Office Furniture Manufacturer</h1>
+                            <div class="seoCardBody">
+                                <p>Desqoo provides modern office furniture solutions designed to meet the evolving needs of businesses across India. As a brand focused on ergonomic workspaces and contemporary office design, Desqoo helps organizations furnish their workplaces with functional, stylish, and comfortable furniture.</p>
+                                <p>Businesses looking for India’s largest office furniture manufacturer can explore Desqoo’s range of office desks, ergonomic chairs, height-adjustable desks, and workstation solutions. Our product range supports different workplace requirements, from individual workstations and startup offices to large corporate environments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="seoContentCard">
+                            <div class="seoCardIcon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <h1 class="seoCardTitle">Why Choose Desqoo for Office Furniture?</h1>
+                            <div class="seoCardBody">
+                                <p>Businesses searching for an office furniture manufacturer in India need products that combine durability, design, and usability. Desqoo focuses on modern workspace requirements by offering furniture solutions for different business environments and office layouts.</p>
+                                <p>From individual workstations to bulk office furniture requirements, Desqoo helps customers explore suitable furniture options based on their needs. Our product range supports corporate offices, coworking spaces, startups, and commercial establishments looking to create well-organized workplaces.</p>
+                                <p>Choosing ergonomic office furniture can also encourage better workstation habits and help employees maintain comfortable working positions throughout the day. Combining suitable office chairs, desks, and accessories creates a more functional work environment.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -307,9 +492,6 @@
                     },
                     578: {
                         slidesPerView: 2,
-                    },
-                    578: {
-                        slidesPerView: 2.5,
                     },
                     768: {
                         slidesPerView: 3,
@@ -437,10 +619,11 @@
 
 
         $(document).ready(function() {
-            var itemCount = $(".storySlider .item").length;
+            var storyCount = $(".storySlider .item").length;
+            var testCount = $(".testSlider .item").length;
 
             $(".storySlider").owlCarousel({
-                loop: itemCount > 1, // ✅ only loop if more than 1 slide
+                loop: storyCount > 1, // ✅ only loop if more than 1 slide
                 margin: 20,
                 center: true,
                 nav: true,
@@ -458,7 +641,7 @@
                 }
             });
             $(".testSlider").owlCarousel({
-                loop: itemCount > 1, // ✅ only loop if more than 1 slide
+                loop: testCount > 1, // ✅ only loop if more than 1 slide
                 margin: 20,
                 center: true,
                 dots: true,
