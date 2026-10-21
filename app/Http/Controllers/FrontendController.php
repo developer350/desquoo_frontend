@@ -303,7 +303,7 @@ class FrontendController extends Controller
             abort(404);
         }
         $benefits = BulkOrderBenefit::active()->sort()->get();
-        $successStoryCategories = SuccessStoryCategory::active()->sort()->get();
+        $successStoryCategories = SuccessStoryCategory::with(['city', 'state'])->active()->sort()->get();
         $innovators = Innovator::active()->sort()->get();
         $bulkOrderProducts = $this->getBaseQuery()->whereHas('bulkOrders', function ($q) {
             $q->active();
