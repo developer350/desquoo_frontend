@@ -285,7 +285,130 @@ $(function () {
             actionCard.removeClass("scroll-active");
         }
     });
+
+    // Initialize standard textarea live counters
+    initStandardTextareaCounters();
 });
+
+/**
+ * Shared HTML generator for live textarea & editor counter badge
+ */
+window.createTextareaCounterBadgeHTML = function(maxChars) {
+    const hasMax = maxChars && parseInt(maxChars, 10) > 0;
+    return `
+        <div class="textarea-counter-badge state-normal" title="Real-time character and word count">
+            <svg class="counter-progress-ring" viewBox="0 0 20 20" width="14" height="14" style="${hasMax ? '' : 'display:none;'}">
+                <circle cx="10" cy="10" r="7" stroke="#e2e8f0" stroke-width="2.5" fill="none" class="ring-bg"></circle>
+                <circle class="progress-bar-circle" cx="10" cy="10" r="7" stroke="#556ee6" stroke-width="2.5" fill="none" stroke-dasharray="44" stroke-dashoffset="44" stroke-linecap="round"></circle>
+            </svg>
+            <span class="counter-item counter-words">
+                <i class="bx bx-file-blank"></i>
+                <span class="words-val">0</span> words
+            </span>
+            <span class="counter-dot">•</span>
+            <span class="counter-item counter-chars">
+                <i class="bx bx-font"></i>
+                <span class="chars-val">0</span><span class="chars-max" style="${hasMax ? '' : 'display:none;'}"> / ${hasMax ? parseInt(maxChars, 10).toLocaleString() : ''}</span> chars
+            </span>
+        </div>
+    `;
+};
+
+/**
+ * Shared renderer for counter badge updates
+ */
+window.renderTextareaCounterBadge = function($badge, chars, words, maxChars) {
+    if (!$badge || !$badge.length) return;
+    $badge.find('.words-val').text(Number(words || 0).toLocaleString());
+    $badge.find('.chars-val').text(Number(chars || 0).toLocaleString());
+
+    const max = maxChars ? parseInt(maxChars, 10) : null;
+    if (max && max > 0) {
+        $badge.find('.chars-max').text(' / ' + max.toLocaleString()).show();
+        $badge.find('.counter-progress-ring').show();
+
+        const ratio = chars / max;
+        const circumference = 44; // 2 * PI * 7
+        const offset = Math.max(0, circumference - (Math.min(ratio, 1) * circumference));
+
+        const $circle = $badge.find('.progress-bar-circle');
+        $circle.css('stroke-dashoffset', offset);
+
+        $badge.removeClass('state-normal state-warning state-danger');
+        if (ratio >= 1) {
+            $badge.addClass('state-danger');
+            $circle.attr('stroke', '#ef4444');
+        } else if (ratio >= 0.85) {
+            $badge.addClass('state-warning');
+            $circle.attr('stroke', '#f59e0b');
+        } else {
+            $badge.addClass('state-normal');
+            $circle.attr('stroke', '#556ee6');
+        }
+    } else {
+        $badge.find('.chars-max').hide();
+        $badge.find('.counter-progress-ring').hide();
+        $badge.removeClass('state-warning state-danger').addClass('state-normal');
+    }
+};
+
+/**
+ * Initializes live counters on standard textareas
+ */
+window.initStandardTextareaCounters = function() {
+    $('textarea:not(.tinymce)').each(function() {
+        const $textarea = $(this);
+        if ($textarea.data('has-char-counter')) return;
+
+        const maxChars = $textarea.data('rule-maxlength') || $textarea.attr('maxlength') || null;
+        if (!maxChars && !$textarea.hasClass('has-counter')) return;
+
+        $textarea.data('has-char-counter', true);
+
+        const $group = $textarea.closest('.form-group');
+        if (!$group.length) return;
+
+        let $row = $group.find('.textarea-counter-row');
+        if (!$row.length) {
+            $row = $('<div class="textarea-counter-row"></div>');
+            const $error = $group.find('.error-block');
+            if ($error.length) {
+                $error.appendTo($row);
+            } else {
+                $row.append('<span class="error-block"></span>');
+            }
+            $textarea.after($row);
+        }
+
+        let $badge = $row.find('.textarea-counter-badge');
+        if (!$badge.length) {
+            $badge = $(window.createTextareaCounterBadgeHTML(maxChars));
+            $row.append($badge);
+        }
+
+        const update = () => {
+            const val = $textarea.val() || '';
+            const chars = val.length;
+            const trimmed = val.trim();
+            const words = trimmed ? trimmed.split(/\s+/).length : 0;
+            window.renderTextareaCounterBadge($badge, chars, words, maxChars);
+
+            const max = maxChars ? parseInt(maxChars, 10) : null;
+            let $error = $group.find('.error-block');
+            if (max && chars > max) {
+                const label = ($group.find('label').first().text().trim().replace(/\*$/, '') || 'field').toLowerCase();
+                $error.text(`The ${label} field must not be greater than ${max} characters.`).show();
+                $textarea.addClass('is-invalid');
+            } else if (max && chars <= max && $textarea.hasClass('is-invalid') && $error.text().includes('must not be greater than')) {
+                $error.text('');
+                $textarea.removeClass('is-invalid');
+            }
+        };
+
+        $textarea.on('input keyup paste change', update);
+        update();
+    });
+};
 
 /**
  * Displays a toast notification using Toastr.

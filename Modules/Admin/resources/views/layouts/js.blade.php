@@ -33,7 +33,7 @@
 <script src="{{ asset('backend/js/app.js') }}"></script>
 
 <!-- Custom JavaScript for additional application-specific functionality and enhancements -->
-<script src="{{ asset('backend/js/custom.js') }}"></script>
+<script src="{{ asset('backend/js/custom.js') }}?v={{ file_exists(public_path('backend/js/custom.js')) ? filemtime(public_path('backend/js/custom.js')) : time() }}"></script>
 
 <!-- Include Toastr message handling for flash notifications -->
 @include('admin::partials.toastr-messages')

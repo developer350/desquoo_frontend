@@ -407,3 +407,144 @@ Customizes Select2 appearance, including container, dropdown, selections, and da
 .choices {
     margin-bottom: 0;
 }
+
+/* ==========================================================================
+   Textarea & Rich Text Editor Live Counter
+   ========================================================================== */
+.textarea-counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 6px;
+    min-height: 24px;
+}
+
+.textarea-counter-row .error-block {
+    flex: 1;
+    font-size: 12px;
+    color: #fd625e !important;
+    margin: 0;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.textarea-counter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    user-select: none;
+    margin-left: auto;
+}
+
+.textarea-counter-badge .counter-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.textarea-counter-badge .counter-item i {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.textarea-counter-badge .counter-dot {
+    opacity: 0.4;
+    font-size: 8px;
+}
+
+.textarea-counter-badge .counter-progress-ring {
+    width: 14px;
+    height: 14px;
+    transform: rotate(-90deg);
+    flex-shrink: 0;
+}
+
+.textarea-counter-badge .counter-progress-ring circle {
+    transition: stroke-dashoffset 0.2s ease, stroke 0.2s ease;
+}
+
+/* State: Normal (< 85%) */
+.textarea-counter-badge.state-normal {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    color: #64748b;
+}
+
+/* State: Warning (85% - 99%) */
+.textarea-counter-badge.state-warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #b45309;
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.15);
+}
+
+.textarea-counter-badge.state-warning .counter-item i {
+    color: #d97706;
+}
+
+/* State: Danger (>= 100%) */
+.textarea-counter-badge.state-danger {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+    font-weight: 600;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+    animation: counterPop 0.25s ease-out;
+}
+
+.textarea-counter-badge.state-danger .counter-item i {
+    color: #dc2626;
+}
+
+@keyframes counterPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+/* Dark Theme Support */
+[data-bs-theme="dark"] .textarea-counter-badge {
+    background: #262b3c;
+    border-color: #363d52;
+    color: #94a3b8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+[data-bs-theme="dark"] .textarea-counter-badge.state-normal {
+    background: #262b3c;
+    border-color: #363d52;
+    color: #94a3b8;
+}
+
+[data-bs-theme="dark"] .textarea-counter-badge .ring-bg {
+    stroke: #363d52;
+}
+
+[data-bs-theme="dark"] .textarea-counter-badge.state-warning {
+    background: rgba(245, 158, 11, 0.14);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+}
+
+[data-bs-theme="dark"] .textarea-counter-badge.state-danger {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #f87171;
+}
+
+/* Hide duplicate TinyMCE statusbar wordcount */
+.tox .tox-statusbar__wordcount {
+    display: none !important;
+}
