@@ -68,7 +68,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="content" class="form-label">Content*</label>
-                                    <textarea name="content" id="content" class="form-control tinymce" data-rule-maxlength="10000" required>{{ $blog->content ?? '' }}</textarea>
+                                    <textarea name="content" id="content" class="form-control tinymce" data-rule-maxlength="20000" required>{{ $blog->content ?? '' }}</textarea>
                                     <span class="error-block"></span>
                                 </div>
                             </div>

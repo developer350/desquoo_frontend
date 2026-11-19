@@ -19,4 +19,4 @@
 <link rel="stylesheet" href="{{ asset('backend/libs/toastr/toastr.min.css') }}">
 
 <!-- Custom CSS for additional styling and overrides specific to the application -->
-<link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('backend/css/custom.css') }}?v={{ file_exists(public_path('backend/css/custom.css')) ? filemtime(public_path('backend/css/custom.css')) : time() }}" rel="stylesheet" type="text/css" />
