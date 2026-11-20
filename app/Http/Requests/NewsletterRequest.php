@@ -22,7 +22,7 @@ class NewsletterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:newsletter_subscriptions,email',
+            'email' => 'required|email:rfc,dns|max:191|unique:newsletter_subscriptions,email',
         ];
     }
 }

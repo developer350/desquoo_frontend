@@ -39,11 +39,11 @@ Route::post('search-products', [ProductController::class, 'searchProducts'])->na
 
 // forms
 Route::post('/visit-form', [EnquiryController::class, 'visitForm'])->name('visit-form')->middleware(ProtectAgainstSpam::class);
-Route::post('/enquiry-form', [EnquiryController::class, 'enquiryForm'])->name('enquiry-form')->middleware(ProtectAgainstSpam::class);
+Route::post('/enquiry-form', [EnquiryController::class, 'enquiryForm'])->name('enquiry-form')->middleware(['throttle:6,1', ProtectAgainstSpam::class]);
 Route::post('/rate-product', [EnquiryController::class, 'rateProduct'])->name('rate-product')->middleware(ProtectAgainstSpam::class);
 Route::post('notify-me', [EnquiryController::class, 'notifyMe'])->name('notify-me')->middleware(ProtectAgainstSpam::class);
 Route::post('/blog-comment', [EnquiryController::class, 'blogComment'])->name('blog-comment')->middleware(ProtectAgainstSpam::class);
-Route::post('/newsletter-submit', [EnquiryController::class, 'newsletterSubmit'])->name('newsletter-submit')->middleware(ProtectAgainstSpam::class);
+Route::post('/newsletter-submit', [EnquiryController::class, 'newsletterSubmit'])->name('newsletter-submit')->middleware(['throttle:5,1', ProtectAgainstSpam::class]);
 Route::post('/question-form', [EnquiryController::class, 'questionForm'])->name('question-form')->middleware(ProtectAgainstSpam::class);
 
 // pincode check

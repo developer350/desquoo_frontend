@@ -65,8 +65,8 @@ class EnquiryController extends Controller
     {
         DB::beginTransaction();
         try {
-            $data = $request->all();
-            $model = $data['model'];
+            $data = $request->only(['name', 'phone_number', 'email']);
+            $model = $request->input('model');
             $modelClass = 'App\\Models\\'.$model;
             $enquiry = $modelClass::create($data);
             DB::commit();

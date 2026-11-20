@@ -43,6 +43,14 @@
                     <div class="help-block danger"></div>
                 </div>
             </div>
+            @if (config('services.recaptcha.site_key'))
+                <div class="col-12">
+                    <div class="form-group jqv-group mb-3">
+                        <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}" data-callback="onRecaptchaSuccess"></div>
+                        <div class="help-block danger" id="recaptcha-error" style="color: #dc3545; font-size: 13px; margin-top: 5px;"></div>
+                    </div>
+                </div>
+            @endif
             <div class="col-12">
                 <div class="btnWrap">
                     <button type="submit" class="baseBtn_1 hoveranim" aria-label="submit">
@@ -60,3 +68,9 @@
         </div>
     </form>
 </div>
+
+@if (config('services.recaptcha.site_key'))
+    @pushOnce('js')
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    @endPushOnce
+@endif
