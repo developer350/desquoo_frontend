@@ -127,6 +127,20 @@
             </div>
             <div class="ritB">
                 <div class="newsLtr">
+                    <div class="label">Need Assistance?</div>
+                    <div class="txt mb-3">Have questions about our products or your orders? Our team is here to help.</div>
+                    @if ($siteSettings->whatsapp_number)
+                        <a href="https://wa.me/{{ $siteSettings->formatted_whatsapp_number }}" target="_blank" class="btn baseBtn_1" style="display: inline-flex; width: auto; padding: 10px 24px; border-radius: 30px; background: #fff; color: #1a6343; font-weight: 600; text-decoration: none;">
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                    @elseif ($siteSettings->email)
+                        <a href="mailto:{{ $siteSettings->email }}" class="btn baseBtn_1" style="display: inline-flex; width: auto; padding: 10px 24px; border-radius: 30px; background: #fff; color: #1a6343; font-weight: 600; text-decoration: none;">
+                            <span>Contact Support</span>
+                        </a>
+                    @endif
+                </div>
+
+                {{-- <div class="newsLtr">
                     <div class="label">Stay up to date with our latest news</div>
                     <form action="{{ route('newsletter-submit') }}" method="post" id="newsletter-form">
                         @csrf
@@ -144,7 +158,7 @@
                             </button>
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="ftBtm">
