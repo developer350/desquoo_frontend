@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Recaptcha;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EnquiryRequest extends FormRequest
 {
@@ -22,10 +24,12 @@ class EnquiryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'model' => 'required',
+            'model' => ['required', Rule::in(['BulkOrderEnquiry', 'OfficeEnquiry'])],
             'name' => 'required|max:191',
             'phone_number' => 'required',
             'email' => 'required|email',
+            'g-recaptcha-response' => [new Recaptcha],
         ];
     }
 }
+
