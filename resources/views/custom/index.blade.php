@@ -127,6 +127,8 @@
                                                     title="{{ $value['value'] }}">
                                                     @if ($value['icon'] != null)
                                                         <img src="{{ $value['icon'] }}" alt="{{ $value['value'] }}">
+                                                    @elseif(preg_match('/(\d+)\s*mm/i', $value['value'], $matches))
+                                                        {{ round($matches[1] / 10) }}
                                                     @else
                                                         {{ strtoupper($value['value'][0]) }}
                                                     @endif
@@ -894,7 +896,7 @@
     </script>
 
     <script>
-        $('.changeImage').change(function(e) {
+        $(document).on('change', '.changeImage', function(e) {
             e.preventDefault();
             var attributeValues = $('.changeImage:checked').map(function() {
                 return this.value;
