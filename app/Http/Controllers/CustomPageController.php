@@ -37,6 +37,7 @@ class CustomPageController extends Controller
 
     public function index($slug)
     {
+       
         $cms = ProductCustomLanding::withMedia()->where('slug', $slug)->first();
 
         if (!$cms || !$cms->status) {
