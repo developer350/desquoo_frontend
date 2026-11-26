@@ -26,6 +26,208 @@
                 margin-bottom: 40px;
             }
         }
+
+        .bannerContentSec {
+            padding: 40px 0 20px;
+            background-color: #f6f6f6;
+        }
+
+        @media (min-width: 768px) {
+            .bannerContentSec {
+                padding: 50px 0 25px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .bannerContentSec {
+                padding: 60px 0 30px;
+            }
+        }
+
+        .bannerContentSec .contentWrapper {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .bannerContentSec .contentWrapper p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #333333;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        @media (min-width: 992px) {
+            .bannerContentSec .contentWrapper p {
+                font-size: 17px;
+                line-height: 1.8;
+                margin-bottom: 22px;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .bannerContentSec .contentWrapper p {
+                font-size: 18px;
+                line-height: 1.85;
+                margin-bottom: 24px;
+            }
+        }
+
+        .bannerContentSec .contentWrapper p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bannerContentSec .contentWrapper a {
+            color: #ff5940;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.3s ease;
+        }
+
+        .bannerContentSec .contentWrapper a:hover {
+            color: #000000;
+        }
+
+        .titleWrp h2.mainT {
+            color: #202020;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .titleWrp .benefitsText {
+            max-width: 920px;
+            margin: 0 auto 30px;
+            text-align: left;
+        }
+
+        @media (min-width: 992px) {
+            .titleWrp .benefitsText {
+                margin: 0 auto 35px;
+            }
+        }
+
+        .titleWrp .benefitsText p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #333333;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        @media (min-width: 992px) {
+            .titleWrp .benefitsText p {
+                font-size: 17px;
+                line-height: 1.8;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .titleWrp .benefitsText p {
+                font-size: 18px;
+                line-height: 1.85;
+            }
+        }
+
+        #assemblySec {
+            padding-bottom: 25px !important;
+        }
+
+        @media (min-width: 992px) {
+            #assemblySec {
+                padding-bottom: 35px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #assemblySec {
+                padding-bottom: 45px !important;
+            }
+        }
+
+        .priceContentSec {
+            padding: 10px 0 30px;
+            background-color: #f6f6f6;
+        }
+
+        @media (min-width: 768px) {
+            .priceContentSec {
+                padding: 15px 0 35px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .priceContentSec {
+                padding: 20px 0 45px;
+            }
+        }
+
+        #FaqSection {
+            padding-top: 40px !important;
+        }
+
+        @media (min-width: 992px) {
+            #FaqSection {
+                padding-top: 50px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #FaqSection {
+                padding-top: 60px !important;
+            }
+        }
+
+        .priceContentSec .contentWrapper {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .priceContentSec .contentWrapper h2 {
+            font-size: 26px;
+            font-weight: 500;
+            color: #202020;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .priceContentSec .contentWrapper h2 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .priceContentSec .contentWrapper h2 {
+                font-size: 38px;
+            }
+        }
+
+        .priceContentSec .contentWrapper p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #333333;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        @media (min-width: 992px) {
+            .priceContentSec .contentWrapper p {
+                font-size: 17px;
+                line-height: 1.8;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .priceContentSec .contentWrapper p {
+                font-size: 18px;
+                line-height: 1.85;
+            }
+        }
     </style>
 @endpush
 @section('content')
@@ -49,7 +251,7 @@
                 <div class="mainTleWrap">
                     <div class="sTle">{{ $cms->banner_super_title }}</div>
                     <h1 class="mTle">{{ $cms->banner_title }}</h1>
-                    @if ($cms->banner_btn_show && $productAttributeValueMedias->isNotEmpty())
+                    @if ($cms->banner_btn_show)
                         <a href="#!" data-bs-toggle="modal" data-bs-target="#customizeModal"
                             class="customize hoveranim"><span>{{ $cms->banner_btn_text ?? 'Customize' }}</span></a>
                     @endif
@@ -58,6 +260,18 @@
                     @endif
                 </div>
 
+            </div>
+        </section>
+
+        <section id="bannerContentSec" class="bannerContentSec">
+            <div class="container">
+                <div class="contentWrapper">
+                    <p>Upgrade your workspace with the Desqoo Neo SmartDesk, Our Latest premium electric height adjustable desk in India designed for modern professionals, home offices and corporate workspaces. Combining smart technology, ergonomic functionality and contemporary design, the Neo SmartDesk offers a flexible working experience that allows you to switch effortlessly between sitting and standing positions.</p>
+                    <p>Whether you are working from home, managing a corporate office or spending long hours at your computer, a smartdesk helps you create a workstation that suits your daily activities. With convenient electric height adjustment, you can personalize your desk position and enjoy greater flexibility throughout your working day.</p>
+                    <p>The Desqoo Neo SmartDesk is engineered with a powerful dual-motor lifting system, three-stage lifting columns and four programmable height memory presets. Its adjustable height range of 650 mm to 1270 mm and heavy-duty load capacity of up to 140 kg make it a practical solution for different workspace requirements. The smooth, quiet motor operation and premium tabletop finishes further enhance the everyday working experience.</p>
+                    <p>As a modern sit stand desk, the Neo SmartDesk supports an active working routine by making it easier to alternate between sitting and standing. Its combination of stability, intelligent controls and customizable tabletop options makes it suitable for IT professionals, entrepreneurs, designers, gamers and remote workers.</p>
+                    <p>If you are searching for the best smartdesk in India, explore the Desqoo Neo SmartDesk and discover a smarter way to organize your workspace. Choose Desqoo for innovative smartdesks that combine functionality, durability and <a href="{{ route('office-design') }}">ergonomic workspace design</a>.</p>
+                </div>
             </div>
         </section>
 
@@ -78,21 +292,16 @@
                             <a href="#FaqSection">FAQ</a>
                         @endif
                     </div>
-                    @if ($productAttributeValueMedias->isNotEmpty())
-                        <div class="ritB">
-                            <a href="#!" class="customize" data-bs-toggle="modal"
-                                data-bs-target="#customizeModal"><span>Customize & Order</span></a>
-                        </div>
-                    @endif
+                    <div class="ritB">
+                        <a href="#!" class="customize" data-bs-toggle="modal"
+                            data-bs-target="#customizeModal"><span>Customize</span></a>
+                    </div>
                 </div>
             </div>
         </section>
         <div data-bs-spy="scroll" data-bs-target="#simple-list-example">
             <section id="prodViwSec">
                 <div class="container">
-                    <div class="tpoB">
-                        <div class="txt">{{ $cms->overview_description }}</div>
-                    </div>
                     <div class="visualWrap">
                         <div class="infoTxt">Click & turn<br>
                             to explore</div>
@@ -153,7 +362,7 @@
                 @endif
                 <div class="txtBx">
                     @if ($cms->overview_quote_text != null)
-                        <div class="title">“ {!! $cms->overview_quote_text !!} ”</div>
+                        <div class="title">{!! $cms->overview_quote_text !!}</div>
                     @endif
                     <div class="subT">{!! $cms->overview_quote_description !!}</div>
                 </div>
@@ -164,14 +373,16 @@
                     <div class="container">
                         <div class="titleWrp">
                             <div class="subT">{{ $cms->productivity_super_title }}</div>
-                            <div class="mainT">
-                                {{ $cms->productivity_title }}
+                            <h2 class="mainT">Benefits of Using a Sit Stand Desk.</h2>
+                            <div class="benefitsText">
+                                <p>A sit stand desk offers greater flexibility than a conventional fixed-height office desk. Spending extended periods in the same working position can contribute to physical discomfort and fatigue. An adjustable standing desk allows professionals to alternate between sitting and standing throughout the day, helping them build a more varied working routine. The Desqoo height adjustable desk makes these position changes convenient through its electric height adjustment system. It is particularly useful for IT professionals, software developers, entrepreneurs, students and employees working long hours on computers. By combining an adjustable workstation with appropriate monitor positioning, chair support and regular movement breaks, users can create a more comfortable and adaptable workspace.</p>
                             </div>
                             @if ($cms->productivity_btn_url != null)
                                 <a href="{{ $cms->productivity_btn_url }}" class="more hoveranim"
                                     target="_blank"><span>{{ $cms->productivity_btn_text ?? 'Learn More' }}</span></a>
                             @endif
                         </div>
+
                         <div class="flexWrap">
                             @foreach ($productivities as $productivity)
                                 <div class="item">
@@ -468,6 +679,15 @@
                     </div>
                 </section>
             @endif
+
+            <section id="priceContentSec" class="priceContentSec">
+                <div class="container">
+                    <div class="contentWrapper">
+                        <h2>Neo SmartDesk Price in India.</h2>
+                        <p>The price of a smartdesk in India depends on several factors, including motor technology, frame construction, tabletop material, dimensions and additional features. Electric height adjustable desks with dual motors and programmable memory controls generally offer more advanced functionality than basic manual adjustable tables. The Desqoo Neo SmartDesk provides multiple tabletop size options, smart height adjustment, a heavy-duty steel frame and modern ergonomic functionality. Customers can explore the available configurations and select a desk that matches their workspace requirements and budget. For the latest Neo SmartDesk price, available finishes, product configurations and delivery information, visit the Desqoo website or contact the sales team.</p>
+                    </div>
+                </div>
+            </section>
 
             @if ($faqs->isNotEmpty())
                 <section id="FaqSection">
