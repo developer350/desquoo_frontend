@@ -33,8 +33,12 @@
                     <div class="item">
                         <!-- Stepper Header -->
                         <div class="stepper">
-                            <div class="step active" data-step="1">Pick a Model</div>
-                            <div class="step" data-step="2">Select Colour</div>
+                            @if ($isHaveStepOne)
+                                <div class="step active" data-step="1">Pick a Model</div>
+                                <div class="step" data-step="2">Select Colour</div>
+                            @else
+                                <div class="step active" data-step="2">Select Colour</div>
+                            @endif
                             <div class="step" data-step="3">Addons <span>for your setup</span></div>
                         </div>
                     </div>
