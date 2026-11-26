@@ -58,7 +58,9 @@
                 <div class="Amt amountChange">₹{{ $product->firstVariant->last_price }}</div>
             </div>
             <div class="buttons">
-                <button class="prev" onclick="nextStep(1)"> Back</button>
+                @if ($isHaveStepOne)
+                    <button class="prev" onclick="nextStep(1)"> Back</button>
+                @endif
                 <button class="next full" onclick="nextStep(3)">
                     Select Add-ons
                     <div class="icon">

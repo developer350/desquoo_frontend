@@ -103,9 +103,20 @@ class ProductVariant extends Model implements HasMedia
 
     public function threeDValue(): Attribute
     {
-        return Attribute::get(
-            fn () => $this->hasMedia('3d') ? $this->getFirstMediaUrl('3d') : null
-        );
+        return Attribute::get(function () {
+            if (! $this->hasMedia('3d')) {
+                return null;
+            }
+
+            $url = $this->getFirstMediaUrl('3d');
+            if (! $url) {
+                return null;
+            }
+
+            $path = parse_url($url, PHP_URL_PATH);
+
+            return $path ?: $url;
+        });
     }
 
     public function priceFormatted(): Attribute

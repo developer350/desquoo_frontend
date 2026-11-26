@@ -813,7 +813,7 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
     {{-- customise modal js --}}
-    <script src="{{ asset('frontend/js/stepper.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/stepper.min.js') }}?v={{ file_exists(public_path('frontend/js/stepper.min.js')) ? filemtime(public_path('frontend/js/stepper.min.js')) : time() }}"></script>
     <script>
         // addon slider
         function addonSlider() {
@@ -867,70 +867,83 @@
     <script>
         window.addEventListener('DOMContentLoaded', function() {
 
-            const whyChooseSlide = new Swiper('.engineeringSlide', {
-                loop: true,
-                rewind: true,
-                spaceBetween: 15,
-                slidesPerView: "auto",
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
+            const engSlideEl = document.querySelector('.engineeringSlide');
+            if (engSlideEl) {
+                const engSlideCount = engSlideEl.querySelectorAll('.swiper-slide').length;
+                const canLoopEng = engSlideCount > 3;
 
-                speed: 800,
-                freeMode: false,
-                freeModeFluid: true,
-                freeModeMinimumVelocity: 0.02,
-                freeModeSticky: false,
-
-                resistance: true,
-                resistanceRatio: 0.85,
-                threshold: 5,
-                longSwipesRatio: 0.5,
-                longSwipesMs: 300,
-
-                centeredSlides: true,
-                centerInsufficientSlides: true,
-                centeredSlidesBounds: true,
-
-                watchSlidesProgress: true,
-                watchSlidesVisibility: true,
-                preventClicks: true,
-                preventClicksPropagation: true,
-
-                breakpoints: {
-                    376: {
-                        slidesPerView: "auto",
-                        spaceBetween: 25,
+                const whyChooseSlide = new Swiper('.engineeringSlide', {
+                    loop: canLoopEng,
+                    rewind: !canLoopEng,
+                    spaceBetween: 15,
+                    slidesPerView: "auto",
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
                     },
-                    576: {
-                        slidesPerView: "auto",
-                        spaceBetween: 20,
-                    },
-                    1551: {
-                        slidesPerView: "auto",
-                        spaceBetween: 25,
-                    }
-                }
-            });
 
-            new Swiper('.healthSlide', {
-                lazy: true,
-                loop: true,
-                freeMode: true,
-                slidesPerView: 1.06,
-                spaceBetween: 12,
-                autoplay: {
-                    delay: 5000,
-                },
-                breakpoints: {
-                    576: {
-                        slidesPerView: 1.05,
-                        spaceBetween: 26
+                    speed: 800,
+                    freeMode: false,
+                    freeModeFluid: true,
+                    freeModeMinimumVelocity: 0.02,
+                    freeModeSticky: false,
+
+                    resistance: true,
+                    resistanceRatio: 0.85,
+                    threshold: 5,
+                    longSwipesRatio: 0.5,
+                    longSwipesMs: 300,
+
+                    centeredSlides: true,
+                    centerInsufficientSlides: true,
+                    centeredSlidesBounds: true,
+
+                    watchSlidesProgress: true,
+                    watchSlidesVisibility: true,
+                    preventClicks: true,
+                    preventClicksPropagation: true,
+
+                    breakpoints: {
+                        376: {
+                            slidesPerView: "auto",
+                            spaceBetween: 25,
+                        },
+                        576: {
+                            slidesPerView: "auto",
+                            spaceBetween: 20,
+                        },
+                        1551: {
+                            slidesPerView: "auto",
+                            spaceBetween: 25,
+                        }
                     }
-                }
-            });
+                });
+            }
+
+            const healthSlideEl = document.querySelector('.healthSlide');
+            if (healthSlideEl) {
+                const healthSlideCount = healthSlideEl.querySelectorAll('.swiper-slide').length;
+                const canLoopHealth = healthSlideCount > 2;
+
+                new Swiper('.healthSlide', {
+                    lazy: true,
+                    loop: canLoopHealth,
+                    rewind: !canLoopHealth,
+                    freeMode: true,
+                    slidesPerView: 1.06,
+                    spaceBetween: 12,
+                    autoplay: {
+                        delay: 5000,
+                    },
+                    breakpoints: {
+                        576: {
+                            slidesPerView: 1.05,
+                            spaceBetween: 26
+                        }
+                    }
+                });
+            }
 
             // OTHER_PRODUCTS
             $('.exploreSlide').owlCarousel({
