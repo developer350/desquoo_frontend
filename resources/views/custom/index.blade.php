@@ -593,7 +593,7 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
     {{-- customise modal js --}}
-    <script src="{{ asset('frontend/js/stepper.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/stepper.min.js') }}?v={{ file_exists(public_path('frontend/js/stepper.min.js')) ? filemtime(public_path('frontend/js/stepper.min.js')) : time() }}"></script>
     <script>
         // addon slider
         function addonSlider() {
