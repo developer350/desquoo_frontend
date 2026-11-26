@@ -79,6 +79,16 @@
                 <div class="RSide">
                     <ul class="QckMenu">
                         <li class="dropdown">
+                            <a href="{{ route('custom-page', 'neo-smart-desk-standard') }}"
+                                class="fliplink {{ request()->routeIs('custom-page') && request()->slug == 'neo-smart-desk-standard' ? 'active' : '' }}">
+                                <div class="Link" data-after="Neo Smart Desk Standard">
+                                    <span>
+                                        Neo Smart Desk Standard
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown">
                             <a href="{{ route('office-design') }}"
                                 class="fliplink {{ request()->routeIs('office-design') ? 'active' : '' }}">
                                 <div class="Link" data-after="Office Design">
@@ -214,6 +224,17 @@
                                     @endif
                                 </div>
                             @endforeach
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="hdNeo">
+                                    <a href="{{ route('custom-page', 'neo-smart-desk-standard') }}" class="dskLn ">
+                                        <div class="Link">
+                                            <span>
+                                                Neo Smart Desk Standard
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="hd4">
                                     <a href="{{ route('office-design') }}" class="dskLn ">
