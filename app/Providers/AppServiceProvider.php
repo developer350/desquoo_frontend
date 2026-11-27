@@ -152,6 +152,10 @@ class AppServiceProvider extends ServiceProvider
             });
         });
 
+        View::composer(['layouts.app', 'layouts.header', 'layouts.footer', 'modals.*'], function ($view) {
+            $view->with('siteSettings', $this->app->make('siteSettings'));
+        });
+
         View::composer('layouts.header', function ($view) {
             $view->with(['headerCategories' => $this->app->make('categories')->where('show_in_menu', 1)->take(3), 'siteSettings' => $this->app->make('siteSettings'), 'cartCount' => $this->app->make('cart')->count()]);
         });
