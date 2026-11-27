@@ -30,7 +30,7 @@ class SiteSettings extends Model implements HasMedia
         if ($this->canConvertToWebp($media)) {
             $this->addMediaConversion('converted')
                 ->format('webp')
-                ->performOnCollections('header_logo', 'footer_logo', 'header_mobile_logo', 'auth_logo')
+                ->performOnCollections('header_logo', 'footer_logo', 'header_mobile_logo', 'auth_image')
                 ->nonOptimized()
                 ->nonQueued();
         }
@@ -38,9 +38,13 @@ class SiteSettings extends Model implements HasMedia
 
     public function headerLogoValue(): Attribute
     {
-        return Attribute::get(
-            fn () => $this->hasMedia('header_logo') ? $this->getFirstMediaUrl('header_logo', 'converted') : null
-        );
+        return Attribute::get(function () {
+            if (!$this->hasMedia('header_logo')) {
+                return null;
+            }
+            $url = $this->getFirstMediaUrl('header_logo', 'converted');
+            return !empty($url) ? $url : $this->getFirstMediaUrl('header_logo');
+        });
     }
 
     public function headerLogoAltTextValue(): Attribute
@@ -52,9 +56,13 @@ class SiteSettings extends Model implements HasMedia
 
     public function headerMobileLogoValue(): Attribute
     {
-        return Attribute::get(
-            fn () => $this->hasMedia('header_mobile_logo') ? $this->getFirstMediaUrl('header_mobile_logo', 'converted') : null
-        );
+        return Attribute::get(function () {
+            if (!$this->hasMedia('header_mobile_logo')) {
+                return null;
+            }
+            $url = $this->getFirstMediaUrl('header_mobile_logo', 'converted');
+            return !empty($url) ? $url : $this->getFirstMediaUrl('header_mobile_logo');
+        });
     }
 
     public function headerMobileLogoAltTextValue(): Attribute
@@ -66,9 +74,13 @@ class SiteSettings extends Model implements HasMedia
 
     public function footerLogoValue(): Attribute
     {
-        return Attribute::get(
-            fn () => $this->hasMedia('footer_logo') ? $this->getFirstMediaUrl('footer_logo', 'converted') : null
-        );
+        return Attribute::get(function () {
+            if (!$this->hasMedia('footer_logo')) {
+                return null;
+            }
+            $url = $this->getFirstMediaUrl('footer_logo', 'converted');
+            return !empty($url) ? $url : $this->getFirstMediaUrl('footer_logo');
+        });
     }
 
     public function footerLogoAltTextValue(): Attribute
@@ -80,9 +92,13 @@ class SiteSettings extends Model implements HasMedia
 
     public function authImageValue(): Attribute
     {
-        return Attribute::get(
-            fn () => $this->hasMedia('auth_image') ? $this->getFirstMediaUrl('auth_image', 'converted') : null
-        );
+        return Attribute::get(function () {
+            if (!$this->hasMedia('auth_image')) {
+                return null;
+            }
+            $url = $this->getFirstMediaUrl('auth_image', 'converted');
+            return !empty($url) ? $url : $this->getFirstMediaUrl('auth_image');
+        });
     }
 
     public function authImageAltTextValue(): Attribute
