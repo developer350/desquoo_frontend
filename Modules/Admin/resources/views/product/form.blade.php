@@ -301,9 +301,9 @@
                                                 <div class="form-group mb-3">
                                                     <label for="3d" class="form-label">3D File</label>
                                                     <input type="file" class="form-control filepond-input"
-                                                        name="3d" id="3d" data-size="10MB"
+                                                        name="3d" id="3d" data-size="100MB"
                                                         data-accept="model/gltf-binary">
-                                                    <div class="text-muted">File Type: GLB, Max Size: 10MB </div>
+                                                    <div class="text-muted">File Type: GLB, Max Size: 100MB </div>
                                                     <span class="error-block"></span>
                                                 </div>
                                                 <div class="form-group mb-3">
