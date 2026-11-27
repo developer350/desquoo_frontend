@@ -37,6 +37,8 @@ class  SiteSettingsController extends Controller
 
             DB::commit();
 
+            cache()->forget('siteSettings');
+
             return response()->json(['success' => true, 'message' => 'Site Settings updated successfully.']);
         } catch (\Throwable $e) {
             DB::rollBack();
