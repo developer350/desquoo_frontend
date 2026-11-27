@@ -5,9 +5,9 @@
                 <div class="ftCol">
                     <div class="itemWrap">
                         <a href="{{ route('home') }}" class="logoWrap" aria-label="Logo">
-                            <img src="{{ $siteSettings->footer_logo_value ?? asset('frontend/images/fLogo.png') }}"
+                            <img src="{{ asset('frontend/images/fLogo.png') }}?v=2"
                                 width="426" height="92"
-                                alt="{{ $siteSettings->footer_logo_alt_text_value ?? 'logo' }}">
+                                alt="DESQOO">
                         </a>
                         @if ($socialLinks->isNotEmpty())
                             <ul class="socialUl">

@@ -70,10 +70,10 @@
                 </div>
                 <div class="cntrBx">
                     <a href="{{ route('home') }}" class="logo">
-                        <img src="{{ $siteSettings->header_logo_value ?? asset('frontend/images/Logo.png') }}"
-                            alt="{{ $siteSettings->header_logo_alt_text_value ?? 'logo' }}" class="dsk">
-                        <img src="{{ $siteSettings->header_mobile_logo_value ?? asset('frontend/images/MLogo.png') }}"
-                            alt="{{ $siteSettings->header_mobile_logo_alt_text_value ?? 'logo' }}" class="mob">
+                        <img src="{{ asset('frontend/images/Logo.png') }}?v=2"
+                            alt="DESQOO" class="dsk">
+                        <img src="{{ asset('frontend/images/MLogo.png') }}?v=2"
+                            alt="DESQOO" class="mob">
                     </a>
                 </div>
                 <div class="RSide">

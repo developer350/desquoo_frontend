@@ -18,7 +18,7 @@
         <div class="circle">
         </div>
         <div class="logo" style="text-align: center">
-            <img loading="lazy" decoding="async" class="logo" src="{{ $siteSettings->header_logo_value ?? asset('frontend/images/Logo.png') }}"
+            <img loading="lazy" decoding="async" class="logo" src="{{ asset('frontend/images/Logo.png') }}?v=2"
                 style="width: 140px;height: auto; z-index: 1; text-align: center;" width="140" height="100" alt="logo">
         </div>
     </div>
