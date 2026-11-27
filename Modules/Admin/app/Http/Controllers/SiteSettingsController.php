@@ -30,10 +30,18 @@ class  SiteSettingsController extends Controller
             $siteSettings = SiteSettings::findOrFail(base64_decode($id));
             $siteSettings->update($request->all());
 
-            $siteSettings->uploadMedia($request, 'header_logo');
-            $siteSettings->uploadMedia($request, 'header_mobile_logo');
-            $siteSettings->uploadMedia($request, 'footer_logo');
-            $siteSettings->uploadMedia($request, 'auth_image');
+            if ($request->hasFile('header_logo')) {
+                $siteSettings->uploadMedia($request->file('header_logo'), 'header_logo');
+            }
+            if ($request->hasFile('header_mobile_logo')) {
+                $siteSettings->uploadMedia($request->file('header_mobile_logo'), 'header_mobile_logo');
+            }
+            if ($request->hasFile('footer_logo')) {
+                $siteSettings->uploadMedia($request->file('footer_logo'), 'footer_logo');
+            }
+            if ($request->hasFile('auth_image')) {
+                $siteSettings->uploadMedia($request->file('auth_image'), 'auth_image');
+            }
 
             DB::commit();
 

@@ -19,8 +19,8 @@
                         </div>
                         <div class="item">
                             <a href="{{ route('home') }}" aria-label="logo" class="logo">
-                                <img src="{{ asset('frontend/images/Logo.png') }}" width="112" height="25"
-                                    alt="Desqoo">
+                                <img src="{{ $siteSettings->header_logo_value ?? asset('frontend/images/Logo.png') }}" width="112" height="25"
+                                    alt="{{ $siteSettings->header_logo_alt_text_value ?? 'Desqoo' }}">
                             </a>
                         </div>
                         <div class="item ">
