@@ -83,6 +83,48 @@
                     url: "{{ route('products.variants.index', base64_encode($product->id)) }}",
                 }
             });
+
+            $(document).on('click', '.duplicate-variant-btn', function(e) {
+                e.preventDefault();
+                var $btn = $(this);
+                var url = $btn.data('url');
+
+                Swal.fire({
+                    title: 'Duplicate Variant?',
+                    text: 'This will create an exact copy of this variant.',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#2ab57d',
+                    cancelButtonColor: '#fd625e',
+                    confirmButtonText: 'Yes, duplicate it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $btn.prop('disabled', true);
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: {
+                                _token: $('meta[name="csrf-token"]').attr('content') || '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    showToast(response.message, 'success');
+                                    $('#dataTable').DataTable().ajax.reload(null, false);
+                                } else {
+                                    showToast(response.message || 'Failed to duplicate variant.', 'error');
+                                    $btn.prop('disabled', false);
+                                }
+                            },
+                            error: function(xhr) {
+                                var msg = (xhr.responseJSON && xhr.responseJSON.message) ? xhr.responseJSON.message : 'Something went wrong while duplicating the variant.';
+                                showToast(msg, 'error');
+                                $btn.prop('disabled', false);
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 @endpush

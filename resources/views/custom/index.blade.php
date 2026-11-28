@@ -228,6 +228,23 @@
                 line-height: 1.85;
             }
         }
+        .btmFlxWrp .proNav label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .btmFlxWrp .color-swatch-dot {
+            transition: transform 0.2s ease;
+        }
+        .btmFlxWrp .proNav label:hover .color-swatch-dot {
+            transform: scale(1.15);
+        }
+        .btmFlxWrp input[type=radio]:checked + label {
+            border-color: #ff5940 !important;
+            background: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
     </style>
 @endpush
 @section('content')
@@ -337,7 +354,24 @@
                                                     @if ($value['icon'] != null)
                                                         <img src="{{ $value['icon'] }}" alt="{{ $value['value'] }}">
                                                     @elseif(preg_match('/(\d+)\s*mm/i', $value['value'], $matches))
-                                                        {{ round($matches[1] / 10) }}
+                                                        @php
+                                                            $sizeNum = round($matches[1] / 10);
+                                                        @endphp
+                                                        @if ($sizeNum == 120 || str_contains($value['value'], '1200') || str_contains($value['value'], '200mm'))
+                                                            <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background-color: #ffffff; border: 1.5px solid #cbd5e1; box-shadow: 0 1px 2px rgba(0,0,0,0.15);" title="White (120 cm)"></span>
+                                                        @elseif ($sizeNum == 150 || str_contains($value['value'], '1500'))
+                                                            <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background-color: #111827; border: 1.5px solid rgba(255,255,255,0.25); box-shadow: 0 1px 2px rgba(0,0,0,0.2);" title="Black (150 cm)"></span>
+                                                        @elseif ($sizeNum == 180 || str_contains($value['value'], '1800'))
+                                                            <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background: linear-gradient(135deg, #c49a6c 0%, #8c5828 100%); border: 1.5px solid rgba(0,0,0,0.15); box-shadow: 0 1px 2px rgba(0,0,0,0.2);" title="Wooden (180 cm)"></span>
+                                                        @else
+                                                            {{ $sizeNum }}
+                                                        @endif
+                                                    @elseif(str_contains(strtolower($value['value']), 'marble') || str_contains(strtolower($value['value']), 'white'))
+                                                        <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background-color: #F2F0E6; border: 1.5px solid #d8d5c8; box-shadow: 0 1px 2px rgba(0,0,0,0.15);" title="{{ $value['value'] }}"></span>
+                                                    @elseif(str_contains(strtolower($value['value']), 'black'))
+                                                        <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background-color: #111827; border: 1.5px solid rgba(255,255,255,0.25); box-shadow: 0 1px 2px rgba(0,0,0,0.2);" title="{{ $value['value'] }}"></span>
+                                                    @elseif(str_contains(strtolower($value['value']), 'wood'))
+                                                        <span class="color-swatch-dot" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; background: linear-gradient(135deg, #c49a6c 0%, #8c5828 100%); border: 1.5px solid rgba(0,0,0,0.15); box-shadow: 0 1px 2px rgba(0,0,0,0.2);" title="{{ $value['value'] }}"></span>
                                                     @else
                                                         {{ strtoupper($value['value'][0]) }}
                                                     @endif
@@ -1131,6 +1165,10 @@
     <script>
         $(document).on('change', '.changeImage', function(e) {
             e.preventDefault();
+            var changedVal = $(this).val();
+            if (changedVal) {
+                $('.changeDesc[value="' + changedVal + '"]').prop('checked', true);
+            }
             var attributeValues = $('.changeImage:checked').map(function() {
                 return this.value;
             }).get();
@@ -1146,7 +1184,7 @@
                         if (response.data.isGlb) {
                             $('#productGlb').html(`<model-viewer src="` + response.data.url +
                                 `"
-                                    id="3dImage" ar ar-modes="webxr" camera-controls touch-action="pan-y"></model-viewer>`
+                                    id="3dImage" ar ar-modes="webxr" camera-controls disable-zoom touch-action="pan-y"></model-viewer>`
                             );
                         } else {
 
