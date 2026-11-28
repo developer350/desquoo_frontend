@@ -226,6 +226,7 @@ Route::prefix(app('backend.prefix'))->group(function () {
             Route::get('generate-variations', [ProductController::class, 'generateVariations'])->name('generate-variations');
             Route::resource('products.galleries', ProductGalleryController::class)->names('products.galleries')->except('show');
             Route::resource('products.variants', ProductVariantController::class)->names('products.variants')->except('show');
+            Route::post('products/{product}/variants/{variant}/duplicate', [ProductVariantController::class, 'duplicate'])->name('products.variants.duplicate');
             Route::resource('product-variants.galleries', ProductVariantGalleryController::class)->names('product-variants.galleries')->except('show');
             Route::resource('products.bulk-orders', ProductBulkOrderController::class)->names('products.bulk-orders')->except('show');
             Route::resource('products.attribute-value-medias', ProductAttributeValueMediaController::class)->names('products.attribute-value-medias')->only(['index', 'store']);
